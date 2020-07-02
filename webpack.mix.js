@@ -1,15 +1,40 @@
 const mix = require('laravel-mix');
 
-/*
- |--------------------------------------------------------------------------
- | Mix Asset Management
- |--------------------------------------------------------------------------
- |
- | Mix provides a clean, fluent API for defining some Webpack build steps
- | for your Laravel application. By default, we are compiling the Sass
- | file for the application as well as bundling up all the JS files.
- |
- */
+mix.scripts([
+    'public/assets/app-assets/vendors/js/vendors.min.js',
+    'public/assets/app-assets/vendors/js/ui/jquery.sticky.js',
+    'public/assets/app-assets/vendors/js/charts/jquery.sparkline.min.js',
+    'public/assets/app-assets/vendors/js/charts/leaflet/leaflet.js',
+    'public/assets/app-assets/vendors/js/forms/icheck/icheck.min.js',
+    'public/assets/app-assets/vendors/js/extensions/jquery.knob.min.js',
+    'public/assets/app-assets/vendors/js/charts/raphael-min.js',
+    'public/assets/app-assets/vendors/js/charts/morris.min.js',
+    'public/assets/app-assets/vendors/js/charts/jquery.sparkline.min.js',
+    'public/assets/app-assets/vendors/js/extensions/unslider-min.js',
+    'public/assets/app-assets/vendors/js/charts/apexcharts/apexcharts.min.js',
+    'public/assets/app-assets/js/core/app-menu.js',
+    'public/assets/app-assets/js/core/app.js',
+    'public/assets/app-assets/js/scripts/ui/breadcrumbs-with-stats.js',
+    'public/assets/app-assets/js/scripts/pages/dashboard-fitness.js',
+], 'public/js/all.js');
 
-mix.js('resources/js/app.js', 'public/js')
-    .sass('resources/sass/app.scss', 'public/css');
+mix.styles([
+    'public/assets/app-assets/vendors/css/vendors.min.css',
+    'public/assets/app-assets/vendors/css/forms/icheck/icheck.css',
+    'public/assets/app-assets/vendors/css/forms/icheck/custom.css',
+    'public/assets/app-assets/vendors/css/charts/morris.css',
+    'public/assets/app-assets/vendors/css/extensions/unslider.css',
+    'public/assets/app-assets/vendors/css/weather-icons/climacons.min.css',
+    'public/assets/app-assets/vendors/css/charts/leaflet.css',
+    'public/assets/app-assets/css/bootstrap.css',
+    'public/assets/app-assets/css/bootstrap-extended.css',
+    'public/assets/app-assets/css/colors.css',
+    'public/assets/app-assets/css/components.css',
+    'public/assets/app-assets/css/core/menu/menu-types/horizontal-menu.css',
+    'public/assets/app-assets/css/core/colors/palette-climacon.css',
+    'public/assets/app-assets/css/core/colors/palette-gradient.css',
+    'public/assets/app-assets/fonts/simple-line-icons/style.min.css',
+    'public/assets/app-assets/fonts/meteocons/style.min.css',
+    'public/assets/app-assets/css/pages/users.css',
+    'public/assets/assets/css/style.css',
+], 'public/css/all.css');
