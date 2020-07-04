@@ -13,16 +13,16 @@ class Employee extends Migration
      */
     public function up()
     {
-        Schema::create('employee', function (Blueprint $table) {
+        Schema::create('employees', function (Blueprint $table) {
             $table->bigIncrements('emp_id');
-            $table->string('emp_full_name', 50)->nullable();
-            $table->string('emp_gender', 30)->nullable();
-            $table->string('emp_address', 100)->nullable();
+            $table->string('emp_full_name', 1000)->nullable();
+            $table->string('emp_gender', 1000)->nullable();
+            $table->string('emp_address', 1000)->nullable();
             $table->integer('emp_phone')->nullable();
             $table->integer('emp_salery')->nullable();
-            $table->string('emp_username', 100)->unique();
-            $table->string('emp_email', 200)->unique();
-            $table->string('emp_password', 500)->unique();
+            $table->string('emp_username', 1000);
+            $table->string('emp_email', 2000);
+            $table->string('emp_password', 5000);
             $table->timestamps();
         });
     }
@@ -34,7 +34,7 @@ class Employee extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('employee');
+        Schema::dropIfExists('employees');
     }
 }
 

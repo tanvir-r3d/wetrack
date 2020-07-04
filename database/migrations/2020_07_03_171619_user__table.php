@@ -13,15 +13,15 @@ class UserTable extends Migration
      */
     public function up()
     {
-        Schema::create('User_Table', function (Blueprint $table) {
+        Schema::create('user_tables', function (Blueprint $table) {
             $table->bigIncrements('user_id');
-            $table->string('user_first_name', 20)->nullable();
-            $table->string('user_last_name' ,20)->nullable();
-            $table->string('user_gender', 10)->nullable();
-            $table->string('username', 100)->unique();
-            $table->string('email', 100)->unique();
+            $table->string('user_first_name', 1000)->nullable();
+            $table->string('user_last_name' ,1000)->nullable();
+            $table->string('user_gender', 1000)->nullable();
+            $table->string('username', 1000);
+            $table->string('email', 100);
             $table->timestamp('email_verified_at')->nullable();
-            $table->string('password' ,50);
+            $table->string('password' ,1000);
             $table->timestamps();
         });
     }
@@ -33,6 +33,6 @@ class UserTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('User_Table');
+        Schema::dropIfExists('user_tables');
     }
 }

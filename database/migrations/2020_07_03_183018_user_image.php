@@ -13,10 +13,10 @@ class UserImage extends Migration
      */
     public function up()
     {
-        Schema::create('user_image', function (Blueprint $table) {
+        Schema::create('user_images', function (Blueprint $table) {
             $table->bigIncrements('user_image_id');
             $table->integer('user_id');
-            $table->string('user_img');
+            $table->string('user_img',1000);
             $table->timestamps();
         });
     }
@@ -28,7 +28,7 @@ class UserImage extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('user_image');
+        Schema::dropIfExists('user_images');
     }
 }
 

@@ -13,7 +13,7 @@ class EmployeeStatus extends Migration
      */
     public function up()
     {
-        Schema::create('employee_status', function (Blueprint $table) {
+        Schema::create('employee_statuss', function (Blueprint $table) {
             $table->bigIncrements('emp_status_id');
             $table->integer('emp_id');
             $table->string('emp_status', 10);
@@ -28,7 +28,7 @@ class EmployeeStatus extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('branch');
+        Schema::dropIfExists('employee_statuss');
     }
 }
 

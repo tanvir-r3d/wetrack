@@ -13,10 +13,10 @@ class EmployeeImage extends Migration
      */
     public function up()
     {
-        Schema::create('employee_image', function (Blueprint $table) {
+        Schema::create('employee_images', function (Blueprint $table) {
             $table->bigIncrements('emp_image_id');
             $table->integer('emp_id');
-            $table->string('emp_img');
+            $table->string('emp_img',1000);
             $table->timestamps();
         });
     }
@@ -28,6 +28,6 @@ class EmployeeImage extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('employee_image');
+        Schema::dropIfExists('employee_images');
     }
 }
