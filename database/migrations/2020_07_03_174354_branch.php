@@ -13,11 +13,11 @@ class Branch extends Migration
      */
     public function up()
     {
-        Schema::create('branch', function (Blueprint $table) {
+        Schema::create('branchs', function (Blueprint $table) {
             $table->bigIncrements('branch_id');
-            $table->string('branch_name', 50);
-            $table->string('branch_location', 50);
-            $table->string('branch_details');
+            $table->string('branch_name', 1000);
+            $table->string('branch_location', 1000);
+            $table->string('branch_details',1000);
             $table->timestamps();
         });
     }
@@ -29,6 +29,6 @@ class Branch extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('branch');
+        Schema::dropIfExists('branchs');
     }
 }
