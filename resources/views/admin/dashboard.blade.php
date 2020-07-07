@@ -145,7 +145,7 @@
                                         <div class="col-xl-3 col-lg-6 col-md-12 border-right-blue-grey border-right-lighten-5 clearfix">
                                             <div class="media">
                                                 <div class="media-left pr-1">
-                                                    <img class="media-object img-xl" src="../../../app-assets/images/portrait/small/avatar-s-5.png" alt="Generic placeholder image">
+                                                    <img class="media-object img-xl" src="" alt="Generic placeholder image">
                                                 </div>
                                                 <div class="media-body">
                                                     <h6 class="text-bold-500 pt-1 mb-0">Running</h6>
@@ -267,7 +267,7 @@
                                 <div id="friends-activity" class="media-list height-400 position-relative">
                                     <a href="#" class="media border-0">
                                         <div class="media-left pr-1">
-                                            <img class="media-object avatar avatar-sm rounded-circle" src="../../../app-assets/images/portrait/small/avatar-s-7.png" alt="Generic placeholder image">
+                                            <img class="media-object avatar avatar-sm rounded-circle" src="" alt="Generic placeholder image">
                                         </div>
                                         <div class="media-body w-100">
                                             <h5 class="list-group-item-heading">Kristopher Candy <span class="font-medium-4 float-right">1,0215</span></h5>
@@ -276,7 +276,7 @@
                                     </a>
                                     <a href="#" class="media border-0">
                                         <div class="media-left pr-1">
-                                            <img class="media-object avatar avatar-sm rounded-circle" src="../../../app-assets/images/portrait/small/avatar-s-8.png" alt="Generic placeholder image">
+                                            <img class="media-object avatar avatar-sm rounded-circle" src="" alt="Generic placeholder image">
                                         </div>
                                         <div class="media-body w-100">
                                             <h5 class="list-group-item-heading">Lawrence Fowler <span class="font-medium-4 float-right">2,0215</span></h5>
@@ -285,7 +285,7 @@
                                     </a>
                                     <a href="#" class="media border-0">
                                         <div class="media-left pr-1">
-                                            <img class="media-object avatar avatar-sm rounded-circle" src="../../../app-assets/images/portrait/small/avatar-s-9.png" alt="Generic placeholder image">
+                                            <img class="media-object avatar avatar-sm rounded-circle" src="" alt="Generic placeholder image">
                                         </div>
                                         <div class="media-body w-100">
                                             <h5 class="list-group-item-heading">Linda Olson <span class="font-medium-4 float-right">1,112</span></h5>
@@ -294,7 +294,7 @@
                                     </a>
                                     <a href="#" class="media border-0">
                                         <div class="media-left pr-1">
-                                            <img class="media-object avatar avatar-sm rounded-circle" src="../../../app-assets/images/portrait/small/avatar-s-10.png" alt="Generic placeholder image">
+                                            <img class="media-object avatar avatar-sm rounded-circle" src="" alt="Generic placeholder image">
                                         </div>
                                         <div class="media-body w-100">
                                             <h5 class="list-group-item-heading">Roy Clark <span class="font-medium-4 float-right">2,815</span></h5>
@@ -303,7 +303,7 @@
                                     </a>
                                     <a href="#" class="media border-0">
                                         <div class="media-left pr-1">
-                                            <img class="media-object avatar avatar-sm rounded-circle" src="../../../app-assets/images/portrait/small/avatar-s-11.png" alt="Generic placeholder image">
+                                            <img class="media-object avatar avatar-sm rounded-circle" src="" alt="Generic placeholder image">
                                         </div>
                                         <div class="media-body w-100">
                                             <h5 class="list-group-item-heading">Tammy Gonzales <span class="font-medium-4 float-right">3,226</span></h5>
@@ -312,7 +312,7 @@
                                     </a>
                                     <a href="#" class="media border-0">
                                         <div class="media-left pr-1">
-                                            <img class="media-object avatar avatar-sm rounded-circle" src="../../../app-assets/images/portrait/small/avatar-s-12.png" alt="Generic placeholder image">
+                                            <img class="media-object avatar avatar-sm rounded-circle" src="" alt="Generic placeholder image">
                                         </div>
                                         <div class="media-body w-100">
                                             <h5 class="list-group-item-heading">Justin Hawkins <span class="font-medium-4 float-right">4,564</span></h5>
@@ -321,7 +321,7 @@
                                     </a>
                                     <a href="#" class="media border-0">
                                         <div class="media-left pr-1">
-                                            <img class="media-object avatar avatar-sm rounded-circle" src="../../../app-assets/images/portrait/small/avatar-s-10.png" alt="Generic placeholder image">
+                                            <img class="media-object avatar avatar-sm rounded-circle" src="" alt="Generic placeholder image">
                                         </div>
                                         <div class="media-body w-100">
                                             <h5 class="list-group-item-heading">Roy Clark <span class="font-medium-4 float-right">2,815</span></h5>
@@ -466,13 +466,13 @@
                                             </ol>
                                             <div class="carousel-inner" role="listbox">
                                                 <div class="carousel-item active">
-                                                    <img src="../../../app-assets/images/pages/fitness-slide-1.jpg" class="img-fluid" alt="First slide">
+                                                    <img src="" class="img-fluid" alt="First slide">
                                                 </div>
                                                 <div class="carousel-item">
-                                                    <img src="../../../app-assets/images/pages/fitness-slide-2.jpg" class="img-fluid" alt="Second slide">
+                                                    <img src="" class="img-fluid" alt="Second slide">
                                                 </div>
                                                 <div class="carousel-item">
-                                                    <img src="../../../app-assets/images/pages/fitness-slide-3.jpg" class="img-fluid" alt="Third slide">
+                                                    <img src="" class="img-fluid" alt="Third slide">
                                                 </div>
                                             </div>
                                             <a class="left carousel-control" href="#carousel-example" role="button" data-slide="prev">
@@ -506,10 +506,10 @@
                             <div class="col-xl-6 col-lg-6 col-md-12">
                                 <div class="card profile-card-with-cover">
                                     <div class="card-content">
-                                        <div class="card-img-top img-fluid bg-cover height-200" style="background: url('../../../app-assets/images/pages/fitness-profile.jpg') 0 40%;">
+                                        <div class="card-img-top img-fluid bg-cover height-200" style="background: url('') 0 40%;">
                                         </div>
                                         <div class="card-profile-image">
-                                            <img src="../../../app-assets/images/portrait/small/avatar-s-8.png" class="rounded-circle img-border box-shadow-1" alt="Card image">
+                                            <img src="" class="rounded-circle img-border box-shadow-1" alt="Card image">
                                         </div>
                                         <div class="profile-card-with-cover-content text-center">
                                             <div class="my-2">
