@@ -14,7 +14,7 @@ class BranchController extends Controller
      */
     public function index()
     {
-        //
+        return view('admin.branch.index');
     }
 
     /**
