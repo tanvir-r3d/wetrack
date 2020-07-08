@@ -89,6 +89,45 @@
         </div>
     </div>
 </div>
+
+<!-- EDIT MODAL -->
+<div class="modal fade text-left" id="editModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel35" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title" id="myModalLabel35">Edit Branch</h3>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <form method="post" id="editForm">
+            @csrf
+                <div class="modal-body">
+                    <fieldset class="form-group floating-label-form-group">
+                        <label for="name">Name</label>
+                        <input type="text" class="form-control" id="edit_name" name="name" placeholder="Enter Branch Name" required data-validation-required-message="This field is required">
+                    </fieldset>
+                    <br>
+                    <fieldset class="form-group floating-label-form-group">
+                        <label for="location">Location</label>
+                        <textarea class="form-control" name="location" id="edit_location" placeholder="Enter Branch Location" required data-validation-required-message="This field is required"></textarea>
+                    </fieldset>
+                    <br>
+                    <fieldset class="form-group floating-label-form-group">
+                        <label for="details">Details</label>
+                        <textarea class="form-control" id="edit_details" rows="3" name="details" placeholder="Enter Branch details" ></textarea>
+                    </fieldset>
+                    <input type="hidden" id="edit_id" name="id">
+                </div>
+                <div class="modal-footer">
+                    <input type="reset" class="btn btn-outline-secondary" data-dismiss="modal" value="Close">
+                    <input type="submit" class="btn btn-outline-primary" value="Update">
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
 @endsection
 @section('script')
 <script type="text/javascript">
@@ -96,7 +135,7 @@ $(document).ready(function(){
     dataList();
 
    $("#addForm").submit(function(e){
-       e.preventDefault();
+    e.preventDefault();
     var data=$(this).serializeArray();
     $.ajax({
         url:"{{route('branch.store')}}",
@@ -142,6 +181,42 @@ $(document).ready(function(){
         }
     });
    });  
+
+   $(document).on("click",".edit",function(){
+    var id=$(this).attr("get_id");
+    $("#edit_id").val(id);
+    $.ajax({
+        url:"{{url('branch_edit')}}",
+        type:"get",
+        data:{id:id},
+        dataType:"json",
+        success:function(data)
+        {
+            $("#edit_name").val(data.branch_name);
+            $("#edit_location").val(data.branch_location);
+            $("#edit_details").val(data.branch_details);
+        }
+    });
+   });
+   
+   $(document).on('submit','#editForm',function(e){
+    e.preventDefault();
+    var data=$(this).serializeArray();
+    $.ajax({
+        url:"{{route('branch.update')}}",
+        data:data,
+        type:"post",
+        dataType:"json",
+        success:function(data)
+        {
+            $("#editModal").modal('hide');
+            dataList();
+            toastr["success"](data.message);
+        }
+    });
+
+   });
+
 }); 
 
 function dataList(){
