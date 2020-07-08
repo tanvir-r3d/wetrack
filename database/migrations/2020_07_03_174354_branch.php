@@ -13,7 +13,7 @@ class Branch extends Migration
      */
     public function up()
     {
-        Schema::create('branchs', function (Blueprint $table) {
+        Schema::create('branches', function (Blueprint $table) {
             $table->bigIncrements('branch_id');
             $table->string('branch_name', 1000);
             $table->string('branch_location', 1000);

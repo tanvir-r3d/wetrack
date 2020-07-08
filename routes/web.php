@@ -16,4 +16,7 @@ Route::get('/','HomeController@index');
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
 Route::resource('/branch','BranchController');
+Route::get('/branch/show','BranchController@show')->name('branch.show');
+Route::delete('/branch/delete','BranchController@destroy')->name('branch.destroy');
