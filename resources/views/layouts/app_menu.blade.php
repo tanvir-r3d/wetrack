@@ -5,7 +5,7 @@
         <!-- include ../../../includes/mixins-->
         <ul class="nav navbar-nav" id="main-menu-navigation" data-menu="menu-navigation">
             <li class="dropdown nav-item" data-menu="dropdown">
-                <a class="dropdown-toggle nav-link" href="/" data-toggle="dropdown"> <i class="feather icon-home"></i><span data-i18n="Dashboard">Dashboard</span> </a>
+                <a class="nav-link" href="/" > <i class="feather icon-home"></i><span data-i18n="Dashboard">Dashboard</span> </a>
             </li>
 
             <li class="dropdown nav-item" data-menu="dropdown">
@@ -63,3 +63,7 @@
     <!-- /horizontal menu content-->
 </div>
 <!-- END: Main Menu-->
+<div class="app-content content">
+        <div class="content-overlay"></div>
+        <div class="content-wrapper">
+            
