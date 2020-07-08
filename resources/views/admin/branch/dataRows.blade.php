@@ -18,7 +18,7 @@
             <td>
                 <div class="btn-group mx-2" role="group" aria-label="Second Group">
                     <button type="button" get_id="{{$branch->branch_id}}" data-toggle="modal" data-target="#viewModal" class="btn btn-icon btn-outline-info view"><i class="fa fa-eye"></i></button>
-                    <button type="button" get_id="{{$branch->branch_id}}" data-toggle="modal" data-target="#editModal" class="btn btn-icon btn-outline-secondary"><i class="fa fa-pencil"></i></button>
+                    <button type="button" get_id="{{$branch->branch_id}}" data-toggle="modal" data-target="#editModal" class="btn btn-icon btn-outline-secondary edit"><i class="fa fa-pencil"></i></button>
                     <button type="button" get_id="{{$branch->branch_id}}" id="delete" class="btn btn-icon btn-outline-warning"><i class="fa fa-trash"></i></button>
                 </div>
             </td>

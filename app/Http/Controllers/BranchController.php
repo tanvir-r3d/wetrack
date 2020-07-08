@@ -84,9 +84,11 @@ class BranchController extends Controller
      * @param  \App\Branch  $branch
      * @return \Illuminate\Http\Response
      */
-    public function edit(Branch $branch)
+    public function b_edit(Request $request)
     {
-        //
+        $id=$request->id;
+        $value=Branch::find($id);
+        return response()->json($value);
     }
 
     /**
@@ -96,9 +98,39 @@ class BranchController extends Controller
      * @param  \App\Branch  $branch
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Branch $branch)
+    public function update(Request $request)
     {
-        //
+        $branch=new Branch;
+        $data=[
+            'name'=>$request->name,
+            'location'=>$request->location,
+            'details'=>$request->details,
+        ];
+        $validation=Validator::make($data,$branch->validation());
+
+        if($validation->fails())
+        {
+            $status=400;
+            $response=[
+                'status'=>$status,
+                'errors'=>$validation->errors(),
+            ];
+        }
+        else
+        {
+            $input=[
+                'branch_name'=>$data['name'],
+                'branch_location'=>$data['location'],
+                'branch_details'=>$data['details']
+            ];
+            $branch->where('branch_id',$request->id)->update($input);
+            $status=200;
+            $response=[
+                'status'=>$status,
+                'message'=>'Branch Updated',
+            ];
+            return response()->json($response,$status);
+        }
     }
 
     /**

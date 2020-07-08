@@ -20,3 +20,6 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::resource('/branch','BranchController');
 Route::get('/branch/show','BranchController@show')->name('branch.show');
 Route::delete('/branch/delete','BranchController@destroy')->name('branch.destroy');
+Route::get('branch_edit','BranchController@b_edit');
+Route::post('/branch/update','BranchController@update')->name('branch.update');
+
