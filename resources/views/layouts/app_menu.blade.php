@@ -9,7 +9,7 @@
             </li>
 
             <li class="dropdown nav-item" data-menu="dropdown">
-                <a class="dropdown-toggle nav-link" href="#" data-toggle="dropdown"> <i class="feather icon-monitor"></i><span data-i18n="Templates">User</span> </a>
+                <a class="dropdown-toggle nav-link" href="#" data-toggle="dropdown"> <i class="feather icon-user"></i><span data-i18n="Templates">User</span> </a>
                 <ul class="dropdown-menu">
                     <li data-menu="">
                         <a class="dropdown-item" href="app-email.html" data-i18n="Email Application" data-toggle="dropdown">User List</a>
@@ -18,7 +18,7 @@
             </li>
 
             <li class="dropdown nav-item" data-menu="dropdown">
-                <a class="dropdown-toggle nav-link" href="#" data-toggle="dropdown"> <i class="feather icon-monitor"></i><span data-i18n="Templates">Branch</span> </a>
+                <a class="dropdown-toggle nav-link" href="#" data-toggle="dropdown"> <i class="feather icon-layers"></i><span data-i18n="Templates">Branch</span> </a>
                 <ul class="dropdown-menu">
                     <li data-menu="">
                         <a class="dropdown-item" href="/branch" data-toggle="dropdown">Branch List</a>
@@ -27,10 +27,10 @@
             </li>
 
             <li class="dropdown nav-item" data-menu="dropdown">
-                <a class="dropdown-toggle nav-link" href="#" data-toggle="dropdown"> <i class="feather icon-monitor"></i><span data-i18n="Templates">Employee</span> </a>
+                <a class="dropdown-toggle nav-link" href="#" data-toggle="dropdown"> <i class="feather icon-users"></i><span data-i18n="Templates">Employee</span> </a>
                 <ul class="dropdown-menu">
                     <li data-menu="">
-                        <a class="dropdown-item" href="app-email.html" data-i18n="Email Application" data-toggle="dropdown">Employee Category</a>
+                        <a class="dropdown-item" href="/employeeCategorys" data-i18n="Email Application" data-toggle="dropdown">Employee Category</a>
                     </li>
                     <li data-menu="">
                         <a class="dropdown-item" href="app-email.html" data-i18n="Email Application" data-toggle="dropdown">Employee List</a>
@@ -39,7 +39,7 @@
             </li>
 
             <li class="dropdown nav-item" data-menu="dropdown">
-                <a class="dropdown-toggle nav-link" href="#" data-toggle="dropdown"> <i class="feather icon-monitor"></i><span data-i18n="Templates">Employee Status</span> </a>
+                <a class="dropdown-toggle nav-link" href="#" data-toggle="dropdown"> <i class="feather icon-navigation"></i><span data-i18n="Templates">Employee Status</span> </a>
                 <ul class="dropdown-menu">
                     <li data-menu="">
                         <a class="dropdown-item" href="app-email.html" data-i18n="Email Application" data-toggle="dropdown">Employee in Field</a>
@@ -51,7 +51,7 @@
             </li>
 
             <li class="dropdown nav-item" data-menu="dropdown">
-                <a class="dropdown-toggle nav-link" href="#" data-toggle="dropdown"> <i class="feather icon-monitor"></i><span data-i18n="Templates">Report</span> </a>
+                <a class="dropdown-toggle nav-link" href="#" data-toggle="dropdown"> <i class="feather icon-file-text"></i><span data-i18n="Templates">Report</span> </a>
                 <ul class="dropdown-menu">
                     <li data-menu="">
                         <a class="dropdown-item" href="app-email.html" data-i18n="Email Application" data-toggle="dropdown">Working Report</a>
@@ -66,4 +66,3 @@
 <div class="app-content content">
         <div class="content-overlay"></div>
         <div class="content-wrapper">
-            
