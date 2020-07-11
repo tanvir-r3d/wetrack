@@ -1,4 +1,4 @@
-<table class="table dataTable table-striped table-bordered zero-configuration">
+<table class="table dataTable table-striped table-bordered zero-configuration" >
     <thead>
         <tr>
             <th class="text-center" style="width: 20px;">Sl</th>
