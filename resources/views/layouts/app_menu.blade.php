@@ -33,7 +33,7 @@
                         <a class="dropdown-item" href="/employeeCategorys" data-i18n="Email Application" data-toggle="dropdown">Employee Category</a>
                     </li>
                     <li data-menu="">
-                        <a class="dropdown-item" href="app-email.html" data-i18n="Email Application" data-toggle="dropdown">Employee List</a>
+                        <a class="dropdown-item" href="/employee" data-i18n="Email Application" data-toggle="dropdown">Employee List</a>
                     </li>
                 </ul>
             </li>
