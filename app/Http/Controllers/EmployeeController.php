@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Employee;
 use Illuminate\Http\Request;
+use Validator;
 
 class EmployeeController extends Controller
 {
@@ -14,7 +15,7 @@ class EmployeeController extends Controller
      */
     public function index()
     {
-        //
+      return view('admin.employee.employeeList.index');
     }
 
     /**
@@ -24,7 +25,8 @@ class EmployeeController extends Controller
      */
     public function create()
     {
-        //
+      $data['employees']=EmployeeCategory::all();
+      return view('admin.employee.employeeList.dataRows',$data);
     }
 
     /**
@@ -35,7 +37,40 @@ class EmployeeController extends Controller
      */
     public function store(Request $request)
     {
-        //
+      $employee=new Employee;
+      $validation=Validator::make($request->all(),$employee->validation());
+
+      if($validation->fails())
+      {
+          $status=400;
+          $response=[
+              'status'=>$status,
+              'errors'=>$validation->errors(),
+          ];
+      }
+      else
+      {
+          $input=[
+              'emp_full_name'=>$request->full_name,
+              'emp_branch_id'=>$request->branch_id,
+              'emp_cat_id'=>$request->branch_cat,
+              'emp_salery'=>$request->salery,
+              'emp_gender'=>$request->gender,
+              'emp_username'=>$request->user_name,
+              'emp_email'=>$request->email,
+              'emp_password'=>$request->password,
+              'emp_address'=>$request->address,
+              'emp_phone'=>$request->phone
+
+             ];
+          $employee->create($input);
+          $status=200;
+          $response=[
+              'status'=>$status,
+              'message'=>'Employee Added',
+          ];
+          return response()->json($response,$status);
+      }
     }
 
     /**
@@ -46,7 +81,10 @@ class EmployeeController extends Controller
      */
     public function show(Employee $employee)
     {
-        //
+
+          $id=$request->id;
+          $data['employeeCategory']=Employee::find($id);
+          return view('admin.employee.employeeList.viewBody',$data);
     }
 
     /**
