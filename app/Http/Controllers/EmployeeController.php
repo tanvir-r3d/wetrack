@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Employee;
 use Illuminate\Http\Request;
 use Validator;
+use App\EmployeeCategory;
+use App\Branch;
 
 class EmployeeController extends Controller
 {
@@ -14,8 +16,9 @@ class EmployeeController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
-      return view('admin.employee.employeeList.index');
+    {  $data['branchs']=Branch::get();
+       $data['categorys']=EmployeeCategory::get();
+      return view('admin.employee.employeeList.index',$data);
     }
 
     /**
@@ -25,7 +28,9 @@ class EmployeeController extends Controller
      */
     public function create()
     {
-      $data['employees']=EmployeeCategory::all();
+      $data['employees']=Employee::get();
+      $data['branchs']=Branch::get();
+      $data['categorys']=EmployeeCategory::get();
       return view('admin.employee.employeeList.dataRows',$data);
     }
 
@@ -83,7 +88,9 @@ class EmployeeController extends Controller
     {
 
           $id=$request->id;
-          $data['employeeCategory']=Employee::find($id);
+          $data['branchs']=Branch::all();
+          $data['categorys']=EmployeeCategory::all();
+          $data['employee']=Employee::find($id);
           return view('admin.employee.employeeList.viewBody',$data);
     }
 
