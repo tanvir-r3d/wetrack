@@ -1,20 +1,10 @@
-<ul>
-<li>
-<dl class="row">
-    <dt class="col-sm-4">Branch Name:</dt>
-    <dd class="col-sm-8">{{$branch->branch_name}}</dd>
-</dl>
-</li>
-<li>
-<dl class="row">
-    <dt class="col-sm-4">Branch Location:</dt>
-    <dd class="col-sm-8">{{$branch->branch_location}}</dd>
-</dl>
-</li>
-<li>
-<dl class="row">
-    <dt class="col-sm-4">Branch Details:</dt>
-    <dd class="col-sm-8">{{$branch->branch_details}}</dd>
-</dl>
-</li>
-</ul>
+
+<div class="row">
+  <div class="col-md-6">
+    <dt class="col-sm-4">Employee Name:</dt>
+    <dd class="col-sm-8">{{$employee->emp_full_name}}</dd>
+  </div>
+  <div class="col-md-6">
+
+  </div>
+</div>
