@@ -41,3 +41,10 @@ Route::post('/branch/update','BranchController@update')->name('branch.update');
     Route::delete('employee/delete','EmployeeController@destroy')->name('employee.destroy');
     Route::get('employee_edit','EmployeeController@cat_edit');
     Route::post('employee/update','EmployeeController@update')->name('employee.update');
+
+
+//User Profile Route
+
+Route::resource('/profile','UserController');
+Route::post('/profile/oldpass','UserController@matchpass');
+Route::post('/profile/changepass','UserController@changepass');
