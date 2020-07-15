@@ -1,31 +1,36 @@
 <table class="table dataTable table-striped table-bordered zero-configuration" >
     <thead>
         <tr>
-            <th class="text-center" style="width: 20px;">Sl</th>
-            <th class="text-center">Image</th>
+            <th class="text-center" style="width: 1%;">Sl</th>
+            <th class="text-center" style="width:6%">Profile</th>
             <th class="text-center">Name</th>
             <th class="text-center">Category</th>
             <th class="text-center">Branch</th>
             <th class="text-center">Phone</th>
-            <th style="width: 20px;" class="text-center">Action</th>
+            <th style="width: 15%;" class="text-center">Action</th>
         </tr>
     </thead>
     <tbody>
-        @php $i=1; @endphp @foreach($employees as $employe)
+        @php $i=1; @endphp 
+        @foreach($employees as $employee)
       <tr>
         <td>{{$i++}}</td>
-        <td></td>
-        <td>{{$employe->emp_full_name}}</td>
-        <td></td>
-        <td></td>
+        <td class="avatar avatar-lg"><img src="{{asset('app-assets/images/avatar.png')}}" alt="Avatar Image"></td>
+        <td>{{$employee->emp_full_name}}</td>
+        <td>@php $category = collect($categorys)->where('emp_cat_id',$employee->emp_cat_id)->first() @endphp
+        {{$category->emp_cat_name}}
+        </td> 
+        <td>@php $branch = collect($branchs)->where('branch_id',$employee->emp_branch_id)->first() @endphp
+        {{$branch->branch_name}}
+        </td>
 
-        <td>{{$employe->emp_phone}}</td>
+        <td>{{$employee->emp_phone}}</td>
 
         <td>
           <div class="btn-group mx-2" role="group" aria-label="Second Group">
-              <button type="button" get_id="{{$employe->branch_id}}" data-toggle="modal" data-target="#viewModal" class="btn btn-icon btn-outline-info view"><i class="fa fa-eye"></i></button>
-              <button type="button" get_id="{{$employe->branch_id}}" data-toggle="modal" data-target="#editModal" class="btn btn-icon btn-outline-secondary edit"><i class="fa fa-pencil"></i></button>
-              <button type="button" get_id="{{$employe->branch_id}}" id="delete" class="btn btn-icon btn-outline-warning"><i class="fa fa-trash"></i></button>
+              <button type="button" get_id="{{$employee->branch_id}}" data-toggle="modal" data-target="#viewModal" class="btn btn-icon btn-outline-info view"><i class="fa fa-eye"></i></button>
+              <button type="button" get_id="{{$employee->branch_id}}" data-toggle="modal" data-target="#editModal" class="btn btn-icon btn-outline-secondary edit"><i class="fa fa-pencil"></i></button>
+              <button type="button" get_id="{{$employee->branch_id}}" id="delete" class="btn btn-icon btn-outline-warning"><i class="fa fa-trash"></i></button>
           </div>
         </td>
       </tr>

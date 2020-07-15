@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use App\EmployeeImage;
 
 class Employee extends Model
 {
@@ -10,6 +11,7 @@ class Employee extends Model
   protected $table="employees";
   protected $primaryKey="emp_id";
   public $fillable=[
+    // 'emp_id',
     'emp_full_name',
     'emp_branch_id',
     'emp_cat_id',
@@ -37,20 +39,10 @@ class Employee extends Model
           'address'=>'required',
 
       ];
-
-
-
-
-
-
-
-
-
-
-
-
-
-
   }
+    // public function image()
+    // {
+    //   return $this->hasMany('EmployeeImage', 'emp_id');
+    // }
 
 }
