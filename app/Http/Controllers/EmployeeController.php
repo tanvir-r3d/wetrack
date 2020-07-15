@@ -3,10 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Employee;
+use App\EmployeeImage;
 use Illuminate\Http\Request;
 use Validator;
 use App\EmployeeCategory;
 use App\Branch;
+use Haruncpi\LaravelIdGenerator\IdGenerator;
 
 class EmployeeController extends Controller
 {
@@ -43,6 +45,7 @@ class EmployeeController extends Controller
     public function store(Request $request)
     {
       $employee=new Employee;
+      $image=new EmployeeImage;
       $validation=Validator::make($request->all(),$employee->validation());
 
       if($validation->fails())
@@ -66,9 +69,21 @@ class EmployeeController extends Controller
               'emp_password'=>$request->password,
               'emp_address'=>$request->address,
               'emp_phone'=>$request->phone
-
              ];
           $employee->create($input);
+          if($request->hasFile('image'))
+          {
+            $filetype=$request->file('image')->getClientOriginalExtension();
+            $path=public_path('images/employee/');
+            $img_name='Emp'.time().'.'.$filetype;
+            $img=$request->file('image')->move($path,$img_name);
+            $image_input=[
+                'emp_img'=>$img,
+                'emp_id'=>3
+            ];
+            EmployeeImage::create($image_input);
+          }
+
           $status=200;
           $response=[
               'status'=>$status,

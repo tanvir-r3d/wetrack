@@ -7,7 +7,7 @@
 </li>
 @endsection
 @section('content')
-
+ 
             <div class="content-body">
                 <section id="configuration">
                     <div class="row">
@@ -43,7 +43,7 @@
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <form method="post" id="addForm">
+            <form method="post" id="addForm" enctype="multipart/form-data">
             @csrf
                 <div class="modal-body">
                   <div class="row">
@@ -84,8 +84,8 @@
                       <div id="div_id_gender" class="form-group required">
                          <label for="id_gender"  class="control-label col-md-4  requiredField">Gender<span class="asteriskField"></span> </label>
                          <div class="controls col-md-8 "  style="margin-bottom: 10px">
-                              <label class="radio-inline"> <input type="radio" name="gender" id="gender_1" value="M"  style="margin-bottom: 10px">Male</label>
-                              <label class="radio-inline"> <input type="radio" name="gender" id="gender_2" value="F"  style="margin-bottom: 10px">Female </label>
+                              <label class="radio-inline"> <input type="radio" name="gender" id="gender_1" value="1"  style="margin-bottom: 10px">Male</label>
+                              <label class="radio-inline"> <input type="radio" name="gender" id="gender_2" value="2"  style="margin-bottom: 10px">Female </label>
                          </div>
                      </div>
                     </div>
@@ -143,7 +143,7 @@
 
                       <fieldset class="form-group floating-label-form-group">
                           <label for="details">Uploade Image</label>
-                          <input type="file" class="" name="image" id="file" >
+                          <input type="file" class="image" name="image" id="image" >
                       </fieldset>
 
                 </div>
@@ -171,20 +171,23 @@ $(document).ready(function(){
 
 $("#addForm").submit(function(e){
  e.preventDefault();
- var data=$(this).serializeArray();
- $.ajax({
-     url:"{{route('employee.store')}}",
-     data:data,
-     dataType:'json',
-     type:'post',
-     success:function(data)
-     {
-         $("#addModal").modal('hide');
-         $("#addForm").trigger( "reset" );
-         dataList();
-         toastr["success"](data.message);
-      }
-  });
+//  var data=$(this).serializeArray();
+    $.ajax({
+      url:"{{route('employee.store')}}",
+      data:  new FormData(this),
+      contentType: false,
+      cache: false,
+      processData:false,
+      dataType:'json',
+      type:'post',
+    success:function(data)
+    {
+      $("#addModal").modal('hide');
+      $("#addForm").trigger( "reset" );
+      dataList();
+      toastr["success"](data.message);
+    }
+    });
 
  });
 
