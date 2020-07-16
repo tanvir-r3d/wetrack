@@ -17,3 +17,4 @@ class EmployeeImage extends Model
     //     return $this->belongsTo('Employee', 'emp_id');
     // }
 } 
+ 

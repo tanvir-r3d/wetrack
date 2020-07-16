@@ -39,7 +39,7 @@ Route::post('/branch/update','BranchController@update')->name('branch.update');
     Route::resource('/employee','EmployeeController');
     Route::get('employee/show','EmployeeController@show')->name('employee.show');
     Route::delete('employee/delete','EmployeeController@destroy')->name('employee.destroy');
-    Route::get('employee_edit','EmployeeController@cat_edit');
+    Route::get('employee_edit','EmployeeController@emp_edit');
     Route::post('employee/update','EmployeeController@update')->name('employee.update');
 
 
