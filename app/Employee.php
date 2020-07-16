@@ -18,27 +18,39 @@ class Employee extends Model
     'emp_salery',
     'emp_gender',
     'emp_username',
-    'emp_email',
+    'emp_email', 
     'emp_password',
     'emp_address',
     'emp_phone'
   ];
 
   public function validation(){
+    if('id'){
       return[
-          'full_name'=>'required',
-          'branch_id'=>'required',
-          'branch_cat'=>'required',
-          'gender'=>'',
-          'user_name'=>'required',
-          'phone'=>'required',
-          'salery'=>'',
-          'email'=>'required',
-          'image'=>'',
-          'password'=>'required',
-          'address'=>'required',
+        'full_name'=>'required',
+        'branch_id'=>'required',
+        'cat_id'=>'required',
+        'user_name'=>"required",
+        'phone'=>'required',
+        'email'=>"required",
+        'address'=>'required',
 
-      ];
+    ];
+    }
+    else{
+      return[
+        'full_name'=>'required',
+        'branch_id'=>'required',
+        'cat_id'=>'required',
+        'user_name'=>'required|unique:employees',
+        'phone'=>'required',
+        'email'=>'required|unique:employees',
+        'password'=>'required',
+        'address'=>'required',
+
+    ];
+    }
+      
   }
     // public function image()
     // {

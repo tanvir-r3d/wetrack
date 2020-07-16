@@ -9,7 +9,7 @@ use Validator;
 use App\EmployeeCategory;
 use App\Branch;
 use Haruncpi\LaravelIdGenerator\IdGenerator;
-
+use DB;
 class EmployeeController extends Controller
 {
     /**
@@ -33,6 +33,7 @@ class EmployeeController extends Controller
       $data['employees']=Employee::get();
       $data['branchs']=Branch::get();
       $data['categorys']=EmployeeCategory::get();
+      $data['images']=EmployeeImage::get();
       return view('admin.employee.employeeList.dataRows',$data);
     }
 
@@ -57,33 +58,33 @@ class EmployeeController extends Controller
           ];
       }
       else
-      {
-          $input=[
-              'emp_full_name'=>$request->full_name,
-              'emp_branch_id'=>$request->branch_id,
-              'emp_cat_id'=>$request->branch_cat,
-              'emp_salery'=>$request->salery,
-              'emp_gender'=>$request->gender,
-              'emp_username'=>$request->user_name,
-              'emp_email'=>$request->email,
-              'emp_password'=>$request->password,
-              'emp_address'=>$request->address,
-              'emp_phone'=>$request->phone
-             ];
-          $employee->create($input);
+      { 
+          DB::beginTransaction();
+          $employee->emp_full_name = $request->full_name;
+          $employee->emp_branch_id = $request->branch_id;
+          $employee->emp_cat_id = $request->cat_id;
+          $employee->emp_salery = $request->salery;
+          $employee->emp_gender = $request->gender;
+          $employee->emp_username = $request->user_name;
+          $employee->emp_email = $request->email;
+          $employee->emp_password = $request->password;
+          $employee->emp_address = $request->address;
+          $employee->emp_phone = $request->phone;
+          $employee->save();
+          
           if($request->hasFile('image'))
-          {
-            $filetype=$request->file('image')->getClientOriginalExtension();
-            $path=public_path('images/employee/');
-            $img_name='Emp'.time().'.'.$filetype;
-            $img=$request->file('image')->move($path,$img_name);
-            $image_input=[
-                'emp_img'=>$img,
-                'emp_id'=>3
-            ];
-            EmployeeImage::create($image_input);
-          }
-
+            {
+              $filetype=$request->file('image')->getClientOriginalExtension();
+              $path=public_path('images/employee/');
+              $img_name='Emp'.time().'.'.$filetype;
+              $request->file('image')->move($path,$img_name);
+              $employee_image = new EmployeeImage();
+              $employee_image->emp_id = $employee->emp_id;
+              $employee_image->emp_img =$img_name;
+              $employee_image->save();
+            }
+          
+        DB::commit();
           $status=200;
           $response=[
               'status'=>$status,
@@ -99,14 +100,14 @@ class EmployeeController extends Controller
      * @param  \App\Employee  $employee
      * @return \Illuminate\Http\Response
      */
-    public function show(Employee $employee)
+    public function show(Request $request)
     {
-
-          $id=$request->id;
-          $data['branchs']=Branch::all();
-          $data['categorys']=EmployeeCategory::all();
-          $data['employee']=Employee::find($id);
-          return view('admin.employee.employeeList.viewBody',$data);
+        $id=$request->id;
+        $data['employee']=Employee::find($id);
+        $data['branchs']=Branch::get();
+        $data['categorys']=EmployeeCategory::get();
+        $data['images']=EmployeeImage::get();
+        return view('admin.employee.employeeList.viewBody',$data);
     }
 
     /**
@@ -115,21 +116,71 @@ class EmployeeController extends Controller
      * @param  \App\Employee  $employee
      * @return \Illuminate\Http\Response
      */
-    public function edit(Employee $employee)
+    public function emp_edit(Request $request)
     {
-        //
+        $id=$request->id;
+        $data['employee']=Employee::find($id);
+        $data['branchs']=Branch::get();
+        $data['categorys']=EmployeeCategory::get();
+        $data['images']=EmployeeImage::get();
+        return view('admin.employee.employeeList.editBody',$data);
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Employee  $employee
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Employee $employee)
-    {
-        //
+
+
+
+    public function update(Request $request)
+    {       
+        $id=$request->id;
+        $employee = Employee::find($id);
+        $employee_image=EmployeeImage::firstWhere('emp_id',$id);
+        $validation=Validator::make($request->all(),$employee->validation());
+
+        if($validation->fails())
+        {
+            $status=400;
+            $response=[
+                'status'=>$status,
+                'errors'=>$validation->errors(),
+            ];
+        }
+        else
+        {
+            $employee->emp_branch_id = $request->branch_id;
+            $employee->emp_cat_id = $request->cat_id;
+            $employee->emp_full_name = $request->full_name;
+            $employee->emp_gender = $request->gender;
+            $employee->emp_salery = $request->salery;
+            $employee->emp_phone = $request->phone;
+            $employee->emp_username = $request->user_name;
+            $employee->emp_email = $request->email;
+            $employee->emp_address = $request->address;
+            $employee->save();
+
+            if($request->hasFile('image'))
+            {
+                if($employee_image)
+                {
+                    EmployeeImage::where('emp_id',$id)->delete();
+                    unlink(public_path('images/employee/').$employee_image->emp_img);
+                }
+                $filetype=$request->file('image')->getClientOriginalExtension();
+                $path=public_path('images/employee/');
+                $img_name='Emp'.time().'.'.$filetype;
+                $request->file('image')->move($path,$img_name);
+                $employee_image = new EmployeeImage();
+                $employee_image->emp_id = $id;
+                $employee_image->emp_img =$img_name;
+                $employee_image->save();
+            }
+
+            $status=200;
+            $response=[
+                'status'=>$status,
+                'message'=>'Employee Updated',
+            ];
+        }
+        return response()->json($response,$status);
     }
 
     /**
@@ -138,8 +189,22 @@ class EmployeeController extends Controller
      * @param  \App\Employee  $employee
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Employee $employee)
+    public function destroy(Request $request)
     {
-        //
+        DB::beginTransaction();
+        $id=$request->id;
+        $img=EmployeeImage::where('emp_id',$id)->first();
+        if($img)
+        {
+            unlink(public_path('images/employee/').$img->emp_img);
+        }
+        Employee::where('emp_id',$id)->delete();
+        EmployeeImage::where('emp_id',$id)->delete();
+        DB::commit();
+        $status=200;
+        $response=[
+            'status'=>$status,
+            'message'=>'Employee Deleted',];
+        return response()->json($response,$status);
     }
 }

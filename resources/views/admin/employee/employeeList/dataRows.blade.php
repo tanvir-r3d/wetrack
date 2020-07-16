@@ -13,9 +13,14 @@
     <tbody>
         @php $i=1; @endphp 
         @foreach($employees as $employee)
+        @php $emp_img=collect($images)->where('emp_id',$employee->emp_id)->first(); @endphp
       <tr>
         <td>{{$i++}}</td>
-        <td class="avatar avatar-lg"><img src="{{asset('app-assets/images/avatar.png')}}" alt="Avatar Image"></td>
+        @if($emp_img)
+        <td><img style='width:60px' class="users-avatar-shadow rounded-circle" src="{{'/images/employee/'.$emp_img->emp_img}}" alt="Employee Image"></td>
+        @else
+        <td><img style='height:10%; width: 80%;' class="users-avatar-shadow rounded-circle" src="{{asset('app-assets/images/avatar.png')}}" alt="Employee Image"></td>
+        @endif
         <td>{{$employee->emp_full_name}}</td>
         <td>@php $category = collect($categorys)->where('emp_cat_id',$employee->emp_cat_id)->first() @endphp
         {{$category->emp_cat_name}}
@@ -28,9 +33,9 @@
 
         <td>
           <div class="btn-group mx-2" role="group" aria-label="Second Group">
-              <button type="button" get_id="{{$employee->branch_id}}" data-toggle="modal" data-target="#viewModal" class="btn btn-icon btn-outline-info view"><i class="fa fa-eye"></i></button>
-              <button type="button" get_id="{{$employee->branch_id}}" data-toggle="modal" data-target="#editModal" class="btn btn-icon btn-outline-secondary edit"><i class="fa fa-pencil"></i></button>
-              <button type="button" get_id="{{$employee->branch_id}}" id="delete" class="btn btn-icon btn-outline-warning"><i class="fa fa-trash"></i></button>
+              <button type="button" get_id="{{$employee->emp_id}}" data-toggle="modal" data-target="#viewModal" class="btn btn-icon btn-outline-info view"><i class="fa fa-eye"></i></button>
+              <button type="button" get_id="{{$employee->emp_id}}" data-toggle="modal" data-target="#editModal" class="btn btn-icon btn-outline-secondary edit"><i class="fa fa-pencil"></i></button>
+              <button type="button" get_id="{{$employee->emp_id}}" id="delete" class="btn btn-icon btn-outline-warning"><i class="fa fa-trash"></i></button>
           </div>
         </td>
       </tr>
