@@ -24,6 +24,7 @@
                 </div>
         </div>
         </div>
+
         <div class="row">
         <div class="col-md-6">
 
@@ -33,7 +34,7 @@
             </fieldset>
         </div>
 
-        <div class="col-md-6">
+        <div class="col-md-3">
             <div id="div_id_gender" class="form-group required">
                 <label for="id_gender"  class="control-label col-md-4  requiredField">Gender<span class="asteriskField"></span> </label>
                 <div class="controls col-md-8 "  style="margin-bottom: 10px">
@@ -42,6 +43,17 @@
                 </div>
             </div>
         </div>
+
+        <div class="col-md-3">
+            <div id="div_status" class="form-group">
+                    <label for="status"  class="control-label col-md-4">Status </label>
+                    <div class="controls btn-group" role="group" style="margin-left:15px">
+                    <?php $emp_status=collect($status)->where('emp_id',$employee->emp_id)->first();?>
+                        <label class="radio-inline btn btn-icon btn-danger" for="inactive"> <input type="radio" name="status" id="inactive" checked value="inactive" <?php echo e($emp_status->emp_status=='inactive' ? 'checked' : ''); ?>><i class="fa fa-times"></i></label>
+                        <label class="radio-inline btn btn-icon btn-success" for="active"> <input type="radio" name="status"  id="active" value="active" <?php echo e($emp_status->emp_status=='active' ? 'checked' : ''); ?>><i class="fa fa-check"></i></label>
+                    </div>
+                </div>
+            </div>
         </div>
 
         <div class="row">

@@ -80,8 +80,8 @@
                     </div>
 
                     <div class="col-md-6">
-                      <div id="div_id_gender" class="form-group required">
-                         <label for="id_gender"  class="control-label col-md-4  requiredField">Gender<span class="asteriskField"></span> </label>
+                      <div id="div_id_gender" class="form-group">
+                         <label for="id_gender"  class="control-label col-md-4">Gender </label>
                          <div class="controls col-md-8 "  style="margin-bottom: 10px">
                               <label class="radio-inline"> <input type="radio" name="gender" id="gender_1" value="1"  style="margin-bottom: 10px">Male</label>
                               <label class="radio-inline"> <input type="radio" name="gender" id="gender_2" value="2"  style="margin-bottom: 10px">Female </label>
@@ -92,19 +92,29 @@
                   </div>
 
                   <div class="row">
-                    <div class="col-md-6">
+                    <div class="col-md-5">
                       <fieldset class="form-group floating-label-form-group">
                           <label for="user_name">User Name</label>
                           <input type="text" class="form-control" id="user_name" name="user_name" placeholder="Enter Employee Name" required data-validation-required-message="This field is required">
                       </fieldset>
                     </div>
 
-                    <div class="col-md-6">
+                    <div class="col-md-4">
                       <fieldset class="form-group floating-label-form-group">
                           <label for="salery">Salary</label>
                           <input type="text" class="form-control" id="salery" name="salery" placeholder="Enter Employee Name" required data-validation-required-message="This field is required">
                       </fieldset>
                     </div>
+
+                  <div class="col-md-3">
+                  <div id="div_status" class="form-group">
+                         <label for="status"  class="control-label col-md-4">Status </label>
+                         <div class="controls btn-group" role="group" style="margin-left:15px">
+                              <label class="radio-inline btn btn-icon btn-danger" for="inactive"> <input type="radio" name="status" id="inactive" checked value="inactive"><i class="fa fa-times"></i></label>
+                              <label class="radio-inline btn btn-icon btn-success" for="active"> <input type="radio" name="status"  id="active" value="active"><i class="fa fa-check"></i></label>
+                         </div>
+                     </div>
+                  </div>
                   </div>
 
                   <div class="row">
@@ -280,6 +290,37 @@ $.ajax({
         toastr["success"](data.message);
     }
 });
+});
+
+$(document).on('click',"#status_btn",function(){
+  var value=$(this).attr("data-set");
+  var id=$(this).attr("data-id");
+  var status='';
+  if(value=='active')
+  {
+    status='inactive';
+  }
+  else if(value=='inactive')
+  {
+    status='active';
+  }
+  else
+  {
+    status='active';
+  }
+
+  $.ajax({
+    url:"<?php echo e(route('employee_status.change')); ?>",
+    data:{'status':status, 'id':id, '_token': '<?php echo e(csrf_token()); ?>'},
+    dataType:'json',
+    type:'get',
+    success:function(data)
+    {
+      dataList();
+      toastr["success"](data.message);
+    }
+  });
+
 });
 
 });

@@ -30,10 +30,10 @@
                 <a class="dropdown-toggle nav-link" href="#" data-toggle="dropdown"> <i class="feather icon-users"></i><span data-i18n="Templates">Employee</span> </a>
                 <ul class="dropdown-menu">
                     <li data-menu="">
-                        <a class="dropdown-item" href="/employeeCategorys" data-i18n="Email Application" data-toggle="dropdown">Employee Category</a>
+                        <a class="dropdown-item" href="/employeeCategorys" data-toggle="dropdown">Employee Category</a>
                     </li>
                     <li data-menu="">
-                        <a class="dropdown-item" href="/employee" data-i18n="Email Application" data-toggle="dropdown">Employee List</a>
+                        <a class="dropdown-item" href="/employee" data-toggle="dropdown">Employee List</a>
                     </li>
                 </ul>
             </li>
@@ -42,10 +42,10 @@
                 <a class="dropdown-toggle nav-link" href="#" data-toggle="dropdown"> <i class="feather icon-navigation"></i><span data-i18n="Templates">Employee Status</span> </a>
                 <ul class="dropdown-menu">
                     <li data-menu="">
-                        <a class="dropdown-item" href="app-email.html" data-i18n="Email Application" data-toggle="dropdown">Employee in Field</a>
+                        <a class="dropdown-item" href="/employee_status" data-toggle="dropdown">Employee in Field</a>
                     </li>
                     <li data-menu="">
-                        <a class="dropdown-item" href="app-email.html" data-i18n="Email Application" data-toggle="dropdown">Track Employee</a>
+                        <a class="dropdown-item" href="/track" data-i18n="Email Application" data-toggle="dropdown">Track Employee</a>
                     </li>
                 </ul>
             </li>
