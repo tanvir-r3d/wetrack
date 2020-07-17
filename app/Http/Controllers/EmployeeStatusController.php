@@ -3,83 +3,33 @@
 namespace App\Http\Controllers;
 
 use App\EmployeeStatus;
+use App\Employee;
 use Illuminate\Http\Request;
 
 class EmployeeStatusController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+ 
     public function index()
     {
-        //
+        return view('admin.infield.list.index');
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create()
     {
-        //
+        $data['employees'] = Employee::select('emp_id','emp_full_name','emp_username')->get();
+        $data['statuss'] = EmployeeStatus::where('emp_status','active')->get();
+        return view('admin.infield.list.dataRows', $data);
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
+    public function statusChange(Request $request)
     {
-        //
+        $id=$request->id;
+        $status=$request->status;
+        EmployeeStatus::where('emp_id',$id)->update(['emp_status'=>$status]);
+        $status = 200;
+        $response = ['status' => $status, 'message' => 'Employee Status Updated', ];
+        return response()->json($response, $status);
+
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\EmployeeStatus  $employeeStatus
-     * @return \Illuminate\Http\Response
-     */
-    public function show(EmployeeStatus $employeeStatus)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\EmployeeStatus  $employeeStatus
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(EmployeeStatus $employeeStatus)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\EmployeeStatus  $employeeStatus
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, EmployeeStatus $employeeStatus)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\EmployeeStatus  $employeeStatus
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(EmployeeStatus $employeeStatus)
-    {
-        //
-    }
 }
