@@ -3,7 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
-use App\Employee;
+
 class EmployeeImage extends Model
 {
     protected $table="employee_images";
@@ -12,9 +12,6 @@ class EmployeeImage extends Model
         'emp_id',
         'emp_img'
     ];
-    // public function employee()
-    // {
-    //     return $this->belongsTo('Employee', 'emp_id');
-    // }
+
 } 
  

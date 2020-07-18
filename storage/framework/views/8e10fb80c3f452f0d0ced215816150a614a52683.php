@@ -122,9 +122,16 @@
                             </ul>
                         </li>
                         <li class="dropdown dropdown-user nav-item"><a class="dropdown-toggle nav-link dropdown-user-link" href="#" data-toggle="dropdown">
-                                <div class="avatar avatar-online"><img src="" alt="avatar"><i></i></div><span class="user-name">John Doe</span>
+                                <div class="avatar avatar-online">
+                                <?php $image=DB::table('user_images')->where('user_id',Auth::user()->id)->first() ?>
+                                <?php if($image): ?>
+                                <img src="<?php echo e('/images/user/'.$image->user_img); ?>" alt="avatar"  height="50" width="50">
+                                <?php else: ?>
+                                <img src="<?php echo e(asset('app-assets/images/avatar.png')); ?>" alt="avatar">
+                                <?php endif; ?>
+                                </div><span class="user-name"><?php echo e(Auth::user()->user_first_name); ?></span>
                             </a>
-                            <div class="dropdown-menu dropdown-menu-right"><a class="dropdown-item" href="/profile"><i class="feather icon-user"></i> Edit Profile</a><a class="dropdown-item" href="app-email.html"><i class="feather icon-mail"></i> My Inbox</a><a class="dropdown-item" href="user-cards.html"><i class="feather icon-check-square"></i> Task</a><a class="dropdown-item" href="app-chat.html"><i class="feather icon-message-square"></i> Chats</a>
+                            <div class="dropdown-menu dropdown-menu-right"><a class="dropdown-item" href="<?php echo e(url('profile_settings')); ?>"><i class="feather icon-user"></i> Edit Profile</a><a class="dropdown-item" href="app-email.html"><i class="feather icon-mail"></i> My Inbox</a><a class="dropdown-item" href="user-cards.html"><i class="feather icon-check-square"></i> Task</a><a class="dropdown-item" href="app-chat.html"><i class="feather icon-message-square"></i> Chats</a>
                                 <div class="dropdown-divider"></div><a class="dropdown-item" href="<?php echo e(route('logout')); ?>" onclick="event.preventDefault(); document.getElementById('logout-form').submit();"><i class="feather icon-power"></i> Logout</a>
                             </div>
                         </li>

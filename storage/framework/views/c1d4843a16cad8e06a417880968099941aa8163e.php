@@ -9,9 +9,9 @@
         <meta name="description" content="Stack admin is super flexible, powerful, clean &amp; modern responsive bootstrap 4 admin template with unlimited possibilities." />
         <meta name="keywords" content="admin template, stack admin template, dashboard template, flat admin template, responsive admin template, web app" />
         <meta name="author" content="PIXINVENT" />
-        <title>Login with Background Image - Stack Responsive Bootstrap 4 Admin Template</title>
+        <title>Login We Track</title>
         <link rel="apple-touch-icon" href="<?php echo e(asset('app-assets/images/ico/apple-icon-120.png')); ?>" />
-        <link rel="shortcut icon" type="image/x-icon" href="<?php echo e(asset('app-assets/images/ico/favicon.ico')); ?>" />
+          <link rel="shortcut icon" type="image/x-icon" href="<?php echo e(asset('app-assets/images/ico/favicon.png')); ?>">
         <link href="https://fonts.googleapis.com/css?family=Montserrat:300,300i,400,400i,500,500i%7COpen+Sans:300,300i,400,400i,600,600i,700,700i" rel="stylesheet" />
 
         <!-- BEGIN: Vendor CSS-->
@@ -54,7 +54,7 @@
                                 <div class="card border-grey border-lighten-3 px-1 py-1 m-0">
                                     <div class="card-header border-0">
                                         <div class="card-title text-center">
-                                            <img src="<?php echo e(asset('app-assets/images/logo/stack-logo-dark.png')); ?>" alt="branding logo" />
+                                            <img src="<?php echo e(asset('app-assets/images/logo/logo1.png')); ?>" alt="branding logo" />
                                         </div>
                                     </div>
                                     <div class="card-content">
