@@ -46,12 +46,17 @@
                               <?php echo method_field('PATCH'); ?>
                               <div class="media">
                                  <a href="javascript: void(0);">
+                                 <?php $image=collect($images)->where('user_id',Auth::user()->id)->first() ?>
+                                 <?php if($image): ?>
+                                 <img src="<?php echo e('/images/user/'.$image->user_img); ?>" class="rounded mr-75" alt="profile image" height="64" width="64">
+                                 <?php else: ?>
                                  <img src="<?php echo e(asset('app-assets/images/avatar.png')); ?>" class="rounded mr-75" alt="profile image" height="64" width="64">
+                                 <?php endif; ?>
                                  </a>
                                  <div class="media-body mt-75">
                                     <div class="col-12 px-0 d-flex flex-sm-row flex-column justify-content-start">
-                                       <label class="btn btn-sm btn-primary ml-50 mb-50 mb-sm-0 cursor-pointer" for="account-upload">Upload new photo</label>
-                                       <input type="file" id="account-upload" class="img" name="img" hidden>
+                                       <label class="btn btn-sm btn-primary ml-50 mb-50 mb-sm-0 cursor-pointer" for="img">Upload new photo</label>
+                                       <input type="file" id="img" class="img" name="img" hidden>
                                        <button class="btn btn-sm btn-secondary ml-50">Reset</button>
                                     </div>
                                     <p class="text-muted ml-75 mt-50"><small>Allowed JPG or PNG. Max size of 800kB</small></p>
@@ -62,8 +67,8 @@
                                  <div class="col-12">
                                     <div class="form-group">
                                        <div class="controls">
-                                          <label for="account-username">Username</label>
-                                          <input type="text" class="form-control username" id="account-username" name="username" placeholder="Username" value="<?php echo e(Auth::user()->username); ?>" required data-validation-required-message="This username field is required">
+                                          <label for="username">Username</label>
+                                          <input type="text" class="form-control username" id="username" name="username" placeholder="Username" value="<?php echo e(Auth::user()->username); ?>" required data-validation-required-message="This username field is required">
                                        </div>
                                     </div>
                                  </div>
@@ -71,7 +76,7 @@
                                     <div class="form-group">
                                        <div class="controls">
                                           <label for="account-name">First Name</label>
-                                          <input type="text" class="form-control first_name" id="account-name" name="first_name" placeholder="First Name" value="<?php echo e(Auth::user()->user_first_name); ?>">
+                                          <input type="text" class="form-control first_name" id="first_name" name="first_name" placeholder="First Name" value="<?php echo e(Auth::user()->user_first_name); ?>">
                                        </div>
                                     </div>
                                  </div>
@@ -79,7 +84,7 @@
                                     <div class="form-group">
                                        <div class="controls">
                                           <label for="account-name">Last Name</label>
-                                          <input type="text" class="form-control last_name" id="account-name" name="last_name" placeholder="Last Name" value="<?php echo e(Auth::user()->user_last_name); ?>">
+                                          <input type="text" class="form-control last_name" id="last_name" name="last_name" placeholder="Last Name" value="<?php echo e(Auth::user()->user_last_name); ?>">
                                        </div>
                                     </div>
                                  </div>

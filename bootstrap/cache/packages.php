@@ -63,4 +63,15 @@
       0 => 'NunoMaduro\\Collision\\Adapters\\Laravel\\CollisionServiceProvider',
     ),
   ),
+  'proengsoft/laravel-jsvalidation' => 
+  array (
+    'providers' => 
+    array (
+      0 => 'Proengsoft\\JsValidation\\JsValidationServiceProvider',
+    ),
+    'aliases' => 
+    array (
+      'JsValidator' => 'Proengsoft\\JsValidation\\Facades\\JsValidatorFacade',
+    ),
+  ),
 );

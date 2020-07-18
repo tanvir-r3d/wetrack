@@ -27,17 +27,13 @@ Route::middleware('auth')->group(function () {
   
   
   //EmployeeCategory Route
-  
   Route::resource('/employeeCategorys','EmployeeCategoryController');
   Route::get('employeeCategorys/show','EmployeeCategoryController@show')->name('employeeCategorys.show');
   Route::delete('employeeCategorys/delete','EmployeeCategoryController@destroy')->name('employeeCategorys.destroy');
   Route::get('employeeCategorys_edit','EmployeeCategoryController@cat_edit');
   Route::post('employeeCategorys/update','EmployeeCategoryController@update')->name('employeeCategorys.update');
   
-  
-  
   //Employee Route
-  
   Route::resource('/employee','EmployeeController');
   Route::get('employee/show','EmployeeController@show')->name('employee.show');
   Route::delete('employee/delete','EmployeeController@destroy')->name('employee.destroy');
@@ -50,8 +46,11 @@ Route::middleware('auth')->group(function () {
   Route::get('employee_status/change','EmployeeStatusController@statusChange')->name('employee_status.change');
   
   //User Profile Route
-  Route::resource('/profile','UserController');
-  Route::post('/profile/oldpass','UserController@matchpass');
-  Route::post('/profile/changepass','UserController@changepass');
-  
+  Route::resource('profile','UserController');
+  Route::get('profile_list','UserController@create')->name('user.create');
+  Route::post('profile_store','UserController@store')->name('user.store');
+  Route::get('profile_settings','UserController@settings');
+  Route::post('profile/oldpass','UserController@matchpass');
+  Route::post('profile/changepass','UserController@changepass');
+
 });

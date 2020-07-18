@@ -12,7 +12,7 @@
                 <a class="dropdown-toggle nav-link" href="#" data-toggle="dropdown"> <i class="feather icon-user"></i><span data-i18n="Templates">User</span> </a>
                 <ul class="dropdown-menu">
                     <li data-menu="">
-                        <a class="dropdown-item" href="app-email.html" data-i18n="Email Application" data-toggle="dropdown">User List</a>
+                        <a class="dropdown-item" href="/profile" data-toggle="dropdown">User List</a>
                     </li>
                 </ul>
             </li>

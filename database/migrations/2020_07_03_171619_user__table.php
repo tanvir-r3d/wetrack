@@ -18,6 +18,7 @@ class UserTable extends Migration
             $table->string('user_first_name', 1000)->nullable();
             $table->string('user_last_name' ,1000)->nullable();
             $table->string('user_gender', 1000)->nullable();
+            $table->string('user_contact', 1000)->nullable();
             $table->string('username', 1000);
             $table->string('remember_token', 100)->nullable();
             $table->string('email', 100);
