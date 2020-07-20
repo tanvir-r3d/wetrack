@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <html class="loading" lang="en" data-textdirection="ltr">
     <!-- BEGIN: Head-->
 
@@ -124,6 +123,7 @@
         <!-- BEGIN: Vendor JS-->
         <script src="{{asset('app-assets/vendors/js/vendors.min.js')}}"></script>
         <!-- BEGIN Vendor JS-->
+        
 
         <!-- BEGIN: Page Vendor JS-->
         <script src="{{asset('app-assets/vendors/js/ui/jquery.sticky.js')}}"></script>
@@ -138,7 +138,7 @@
         <!-- END: Theme JS-->
 
         <!-- BEGIN: Page JS-->
-        <script src="{{asset('app-assets/js/scripts/ui/breadcrumbs-with-stats.js')}}"></script>
+        <!-- <script src="{{asset('app-assets/js/scripts/ui/breadcrumbs-with-stats.js')}}"></script> -->
         <script src="{{asset('app-assets/js/scripts/forms/form-login-register.js')}}"></script>
         <!-- END: Page JS-->
     </body>

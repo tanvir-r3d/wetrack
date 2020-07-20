@@ -53,4 +53,7 @@ Route::middleware('auth')->group(function () {
   Route::post('profile/oldpass','UserController@matchpass');
   Route::post('profile/changepass','UserController@changepass');
 
+  // Tracking Route
+  Route::post('track_create','trackingController@latlonSave')->name('track_create');
+  Route::get('track_map','trackingController@gmap')->name('track_map');
 });

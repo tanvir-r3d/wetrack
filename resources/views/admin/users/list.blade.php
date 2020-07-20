@@ -26,7 +26,8 @@
                 <td>{{$user->user_first_name}} {{$user->user_last_name}}</td>
                 <td>{{$user->username}}</td>
                 <td>{{$user->email}}</td>
-                <td><a href="#"><i class="feather icon-edit-1"></i></a></td>
+                <td><button id="geo"><i class="feather icon-map-pin"></i></button>
+                <a href="#"><i class="feather icon-edit-1"></i></a></td>
             </tr>
         @endforeach
         </tbody>

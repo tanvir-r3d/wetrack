@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <html class="loading" lang="en" data-textdirection="ltr">
     <!-- BEGIN: Head-->
 
@@ -152,6 +151,7 @@ unset($__errorArgs, $__bag); ?>
         <!-- BEGIN: Vendor JS-->
         <script src="<?php echo e(asset('app-assets/vendors/js/vendors.min.js')); ?>"></script>
         <!-- BEGIN Vendor JS-->
+        
 
         <!-- BEGIN: Page Vendor JS-->
         <script src="<?php echo e(asset('app-assets/vendors/js/ui/jquery.sticky.js')); ?>"></script>
@@ -166,7 +166,7 @@ unset($__errorArgs, $__bag); ?>
         <!-- END: Theme JS-->
 
         <!-- BEGIN: Page JS-->
-        <script src="<?php echo e(asset('app-assets/js/scripts/ui/breadcrumbs-with-stats.js')); ?>"></script>
+        <!-- <script src="<?php echo e(asset('app-assets/js/scripts/ui/breadcrumbs-with-stats.js')); ?>"></script> -->
         <script src="<?php echo e(asset('app-assets/js/scripts/forms/form-login-register.js')); ?>"></script>
         <!-- END: Page JS-->
     </body>
