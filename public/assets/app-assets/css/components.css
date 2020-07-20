@@ -66,13 +66,8 @@ html {
       padding-left: 0;
       padding-right: 0; }
     html body.bg-full-screen-image {
-      background: url(../../app-assets/images/backgrounds/back-2.png) no-repeat center center fixed;
+      background: url(../../app-assets/images/backgrounds/bg-2.jpg) no-repeat center center fixed;
       background-size: cover; }
-      html body.backImg {
-        background: url(../../app-assets/images/backgrounds/back-7.png) no-repeat center center fixed;
-        background-size: cover; }
-
-
     html body .pace .pace-progress {
       background: #4ACACC; }
     html body.navbar-static .navbar-container, html body.navbar-sticky .navbar-container {
