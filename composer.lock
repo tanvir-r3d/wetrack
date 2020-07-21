@@ -4,20 +4,20 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "7c78debe091fedaf99e99bcc5e853d08",
+    "content-hash": "57913a292aee666567733bfa4f895892",
     "packages": [
         {
             "name": "brian2694/laravel-toastr",
-            "version": "5.53",
+            "version": "5.54",
             "source": {
                 "type": "git",
                 "url": "https://github.com/brian2694/laravel-toastr.git",
-                "reference": "8822a4888cfa4625c90aa9b3928fa117514796a7"
+                "reference": "e543a8a6953be6b25706da4c7ae48600666a70dc"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/brian2694/laravel-toastr/zipball/8822a4888cfa4625c90aa9b3928fa117514796a7",
-                "reference": "8822a4888cfa4625c90aa9b3928fa117514796a7",
+                "url": "https://api.github.com/repos/brian2694/laravel-toastr/zipball/e543a8a6953be6b25706da4c7ae48600666a70dc",
+                "reference": "e543a8a6953be6b25706da4c7ae48600666a70dc",
                 "shasum": ""
             },
             "require": {
@@ -62,7 +62,7 @@
                 "php",
                 "toastr"
             ],
-            "time": "2020-03-30T16:11:10+00:00"
+            "time": "2020-07-13T22:18:02+00:00"
         },
         {
             "name": "dnoegel/php-xdg-base-dir",

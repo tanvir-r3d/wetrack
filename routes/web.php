@@ -19,7 +19,10 @@ Route::middleware('auth')->group(function () {
   Route::get('/home', 'HomeController@index')->name('home');
   
   // Company Route
-  Route::resource('company','CompanyController');
+  Route::resource('/company','CompanyController');
+  Route::get('company/delete/{id}','CompanyController@destroy');
+  Route::get('company_edit','CompanyController@edit')->name('company_edit');
+  Route::post('company/update/{id}','CompanyController@update');
 
   //Branch Route
   Route::resource('/branch','BranchController');

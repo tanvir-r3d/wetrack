@@ -16,8 +16,8 @@ class Company extends Model
   
     public function validation(){      
         return[
-          'com_name'=>'required',
+          'name'=>'required',
+          'logo'=>'mimes:png',
       ];
-        
     }
 }

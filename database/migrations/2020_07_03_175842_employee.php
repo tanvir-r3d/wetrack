@@ -25,6 +25,7 @@ class Employee extends Migration
             $table->string('emp_username', 1000);
             $table->string('emp_email', 2000);
             $table->string('emp_password', 5000);
+            $table->string('emp_img',1000);
             $table->timestamps();
         });
     }

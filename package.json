@@ -25,6 +25,8 @@
     },
     "dependencies": {
         "chart.js": "^2.9.3",
-        "feather-icons": "^4.28.0"
+        "feather-icons": "^4.28.0",
+        "izitoast": "^1.4.0",
+        "toastr": "^2.1.4"
     }
 }
