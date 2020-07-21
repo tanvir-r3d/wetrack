@@ -18,6 +18,9 @@ Route::middleware('auth')->group(function () {
   
   Route::get('/home', 'HomeController@index')->name('home');
   
+  // Company Route
+  Route::resource('company','CompanyController');
+
   //Branch Route
   Route::resource('/branch','BranchController');
   Route::get('/branch/show','BranchController@show')->name('branch.show');

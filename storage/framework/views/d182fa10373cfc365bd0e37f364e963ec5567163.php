@@ -1,585 +1,581 @@
 <?php $__env->startSection('page_name'); ?> Dashboard <?php $__env->stopSection(); ?>
+<?php $__env->startSection('section_header'); ?> Dashboard <?php $__env->stopSection(); ?>
 <?php $__env->startSection('content'); ?>
-<div class="content-body">
-    <!-- fitness target -->
-    <div class="row">
-        <div class="col-12">
-            <div class="card">
-                <div class="card-content">
-                    <div class="row">
-                        <div class="col-xl-3 col-lg-6 col-md-12 border-right-blue-grey border-right-lighten-5">
-                            <div class="my-1 text-center">
-                                <div class="card-header mb-2 pt-0">
-                                    <h5 class="primary">Steps</h5>
-                                    <h3 class="font-large-2 text-bold-200">3,261</h3>
-                                </div>
-                                <div class="card-content">
-                                    <input type="text" value="65" class="knob hide-value responsive angle-offset" data-angleOffset="40" data-thickness=".15" data-linecap="round" data-width="130" data-height="130" data-inputColor="#BABFC7" data-readOnly="true" data-fgColor="#00B5B8" data-knob-icon="icon-trophy">
-                                    <ul class="list-inline clearfix pt-1 mb-0">
-                                        <li class="border-right-grey border-right-lighten-2 pr-2">
-                                            <h2 class="grey darken-1 text-bold-400">65%</h2>
-                                            <span class="primary"><span class="feather icon-arrow-up"></span>
-                                                Completed</span>
-                                        </li>
-                                        <li class="pl-2">
-                                            <h2 class="grey darken-1 text-bold-400">35%</h2>
-                                            <span class="danger"><span class="feather icon-arrow-down"></span>
-                                                Remaining</span>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-xl-3 col-lg-6 col-md-12 border-right-blue-grey border-right-lighten-5">
-                            <div class="my-1 text-center">
-                                <div class="card-header mb-2 pt-0">
-                                    <h5 class="danger">Distance</h5>
-                                    <h3 class="font-large-2 text-bold-200">7.6 <span class="font-medium-1 grey darken-1 text-bold-400">mile</span></h3>
-                                </div>
-                                <div class="card-content">
-                                    <input type="text" value="70" class="knob hide-value responsive angle-offset" data-angleOffset="0" data-thickness=".15" data-linecap="round" data-width="130" data-height="130" data-inputColor="#BABFC7" data-readOnly="true" data-fgColor="#FF7588" data-knob-icon="icon-pointer">
-                                    <ul class="list-inline clearfix pt-1 mb-0">
-                                        <li>
-                                            <h2 class="grey darken-1 text-bold-400">10</h2>
-                                            <span class="danger">Miles Today's Target</span>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-xl-3 col-lg-6 col-md-12 border-right-blue-grey border-right-lighten-5">
-                            <div class="my-1 text-center">
-                                <div class="card-header mb-2 pt-0">
-                                    <h5 class="warning">Calories</h5>
-                                    <h3 class="font-large-2 text-bold-200">4,025 <span class="font-medium-1 grey darken-1 text-bold-400">kcal</span></h3>
-                                </div>
-                                <div class="card-content">
-                                    <input type="text" value="81" class="knob hide-value responsive angle-offset" data-angleOffset="20" data-thickness=".15" data-linecap="round" data-width="130" data-height="130" data-inputColor="#BABFC7" data-readOnly="true" data-fgColor="#FFA87D" data-knob-icon="icon-energy">
-                                    <ul class="list-inline clearfix pt-1 mb-0">
-                                        <li>
-                                            <h2 class="grey darken-1 text-bold-400">5000</h2>
-                                            <span class="warning">kcla Today's Target</span>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-xl-3 col-lg-6 col-md-12">
-                            <div class="my-1 text-center">
-                                <div class="card-header mb-2 pt-0">
-                                    <h5 class="success">Heart Rate</h5>
-                                    <h3 class="font-large-2 text-bold-200">102 <span class="font-medium-1 grey darken-1 text-bold-400">BPM</span></h3>
-                                </div>
-                                <div class="card-content">
-                                    <input type="text" value="75" class="knob hide-value responsive angle-offset" data-angleOffset="20" data-thickness=".15" data-linecap="round" data-width="130" data-height="130" data-inputColor="#BABFC7" data-readOnly="true" data-fgColor="#16D39A" data-knob-icon="icon-heart">
-                                    <ul class="list-inline clearfix pt-1 mb-0">
-                                        <li>
-                                            <h2 class="grey darken-1 text-bold-400">125</h2>
-                                            <span class="success">BPM Highest</span>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+<!-- Main Content -->
+<div class="row">
+            <div class="col-lg-3 col-md-6 col-sm-6 col-12">
+              <div class="card card-statistic-1">
+                <div class="card-icon bg-primary">
+                  <i class="far fa-user"></i>
                 </div>
+                <div class="card-wrap">
+                  <div class="card-header">
+                    <h4>Total Admin</h4>
+                  </div>
+                  <div class="card-body">
+                    10
+                  </div>
+                </div>
+              </div>
             </div>
-        </div>
-    </div>
-    <!--/ fitness target -->
-    <!-- activity charts -->
-    <div class="row match-height">
-        <div class="col-xl-8 col-lg-12">
-            <div class="card">
-                <div class="card-header border-0-bottom">
-                    <h4 class="card-title">Activity Chart <span class="text-muted text-bold-400">Weekly</span></h4>
-                    <a class="heading-elements-toggle"><i class="fa fa-ellipsis-v font-medium-3"></i></a>
-                    <div class="heading-elements">
-                        <ul class="list-inline mb-0">
-                            <li><a data-action="reload"><i class="feather icon-rotate-cw"></i></a></li>
-                        </ul>
-                    </div>
+            <div class="col-lg-3 col-md-6 col-sm-6 col-12">
+              <div class="card card-statistic-1">
+                <div class="card-icon bg-danger">
+                  <i class="far fa-newspaper"></i>
                 </div>
-                <div class="card-content">
-                    <div class="card-body">
-                        <div id="weekly-activity-chart" class="height-250"></div>
-                        <ul class="list-inline text-center m-0">
-                            <li>
-                                <h6><i class="feather icon-circle danger"></i> Runnig</h6>
-                            </li>
-                            <li class="ml-1">
-                                <h6><i class="feather icon-circle success"></i> Walking</h6>
-                            </li>
-                            <li class="ml-1">
-                                <h6><i class="feather icon-circle warning"></i> Cycling</h6>
-                            </li>
-                        </ul>
-                    </div>
+                <div class="card-wrap">
+                  <div class="card-header">
+                    <h4>News</h4>
+                  </div>
+                  <div class="card-body">
+                    42
+                  </div>
                 </div>
+              </div>
             </div>
-        </div>
-        <div class="col-xl-4 col-lg-12">
-            <div class="card">
-                <div class="card-content">
-                    <div class="card-body">
-                        <div id="activity-division" class="chart-size"></div>
-                    </div>
+            <div class="col-lg-3 col-md-6 col-sm-6 col-12">
+              <div class="card card-statistic-1">
+                <div class="card-icon bg-warning">
+                  <i class="far fa-file"></i>
                 </div>
-            </div>
-        </div>
-    </div>
-    <!--/ activity charts -->
-    <!--fitness stats-->
-    <div class="row">
-        <div class="col-12">
-            <div class="card">
-                <div class="card-content">
-                    <div class="card-body">
-                        <div class="row">
-                            <div class="col-xl-3 col-lg-6 col-md-12 border-right-blue-grey border-right-lighten-5 clearfix">
-                                <div class="media">
-                                    <div class="media-left pr-1">
-                                        <img class="media-object img-xl" src="" alt="Generic placeholder image">
-                                    </div>
-                                    <div class="media-body">
-                                        <h6 class="text-bold-500 pt-1 mb-0">Running</h6>
-                                        <p>Walk - Run Training</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-xl-3 col-lg-6 col-md-12 border-right-blue-grey border-right-lighten-5 clearfix">
-                                <p>Distance <span class="text-muted">(Last Week)</span></p>
-                                <div class="progress progress-sm mt-1 mb-0">
-                                    <div class="progress-bar bg-success" role="progressbar" style="width: 45%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
-                                </div>
-                                <h6 class="text-bold-500 mt-1 mb-0">80 KM</h6>
-                            </div>
-                            <div class="col-xl-3 col-lg-6 col-md-12 border-right-blue-grey border-right-lighten-5 clearfix py-2 text-center">
-                                <div id="fitness-stats"></div>
-                            </div>
-                            <div class="col-xl-3 col-lg-6 col-md-12 text-center clearfix">
-                                <h6 class="pt-1"><span class="icon-clock"></span> 56:55 Hrs</h6>
-                                <p>Anverage Running Time</p>
-                            </div>
-                        </div>
-                    </div>
+                <div class="card-wrap">
+                  <div class="card-header">
+                    <h4>Reports</h4>
+                  </div>
+                  <div class="card-body">
+                    1,201
+                  </div>
                 </div>
+              </div>
             </div>
-        </div>
-    </div>
-    <!--fitness stats-->
-    <!-- friends & weather charts -->
-    <div class="row match-height">
-        <div class="col-xl-4 col-lg-6 col-md-12">
-            <div class="card">
-                <div class="card-content">
-                    <div class="card-body">
-                        <h4 class="card-title">Daily Diet</h4>
-                        <p class="card-text">Some quick example text to build on the card.</p>
-                    </div>
-                    <ul class="list-group list-group-flush">
-                        <li class="list-group-item">
-                            <span class="badge badge-pill bg-primary float-right">4</span> Protein Milk
-                        </li>
-                        <li class="list-group-item">
-                            <span class="badge badge-pill bg-info float-right">2</span> oz Water
-                        </li>
-                        <li class="list-group-item">
-                            <span class="badge badge-pill bg-danger float-right">8</span> Vegetable Juice
-                        </li>
-                        <li class="list-group-item">
-                            <span class="badge badge-pill bg-warning float-right">1</span> Sugar Free Jello-O
-                        </li>
-                        <li class="list-group-item">
-                            <span class="badge badge-pill bg-success float-right">3</span> Protein Meal
-                        </li>
-                    </ul>
-                    <div class="card-body">
-                        <a href="#" class="card-link">Card link</a>
-                        <a href="#" class="card-link">Another link</a>
-                    </div>
+            <div class="col-lg-3 col-md-6 col-sm-6 col-12">
+              <div class="card card-statistic-1">
+                <div class="card-icon bg-success">
+                  <i class="fas fa-circle"></i>
                 </div>
-            </div>
-        </div>
-        <div class="col-xl-4 col-md-12 col-12">
-            <div class="card border-0 box-shadow-0">
-                <div class="card-content">
-                    <div class="weather-date position-relative">
-                        <div class="date-info position-absolute bg-success bg-lighten-1 white p-1 text-center">
-                            <span class="date block">14</span>
-                            <span class="month">Nov</span>
-                        </div>
-                    </div>
-                    <div class="card-body bg-success bg-lighten-4">
-                        <ul class="list-inline text-right">
-                            <li><a data-action="reload"><i class="feather icon-rotate-cw font-medium-4 success"></i></a>
-                            </li>
-                        </ul>
-                        <div class="animated-weather-icons text-center">
-                            <svg version="1.1" id="wind1" class="climacon climacon_wind climacon-success climacon-darken-2 height-200" viewBox="15 15 70 70">
-                                <g class="climacon_iconWrap climacon_iconWrap-wind">
-                                    <g class="climacon_wrapperComponent climacon_componentWrap-wind">
-                                        <path class="climacon_component climacon_component-stroke climacon_component-wind climacon_component-wind_curl" d="M65.999,52L65.999,52h-3c-1.104,0-2-0.895-2-1.999c0-1.104,0.896-2,2-2h3c1.104,0,2-0.896,2-1.999c0-1.105-0.896-2-2-2s-2-0.896-2-2s0.896-2,2-2c0.138,0,0.271,0.014,0.401,0.041c3.121,0.211,5.597,2.783,5.597,5.959C71.997,49.314,69.312,52,65.999,52z" />
-                                        <path class="climacon_component climacon_component-stroke climacon_component-wind" d="M55.999,48.001h-2h-6.998H34.002c-1.104,0-1.999,0.896-1.999,2c0,1.104,0.895,1.999,1.999,1.999h2h3.999h3h4h3h3.998h2c3.313,0,6,2.688,6,6c0,3.176-2.476,5.748-5.597,5.959C56.271,63.986,56.139,64,55.999,64c-1.104,0-2-0.896-2-2c0-1.105,0.896-2,2-2s2-0.896,2-2s-0.896-2-2-2h-2h-3.998h-3h-4h-3h-3.999h-2c-3.313,0-5.999-2.686-5.999-5.999c0-3.175,2.475-5.747,5.596-5.959c0.131-0.026,0.266-0.04,0.403-0.04l0,0h12.999h6.998h2c1.104,0,2-0.896,2-2s-0.896-2-2-2s-2-0.895-2-2c0-1.104,0.896-2,2-2c0.14,0,0.272,0.015,0.403,0.041c3.121,0.211,5.597,2.783,5.597,5.959C61.999,45.314,59.312,48.001,55.999,48.001z" />
-                                    </g>
-                                </g>
-                            </svg>
-                        </div>
-                        <div class="weather-details text-center">
-                            <span class="pt-2 block success darken-2">Windy</span>
-                            <span class="font-medium-4 text-bold-500 success darken-4">Beijing, China</span>
-                        </div>
-                    </div>
-                    <div class="card-footer bg-success bg-darken-3 py-3 text-center border-0">
-                        <div class="row">
-                            <div class="col-4 text-center display-table-cell">
-                                <i class="me-wind font-large-1 white lighten-3 align-middle"></i> <span class="white align-middle">2MPH</span>
-                            </div>
-                            <div class="col-4 text-center display-table-cell">
-                                <i class="me-sun2 font-large-1 white lighten-3 align-middle"></i> <span class="white align-middle">2%</span>
-                            </div>
-                            <div class="col-4 text-center display-table-cell">
-                                <i class="me-thermometer font-large-1 white lighten-3 align-middle"></i> <span class="white align-middle">13.0&deg;</span>
-                            </div>
-                        </div>
-                    </div>
+                <div class="card-wrap">
+                  <div class="card-header">
+                    <h4>Online Users</h4>
+                  </div>
+                  <div class="card-body">
+                    47
+                  </div>
                 </div>
+              </div>
             </div>
-        </div>
-        <div class="col-xl-4 col-lg-12 col-md-12">
-            <div class="card">
+          </div>
+          <div class="row">
+            <div class="col-lg-8 col-md-12 col-12 col-sm-12">
+              <div class="card">
                 <div class="card-header">
-                    <h4 class="card-title">Friends</h4>
-                    <a class="heading-elements-toggle"><i class="fa fa-ellipsis-v font-medium-3"></i></a>
-                    <div class="heading-elements">
-                        <ul class="list-inline mb-0">
-                            <li><a data-action="reload"><i class="feather icon-rotate-cw"></i></a></li>
-                        </ul>
+                  <h4>Statistics</h4>
+                  <div class="card-header-action">
+                    <div class="btn-group">
+                      <a href="#" class="btn btn-primary">Week</a>
+                      <a href="#" class="btn">Month</a>
                     </div>
+                  </div>
                 </div>
-                <div class="card-content">
-                    <div id="friends-activity" class="media-list height-400 position-relative">
-                        <a href="#" class="media border-0">
-                            <div class="media-left pr-1">
-                                <img class="media-object avatar avatar-sm rounded-circle" src="" alt="Generic placeholder image">
-                            </div>
-                            <div class="media-body w-100">
-                                <h5 class="list-group-item-heading">Kristopher Candy <span class="font-medium-4 float-right">1,0215</span></h5>
-                                <p class="list-group-item-text mb-0"><span class="badge badge-success">Running</span><span class="badge badge-warning ml-1">Cycling</span></p>
-                            </div>
-                        </a>
-                        <a href="#" class="media border-0">
-                            <div class="media-left pr-1">
-                                <img class="media-object avatar avatar-sm rounded-circle" src="" alt="Generic placeholder image">
-                            </div>
-                            <div class="media-body w-100">
-                                <h5 class="list-group-item-heading">Lawrence Fowler <span class="font-medium-4 float-right">2,0215</span></h5>
-                                <p class="list-group-item-text mb-0"><span class="badge badge-danger">Dancing</span> <span class="badge badge-primary ml-1">Fitness</span></p>
-                            </div>
-                        </a>
-                        <a href="#" class="media border-0">
-                            <div class="media-left pr-1">
-                                <img class="media-object avatar avatar-sm rounded-circle" src="" alt="Generic placeholder image">
-                            </div>
-                            <div class="media-body w-100">
-                                <h5 class="list-group-item-heading">Linda Olson <span class="font-medium-4 float-right">1,112</span></h5>
-                                <p class="list-group-item-text mb-0"><span class="badge badge-success">Running</span> <span class="badge badge-warning ml-1">Cycling</span> <span class="tag bg-grey ml-1">Other</span></p>
-                            </div>
-                        </a>
-                        <a href="#" class="media border-0">
-                            <div class="media-left pr-1">
-                                <img class="media-object avatar avatar-sm rounded-circle" src="" alt="Generic placeholder image">
-                            </div>
-                            <div class="media-body w-100">
-                                <h5 class="list-group-item-heading">Roy Clark <span class="font-medium-4 float-right">2,815</span></h5>
-                                <p class="list-group-item-text mb-0"><span class="badge badge-warning">Fitness</span> <span class="badge badge-danger ml-1">Dancing</span></p>
-                            </div>
-                        </a>
-                        <a href="#" class="media border-0">
-                            <div class="media-left pr-1">
-                                <img class="media-object avatar avatar-sm rounded-circle" src="" alt="Generic placeholder image">
-                            </div>
-                            <div class="media-body w-100">
-                                <h5 class="list-group-item-heading">Tammy Gonzales <span class="font-medium-4 float-right">3,226</span></h5>
-                                <p class="list-group-item-text mb-0"><span class="badge badge-danger">Dancing</span> <span class="badge badge-success ml-1">Running</span></p>
-                            </div>
-                        </a>
-                        <a href="#" class="media border-0">
-                            <div class="media-left pr-1">
-                                <img class="media-object avatar avatar-sm rounded-circle" src="" alt="Generic placeholder image">
-                            </div>
-                            <div class="media-body w-100">
-                                <h5 class="list-group-item-heading">Justin Hawkins <span class="font-medium-4 float-right">4,564</span></h5>
-                                <p class="list-group-item-text mb-0"><span class="badge badge-success">Running</span> <span class="badge badge-primary ml-1">Fitness</span></p>
-                            </div>
-                        </a>
-                        <a href="#" class="media border-0">
-                            <div class="media-left pr-1">
-                                <img class="media-object avatar avatar-sm rounded-circle" src="" alt="Generic placeholder image">
-                            </div>
-                            <div class="media-body w-100">
-                                <h5 class="list-group-item-heading">Roy Clark <span class="font-medium-4 float-right">2,815</span></h5>
-                                <p class="list-group-item-text mb-0"><span class="badge badge-warning">Fitness</span> <span class="badge badge-danger ml-1">Dancing</span></p>
-                            </div>
-                        </a>
+                <div class="card-body">
+                  <canvas id="myChart" height="182"></canvas>
+                  <div class="statistic-details mt-sm-4">
+                    <div class="statistic-details-item">
+                      <span class="text-muted"><span class="text-primary"><i class="fas fa-caret-up"></i></span> 7%</span>
+                      <div class="detail-value">$243</div>
+                      <div class="detail-name">Today's Sales</div>
                     </div>
+                    <div class="statistic-details-item">
+                      <span class="text-muted"><span class="text-danger"><i class="fas fa-caret-down"></i></span> 23%</span>
+                      <div class="detail-value">$2,902</div>
+                      <div class="detail-name">This Week's Sales</div>
+                    </div>
+                    <div class="statistic-details-item">
+                      <span class="text-muted"><span class="text-primary"><i class="fas fa-caret-up"></i></span>9%</span>
+                      <div class="detail-value">$12,821</div>
+                      <div class="detail-name">This Month's Sales</div>
+                    </div>
+                    <div class="statistic-details-item">
+                      <span class="text-muted"><span class="text-primary"><i class="fas fa-caret-up"></i></span> 19%</span>
+                      <div class="detail-value">$92,142</div>
+                      <div class="detail-name">This Year's Sales</div>
+                    </div>
+                  </div>
                 </div>
+              </div>
             </div>
-        </div>
-    </div>
-    <!-- friends & weather charts -->
-    <!-- Running Routes & Daily Activities  -->
-    <div class="row">
-        <div class="col-xl-6 col-lg-12">
-            <div class="card">
-                <div class="card-header border-0-bottom">
-                    <h4 class="card-title">Running Routes</h4>
-                    <a class="heading-elements-toggle"><i class="fa fa-ellipsis-v font-medium-3"></i></a>
-                    <div class="heading-elements">
-                        <ul class="list-inline mb-0">
-                            <li><a data-action="reload"><i class="feather icon-rotate-cw"></i></a></li>
-                        </ul>
-                    </div>
+            <div class="col-lg-4 col-md-12 col-12 col-sm-12">
+              <div class="card">
+                <div class="card-header">
+                  <h4>Recent Activities</h4>
                 </div>
-                <div class="card-content">
-                    <div class="card-body">
-                        <div id="maps-leaflet-user-location" class="maps-leaflet-container height-300"></div>
-                    </div>
+                <div class="card-body">
+                  <ul class="list-unstyled list-unstyled-border">
+                    <li class="media">
+                      <img class="mr-3 rounded-circle" width="50" src="../assets/img/avatar/avatar-1.png" alt="avatar">
+                      <div class="media-body">
+                        <div class="float-right text-primary">Now</div>
+                        <div class="media-title">Farhan A Mujib</div>
+                        <span class="text-small text-muted">Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin.</span>
+                      </div>
+                    </li>
+                    <li class="media">
+                      <img class="mr-3 rounded-circle" width="50" src="../assets/img/avatar/avatar-2.png" alt="avatar">
+                      <div class="media-body">
+                        <div class="float-right">12m</div>
+                        <div class="media-title">Ujang Maman</div>
+                        <span class="text-small text-muted">Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin.</span>
+                      </div>
+                    </li>
+                    <li class="media">
+                      <img class="mr-3 rounded-circle" width="50" src="../assets/img/avatar/avatar-3.png" alt="avatar">
+                      <div class="media-body">
+                        <div class="float-right">17m</div>
+                        <div class="media-title">Rizal Fakhri</div>
+                        <span class="text-small text-muted">Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin.</span>
+                      </div>
+                    </li>
+                    <li class="media">
+                      <img class="mr-3 rounded-circle" width="50" src="../assets/img/avatar/avatar-4.png" alt="avatar">
+                      <div class="media-body">
+                        <div class="float-right">21m</div>
+                        <div class="media-title">Alfa Zulkarnain</div>
+                        <span class="text-small text-muted">Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin.</span>
+                      </div>
+                    </li>
+                  </ul>
+                  <div class="text-center pt-1 pb-1">
+                    <a href="#" class="btn btn-primary btn-lg btn-round">
+                      View All
+                    </a>
+                  </div>
                 </div>
+              </div>
             </div>
-        </div>
-        <div class="col-xl-6 col-lg-12">
-            <div class="card">
-                <div class="card-header border-0-bottom">
-                    <h4 class="card-title">Daily Activity</h4>
-                    <a class="heading-elements-toggle"><i class="fa fa-ellipsis-v font-medium-3"></i></a>
-                    <div class="heading-elements">
-                        <ul class="list-inline mb-0">
-                            <li><a data-action="reload"><i class="feather icon-rotate-cw"></i></a></li>
-                        </ul>
-                    </div>
+          </div>
+          <div class="row">
+            <div class="col-lg-6 col-md-12 col-12 col-sm-12">
+              <div class="card">
+                <div class="card-body pt-2 pb-2">
+                  <div id="myWeather">Please wait</div>
                 </div>
-                <div class="card-content">
-                    <div id="daily-activity" class="table-responsive height-350">
-                        <table class="table table-hover mb-0">
-                            <thead>
-                                <tr>
-                                    <th>
-                                        <input type="checkbox" id="icheck-input-all" class="icheck-activity">
-                                    </th>
-                                    <th>Time</th>
-                                    <th>Activity</th>
-                                    <th>Status</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td class="text-truncate">
-                                        <input type="checkbox" id="icheck-input-1" class="icheck-activity" checked>
-                                    </td>
-                                    <td class="text-truncate">5.00 A.M</td>
-                                    <td class="text-truncate">Bricks Walking</td>
-                                    <td class="text-truncate"><span class="badge badge-success">Done</span></td>
-                                </tr>
-                                <tr>
-                                    <td class="text-truncate">
-                                        <input type="checkbox" id="icheck-input-2" class="icheck-activity" checked>
-                                    </td>
-                                    <td class="text-truncate">5.30 A.M</td>
-                                    <td class="text-truncate">Morning Exercise</td>
-                                    <td class="text-truncate"><span class="badge badge-success">Done</span></td>
-                                </tr>
-                                <tr>
-                                    <td class="text-truncate">
-                                        <input type="checkbox" id="icheck-input-3" class="icheck-activity">
-                                    </td>
-                                    <td class="text-truncate">6.30 A.M</td>
-                                    <td class="text-truncate">Yoga</td>
-                                    <td class="text-truncate"><span class="badge badge-danger">Missed</span></td>
-                                </tr>
-                                <tr>
-                                    <td class="text-truncate">
-                                        <input type="checkbox" id="icheck-input-4" class="icheck-activity" checked>
-                                    </td>
-                                    <td class="text-truncate">7.00 A.M</td>
-                                    <td class="text-truncate">Gym</td>
-                                    <td class="text-truncate"><span class="badge badge-success">Done</span></td>
-                                </tr>
-                                <tr>
-                                    <td class="text-truncate">
-                                        <input type="checkbox" id="icheck-input-5" class="icheck-activity" checked>
-                                    </td>
-                                    <td class="text-truncate">8.00 A.M</td>
-                                    <td class="text-truncate">Steam Bath</td>
-                                    <td class="text-truncate"><span class="badge badge-success">Done</span></td>
-                                </tr>
-                                <tr>
-                                    <td class="text-truncate">
-                                        <input type="checkbox" id="icheck-input-6" class="icheck-activity">
-                                    </td>
-                                    <td class="text-truncate">9.00 A.M</td>
-                                    <td class="text-truncate">Meditation</td>
-                                    <td class="text-truncate"><span class="badge badge-danger">Missed</span></td>
-                                </tr>
-                                <tr>
-                                    <td class="text-truncate">
-                                        <input type="checkbox" id="icheck-input-7" class="icheck-activity">
-                                    </td>
-                                    <td class="text-truncate">8.00 P.M</td>
-                                    <td class="text-truncate">Bricks Walking</td>
-                                    <td class="text-truncate"><span class="badge badge-warning">Delayed</span></td>
-                                </tr>
-                                <tr>
-                                    <td class="text-truncate">
-                                        <input type="checkbox" id="icheck-input-8" class="icheck-activity">
-                                    </td>
-                                    <td class="text-truncate">9.00 P.M</td>
-                                    <td class="text-truncate">Exercise</td>
-                                    <td class="text-truncate"><span class="badge badge-warning">Delayed</span></td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
+              </div>
             </div>
-        </div>
-    </div>
-    <!--/ Running Routes & Daily Activities  -->
-    <!-- fitness info & twitter, facebook -->
-    <div class="row">
-        <div class="col-xl-8 col-lg-12 col-md-12">
-            <div class="row">
-                <div class="col-xl-6 col-lg-6 col-md-12">
-                    <div class="card">
-                        <div class="card-content">
-                            <div id="carousel-example" class="carousel slide" data-ride="carousel">
-                                <ol class="carousel-indicators">
-                                    <li data-target="#carousel-example" data-slide-to="0" class="active"></li>
-                                    <li data-target="#carousel-example" data-slide-to="1"></li>
-                                    <li data-target="#carousel-example" data-slide-to="2"></li>
-                                </ol>
-                                <div class="carousel-inner" role="listbox">
-                                    <div class="carousel-item active">
-                                        <img src="" class="img-fluid" alt="First slide">
-                                    </div>
-                                    <div class="carousel-item">
-                                        <img src="" class="img-fluid" alt="Second slide">
-                                    </div>
-                                    <div class="carousel-item">
-                                        <img src="" class="img-fluid" alt="Third slide">
-                                    </div>
-                                </div>
-                                <a class="left carousel-control" href="#carousel-example" role="button" data-slide="prev">
-                                    <span class="icon-prev" aria-hidden="true"></span>
-                                    <span class="sr-only">Previous</span>
-                                </a>
-                                <a class="right carousel-control" href="#carousel-example" role="button" data-slide="next">
-                                    <span class="icon-next" aria-hidden="true"></span>
-                                    <span class="sr-only">Next</span>
-                                </a>
-                            </div>
-                            <div class="card-body">
-                                <h5 class="card-title">Health News &amp; Fitness Advice</h5>
-                                <p class="card-text">Some quick example text to build on the card title and make up the bulk
-                                    of the card's content.</p>
-                                <p class="card-text">Some quick example text to build on the card title and make up the bulk
-                                    of the card's content.</p>
-                                <a href="#" class="card-link">Card link</a>
-                                <a href="#" class="card-link">Another link</a>
-                            </div>
-                            <div class="card-footer border-top-blue-grey border-top-lighten-5 text-muted m-1">
-                                <span class="float-left">2 days ago</span>
-                                <span class="tags float-right">
-                                    <span class="badge badge-pill badge-primary">Branding</span>
-                                    <span class="badge badge-pill badge-danger">Design</span>
-                                </span>
-                            </div>
-                        </div>
-                    </div>
+            <div class="col-lg-6 col-md-12 col-12 col-sm-12">
+              <div class="card">
+                <div class="card-header">
+                  <h4>Authors</h4>
                 </div>
-                <div class="col-xl-6 col-lg-6 col-md-12">
-                    <div class="card profile-card-with-cover">
-                        <div class="card-content">
-                            <div class="card-img-top img-fluid bg-cover height-200" style="background: url('') 0 40%;">
-                            </div>
-                            <div class="card-profile-image">
-                                <img src="" class="rounded-circle img-border box-shadow-1" alt="Card image">
-                            </div>
-                            <div class="profile-card-with-cover-content text-center">
-                                <div class="my-2">
-                                    <h4 class="card-title">Susan Garrett</h4>
-                                    <ul class="list-inline clearfix pt-2">
-                                        <li class="pr-2">
-                                            <h2 class="block">-2.05 <span class="font-small-3 text-muted">KG</span></h2>
-                                            Body Fat
-                                        </li>
-                                        <li class="pr-2">
-                                            <h2 class="block">52 <span class="font-small-3 text-muted">KG</span></h2> Target
-                                        </li>
-                                        <li>
-                                            <h2 class="block">-2.1 <span class="font-small-3 text-muted">KG</span></h2>
-                                            Weight
-                                        </li>
-                                    </ul>
-                                </div>
-                                <div class="card-body">
-                                    <a href="#" class="btn btn-social btn-min-width pr-1 mb-1 btn-linkedin"><span class="feather icon-plus"></span> <span class="pl-1">Follow</span></a>
-                                </div>
-                            </div>
-                        </div>
+                <div class="card-body">
+                  <div class="row pb-2">
+                    <div class="col-6 col-sm-3 col-lg-3 mb-4 mb-md-0">
+                      <div class="avatar-item mb-0">
+                        <img alt="image" src="../assets/img/avatar/avatar-5.png" class="img-fluid" data-toggle="tooltip" title="Alfa Zulkarnain">
+                        <div class="avatar-badge" title="Editor" data-toggle="tooltip"><i class="fas fa-wrench"></i></div>
+                      </div>
                     </div>
+                    <div class="col-6 col-sm-3 col-lg-3 mb-4 mb-md-0">
+                      <div class="avatar-item mb-0">
+                        <img alt="image" src="../assets/img/avatar/avatar-4.png" class="img-fluid" data-toggle="tooltip" title="Egi Ferdian">
+                        <div class="avatar-badge" title="Admin" data-toggle="tooltip"><i class="fas fa-cog"></i></div>
+                      </div>
+                    </div>
+                    <div class="col-6 col-sm-3 col-lg-3 mb-4 mb-md-0">
+                      <div class="avatar-item mb-0">
+                        <img alt="image" src="../assets/img/avatar/avatar-1.png" class="img-fluid" data-toggle="tooltip" title="Jaka Ramadhan">
+                        <div class="avatar-badge" title="Author" data-toggle="tooltip"><i class="fas fa-pencil-alt"></i></div>
+                      </div>
+                    </div>
+                    <div class="col-6 col-sm-3 col-lg-3 mb-4 mb-md-0">
+                      <div class="avatar-item mb-0">
+                        <img alt="image" src="../assets/img/avatar/avatar-2.png" class="img-fluid" data-toggle="tooltip" title="Ryan">
+                        <div class="avatar-badge" title="Admin" data-toggle="tooltip"><i class="fas fa-cog"></i></div>
+                      </div>
+                    </div>
+                  </div>
                 </div>
+              </div>
             </div>
-        </div>
-        <div class="col-xl-4 col-lg-12 col-md-12">
-            <div class="row">
-                <div class="col-xl-12 col-lg-6 col-md-12">
-                    <div class="card bg-info white">
-                        <div class="card-content p-2">
-                            <div class="card-body">
-                                <div class="text-center mb-1">
-                                    <i class="fa fa-twitter font-large-3"></i>
-                                </div>
-                                <div class="tweet-slider">
-                                    <ul class="text-center">
-                                        <li>Congratulations to Rob Jones in accounting for winning our <span class="yellow">#NFL</span> football pool!</li>
-                                        <li>Contests are a great thing to partner on. Partnerships immediately <span class="yellow">#DOUBLE</span> the reach.</li>
-                                        <li>Puns, humor, and quotes are great content on <span class="yellow">#Twitter</span>. Find some related to your business.</li>
-                                        <li>Are there <span class="yellow">#common-sense</span> facts related to your
-                                            business? Combine them with a great photo.</li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+          </div>
+          <div class="row">
+            <div class="col-lg-6 col-md-6 col-12">
+              <div class="card">
+                <div class="card-header">
+                  <h4>Referral URL</h4>
                 </div>
-                <div class="col-xl-12 col-lg-6 col-md-12">
-                    <div class="card bg-success white">
-                        <div class="card-content p-2">
-                            <div class="card-body">
-                                <div class="text-center mb-1">
-                                    <i class="fa fa-facebook font-large-3"></i>
-                                </div>
-                                <div class="fb-post-slider">
-                                    <ul class="text-center">
-                                        <li>Congratulations to Rob Jones in accounting for winning our #NFL football pool!
-                                        </li>
-                                        <li>Contests are a great thing to partner on. Partnerships immediately #DOUBLE the
-                                            reach.</li>
-                                        <li>Puns, humor, and quotes are great content on #Twitter. Find some related to your
-                                            business.</li>
-                                        <li>Are there #common-sense facts related to your business? Combine them with a
-                                            great photo.</li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
+                <div class="card-body">
+                  <div class="mb-4">
+                    <div class="text-small float-right font-weight-bold text-muted">2,100</div>
+                    <div class="font-weight-bold mb-1">Google</div>
+                    <div class="progress" data-height="3">
+                      <div class="progress-bar" role="progressbar" data-width="80%" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
                     </div>
+                  </div>
+
+                  <div class="mb-4">
+                    <div class="text-small float-right font-weight-bold text-muted">1,880</div>
+                    <div class="font-weight-bold mb-1">Facebook</div>
+                    <div class="progress" data-height="3">
+                      <div class="progress-bar" role="progressbar" data-width="67%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                    </div>
+                  </div>
+
+                  <div class="mb-4">
+                    <div class="text-small float-right font-weight-bold text-muted">1,521</div>
+                    <div class="font-weight-bold mb-1">Bing</div>
+                    <div class="progress" data-height="3">
+                      <div class="progress-bar" role="progressbar" data-width="58%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                    </div>
+                  </div>
+
+                  <div class="mb-4">
+                    <div class="text-small float-right font-weight-bold text-muted">884</div>
+                    <div class="font-weight-bold mb-1">Yahoo</div>
+                    <div class="progress" data-height="3">
+                      <div class="progress-bar" role="progressbar" data-width="36%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                    </div>
+                  </div>
+
+                  <div class="mb-4">
+                    <div class="text-small float-right font-weight-bold text-muted">473</div>
+                    <div class="font-weight-bold mb-1">Kodinger</div>
+                    <div class="progress" data-height="3">
+                      <div class="progress-bar" role="progressbar" data-width="28%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                    </div>
+                  </div>
+
+                  <div class="mb-4">
+                    <div class="text-small float-right font-weight-bold text-muted">418</div>
+                    <div class="font-weight-bold mb-1">Multinity</div>
+                    <div class="progress" data-height="3">
+                      <div class="progress-bar" role="progressbar" data-width="20%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                    </div>
+                  </div>
                 </div>
+              </div>
+              <div class="card">
+                <div class="card-header">
+                  <h4>Popular Browser</h4>
+                </div>
+                <div class="card-body">
+                  <div class="row">
+                    <div class="col text-center">
+                      <div class="browser browser-chrome"></div>
+                      <div class="mt-2 font-weight-bold">Chrome</div>
+                      <div class="text-muted text-small"><span class="text-primary"><i class="fas fa-caret-up"></i></span> 48%</div>
+                    </div>
+                    <div class="col text-center">
+                      <div class="browser browser-firefox"></div>
+                      <div class="mt-2 font-weight-bold">Firefox</div>
+                      <div class="text-muted text-small"><span class="text-primary"><i class="fas fa-caret-up"></i></span> 26%</div>
+                    </div>
+                    <div class="col text-center">
+                      <div class="browser browser-safari"></div>
+                      <div class="mt-2 font-weight-bold">Safari</div>
+                      <div class="text-muted text-small"><span class="text-danger"><i class="fas fa-caret-down"></i></span> 14%</div>
+                    </div>
+                    <div class="col text-center">
+                      <div class="browser browser-opera"></div>
+                      <div class="mt-2 font-weight-bold">Opera</div>
+                      <div class="text-muted text-small">7%</div>
+                    </div>
+                    <div class="col text-center">
+                      <div class="browser browser-internet-explorer"></div>
+                      <div class="mt-2 font-weight-bold">IE</div>
+                      <div class="text-muted text-small"><span class="text-primary"><i class="fas fa-caret-up"></i></span> 5%</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="card mt-sm-5 mt-md-0">
+                <div class="card-header">
+                  <h4>Visitors</h4>
+                </div>
+                <div class="card-body">
+                  <div id="visitorMap"></div>
+                </div>
+              </div>
             </div>
-        </div>
-    </div>
-    <!--/ fitness info & twitter, facebook -->
-</div>
+            <div class="col-lg-6 col-md-6 col-12">
+              <div class="card">
+                <div class="card-header">
+                  <h4>This Week Stats</h4>
+                  <div class="card-header-action">
+                    <div class="dropdown">
+                      <a href="#" class="dropdown-toggle btn btn-primary" data-toggle="dropdown">Filter</a>
+                      <div class="dropdown-menu dropdown-menu-right">
+                        <a href="#" class="dropdown-item has-icon"><i class="far fa-circle"></i> Electronic</a>
+                        <a href="#" class="dropdown-item has-icon"><i class="far fa-circle"></i> T-shirt</a>
+                        <a href="#" class="dropdown-item has-icon"><i class="far fa-circle"></i> Hat</a>
+                        <div class="dropdown-divider"></div>
+                        <a href="#" class="dropdown-item">View All</a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="card-body">
+                  <div class="summary">
+                    <div class="summary-info">
+                      <h4>$1,053</h4>
+                      <div class="text-muted">Sold 3 items on 2 customers</div>
+                      <div class="d-block mt-2">
+                        <a href="#">View All</a>
+                      </div>
+                    </div>
+                    <div class="summary-item">
+                      <h6>Item List <span class="text-muted">(3 Items)</span></h6>
+                      <ul class="list-unstyled list-unstyled-border">
+                        <li class="media">
+                          <a href="#">
+                            <img class="mr-3 rounded" width="50" src="../assets/img/products/product-1-50.png" alt="product">
+                          </a>
+                          <div class="media-body">
+                            <div class="media-right">$405</div>
+                            <div class="media-title"><a href="#">PlayStation 9</a></div>
+                            <div class="text-muted text-small">by <a href="#">Hasan Basri</a> <div class="bullet"></div> Sunday</div>
+                          </div>
+                        </li>
+                        <li class="media">
+                          <a href="#">
+                            <img class="mr-3 rounded" width="50" src="../assets/img/products/product-2-50.png" alt="product">
+                          </a>
+                          <div class="media-body">
+                            <div class="media-right">$499</div>
+                            <div class="media-title"><a href="#">RocketZ</a></div>
+                            <div class="text-muted text-small">by <a href="#">Hasan Basri</a> <div class="bullet"></div> Sunday
+                            </div>
+                          </div>
+                        </li>
+                        <li class="media">
+                          <a href="#">
+                            <img class="mr-3 rounded" width="50" src="../assets/img/products/product-3-50.png" alt="product">
+                          </a>
+                          <div class="media-body">
+                            <div class="media-right">$149</div>
+                            <div class="media-title"><a href="#">Xiaomay Readme 4.0</a></div>
+                            <div class="text-muted text-small">by <a href="#">Kusnaedi</a> <div class="bullet"></div> Tuesday
+                            </div>
+                          </div>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="card">
+                <div class="card-header">
+                  <h4 class="d-inline">Tasks</h4>
+                  <div class="card-header-action">
+                    <a href="#" class="btn btn-primary">View All</a>
+                  </div>
+                </div>
+                <div class="card-body">
+                  <ul class="list-unstyled list-unstyled-border">
+                    <li class="media">
+                      <div class="custom-control custom-checkbox">
+                        <input type="checkbox" class="custom-control-input" id="cbx-1">
+                        <label class="custom-control-label" for="cbx-1"></label>
+                      </div>
+                      <img class="mr-3 rounded-circle" width="50" src="../assets/img/avatar/avatar-4.png" alt="avatar">
+                      <div class="media-body">
+                        <div class="badge badge-pill badge-danger mb-1 float-right">Not Finished</div>
+                        <h6 class="media-title"><a href="#">Redesign header</a></h6>
+                        <div class="text-small text-muted">Alfa Zulkarnain <div class="bullet"></div> <span class="text-primary">Now</span></div>
+                      </div>
+                    </li>
+                    <li class="media">
+                      <div class="custom-control custom-checkbox">
+                        <input type="checkbox" class="custom-control-input" id="cbx-2" checked="">
+                        <label class="custom-control-label" for="cbx-2"></label>
+                      </div>
+                      <img class="mr-3 rounded-circle" width="50" src="../assets/img/avatar/avatar-5.png" alt="avatar">
+                      <div class="media-body">
+                        <div class="badge badge-pill badge-primary mb-1 float-right">Completed</div>
+                        <h6 class="media-title"><a href="#">Add a new component</a></h6>
+                        <div class="text-small text-muted">Serj Tankian <div class="bullet"></div> 4 Min</div>
+                      </div>
+                    </li>
+                    <li class="media">
+                      <div class="custom-control custom-checkbox">
+                        <input type="checkbox" class="custom-control-input" id="cbx-3" >
+                        <label class="custom-control-label" for="cbx-3"></label>
+                      </div>
+                      <img class="mr-3 rounded-circle" width="50" src="../assets/img/avatar/avatar-2.png" alt="avatar">
+                      <div class="media-body">
+                        <div class="badge badge-pill badge-warning mb-1 float-right">Progress</div>
+                        <h6 class="media-title"><a href="#">Fix modal window</a></h6>
+                        <div class="text-small text-muted">Ujang Maman <div class="bullet"></div> 8 Min</div>
+                      </div>
+                    </li>
+                    <li class="media">
+                      <div class="custom-control custom-checkbox">
+                        <input type="checkbox" class="custom-control-input" id="cbx-4">
+                        <label class="custom-control-label" for="cbx-4"></label>
+                      </div>
+                      <img class="mr-3 rounded-circle" width="50" src="../assets/img/avatar/avatar-1.png" alt="avatar">
+                      <div class="media-body">
+                        <div class="badge badge-pill badge-danger mb-1 float-right">Not Finished</div>
+                        <h6 class="media-title"><a href="#">Remove unwanted classes</a></h6>
+                        <div class="text-small text-muted">Farhan A Mujib <div class="bullet"></div> 21 Min</div>
+                      </div>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-lg-5 col-md-12 col-12 col-sm-12">
+              <form method="post" class="needs-validation" novalidate="">
+                <div class="card">
+                  <div class="card-header">
+                    <h4>Quick Draft</h4>
+                  </div>
+                  <div class="card-body pb-0">
+                    <div class="form-group">
+                      <label>Title</label>
+                      <input type="text" name="title" class="form-control" required>
+                      <div class="invalid-feedback">
+                        Please fill in the title
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label>Content</label>
+                      <textarea class="summernote-simple"></textarea>
+                    </div>
+                  </div>
+                  <div class="card-footer pt-0">
+                    <button class="btn btn-primary">Save Draft</button>
+                  </div>
+                </div>
+              </form>
+            </div>
+            <div class="col-lg-7 col-md-12 col-12 col-sm-12">
+              <div class="card">
+                <div class="card-header">
+                  <h4>Latest Posts</h4>
+                  <div class="card-header-action">
+                    <a href="#" class="btn btn-primary">View All</a>
+                  </div>
+                </div>
+                <div class="card-body p-0">
+                  <div class="table-responsive">
+                    <table class="table table-striped mb-0">
+                      <thead>
+                        <tr>
+                          <th>Title</th>
+                          <th>Author</th>
+                          <th>Action</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td>
+                            Introduction Laravel 5
+                            <div class="table-links">
+                              in <a href="#">Web Development</a>
+                              <div class="bullet"></div>
+                              <a href="#">View</a>
+                            </div>
+                          </td>
+                          <td>
+                            <a href="#" class="font-weight-600"><img src="../assets/img/avatar/avatar-1.png" alt="avatar" width="30" class="rounded-circle mr-1"> Bagus Dwi Cahya</a>
+                          </td>
+                          <td>
+                            <a class="btn btn-primary btn-action mr-1" data-toggle="tooltip" title="Edit"><i class="fas fa-pencil-alt"></i></a>
+                            <a class="btn btn-danger btn-action" data-toggle="tooltip" title="Delete" data-confirm="Are You Sure?|This action can not be undone. Do you want to continue?" data-confirm-yes="alert('Deleted')"><i class="fas fa-trash"></i></a>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>
+                            Laravel 5 Tutorial - Installation
+                            <div class="table-links">
+                              in <a href="#">Web Development</a>
+                              <div class="bullet"></div>
+                              <a href="#">View</a>
+                            </div>
+                          </td>
+                          <td>
+                            <a href="#" class="font-weight-600"><img src="../assets/img/avatar/avatar-1.png" alt="avatar" width="30" class="rounded-circle mr-1"> Bagus Dwi Cahya</a>
+                          </td>
+                          <td>
+                            <a class="btn btn-primary btn-action mr-1" data-toggle="tooltip" title="Edit"><i class="fas fa-pencil-alt"></i></a>
+                            <a class="btn btn-danger btn-action" data-toggle="tooltip" title="Delete" data-confirm="Are You Sure?|This action can not be undone. Do you want to continue?" data-confirm-yes="alert('Deleted')"><i class="fas fa-trash"></i></a>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>
+                            Laravel 5 Tutorial - MVC
+                            <div class="table-links">
+                              in <a href="#">Web Development</a>
+                              <div class="bullet"></div>
+                              <a href="#">View</a>
+                            </div>
+                          </td>
+                          <td>
+                            <a href="#" class="font-weight-600"><img src="../assets/img/avatar/avatar-1.png" alt="avatar" width="30" class="rounded-circle mr-1"> Bagus Dwi Cahya</a>
+                          </td>
+                          <td>
+                            <a class="btn btn-primary btn-action mr-1" data-toggle="tooltip" title="Edit"><i class="fas fa-pencil-alt"></i></a>
+                            <a class="btn btn-danger btn-action" data-toggle="tooltip" title="Delete" data-confirm="Are You Sure?|This action can not be undone. Do you want to continue?" data-confirm-yes="alert('Deleted')"><i class="fas fa-trash"></i></a>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>
+                            Laravel 5 Tutorial - Migration
+                            <div class="table-links">
+                              in <a href="#">Web Development</a>
+                              <div class="bullet"></div>
+                              <a href="#">View</a>
+                            </div>
+                          </td>
+                          <td>
+                            <a href="#" class="font-weight-600"><img src="../assets/img/avatar/avatar-1.png" alt="avatar" width="30" class="rounded-circle mr-1"> Bagus Dwi Cahya</a>
+                          </td>
+                          <td>
+                            <a class="btn btn-primary btn-action mr-1" data-toggle="tooltip" title="Edit"><i class="fas fa-pencil-alt"></i></a>
+                            <a class="btn btn-danger btn-action" data-toggle="tooltip" title="Delete" data-confirm="Are You Sure?|This action can not be undone. Do you want to continue?" data-confirm-yes="alert('Deleted')"><i class="fas fa-trash"></i></a>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>
+                            Laravel 5 Tutorial - Deploy
+                            <div class="table-links">
+                              in <a href="#">Web Development</a>
+                              <div class="bullet"></div>
+                              <a href="#">View</a>
+                            </div>
+                          </td>
+                          <td>
+                            <a href="#" class="font-weight-600"><img src="../assets/img/avatar/avatar-1.png" alt="avatar" width="30" class="rounded-circle mr-1"> Bagus Dwi Cahya</a>
+                          </td>
+                          <td>
+                            <a class="btn btn-primary btn-action mr-1" data-toggle="tooltip" title="Edit"><i class="fas fa-pencil-alt"></i></a>
+                            <a class="btn btn-danger btn-action" data-toggle="tooltip" title="Delete" data-confirm="Are You Sure?|This action can not be undone. Do you want to continue?" data-confirm-yes="alert('Deleted')"><i class="fas fa-trash"></i></a>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>
+                            Laravel 5 Tutorial - Closing
+                            <div class="table-links">
+                              in <a href="#">Web Development</a>
+                              <div class="bullet"></div>
+                              <a href="#">View</a>
+                            </div>
+                          </td>
+                          <td>
+                            <a href="#" class="font-weight-600"><img src="../assets/img/avatar/avatar-1.png" alt="avatar" width="30" class="rounded-circle mr-1"> Bagus Dwi Cahya</a>
+                          </td>
+                          <td>
+                            <a class="btn btn-primary btn-action mr-1" data-toggle="tooltip" title="Edit"><i class="fas fa-pencil-alt"></i></a>
+                            <a class="btn btn-danger btn-action" data-toggle="tooltip" title="Delete" data-confirm="Are You Sure?|This action can not be undone. Do you want to continue?" data-confirm-yes="alert('Deleted')"><i class="fas fa-trash"></i></a>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
 <?php $__env->stopSection(); ?>
 <?php echo $__env->make('layouts.app', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH /home/tanvir/LARAVEL/weTrack/resources/views/admin/dashboard.blade.php ENDPATH**/ ?>

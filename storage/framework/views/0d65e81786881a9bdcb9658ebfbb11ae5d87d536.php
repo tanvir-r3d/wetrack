@@ -1,32 +1,29 @@
-<html>
-<!-- BEGIN: Head-->
-
+<!DOCTYPE html>
+<html lang="en">
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
-    <meta name="description" content="Stack admin is super flexible, powerful, clean &amp; modern responsive bootstrap 4 admin template with unlimited possibilities.">
-    <meta name="keywords" content="admin template, stack admin template, dashboard template, flat admin template, responsive admin template, web app">
-    <meta name="author" content="PIXINVENT">
-    <meta name="csrf-token" content="<?php echo e(csrf_token()); ?>">
-    <title>WE Track</title>
-    <link rel="apple-touch-icon" href="<?php echo e(asset('app-assets/images/ico/apple-icon-120.png')); ?>">
-    <link rel="shortcut icon" type="image/x-icon" href="<?php echo e(asset('app-assets/images/ico/favicon.png')); ?>">
-    <link href="https://fonts.googleapis.com/css?family=Montserrat:300,300i,400,400i,500,500i%7COpen+Sans:300,300i,400,400i,600,600i,700,700i" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="/css/all.css">
-    <link rel="stylesheet" type="text/css" href="<?php echo e(asset('app-assets/vendors/css/weather-icons/climacons.min.css')); ?>">
-    <!-- END: Custom CSS-->
+  <meta charset="UTF-8">
+  <meta content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no" name="viewport">
+  <title><?php echo $__env->yieldContent('page_name'); ?>|Wetrack</title>
 
-      <!-- BEGIN: Vendor CSS-->
-      <link rel="stylesheet" type="text/css" href="<?php echo e(asset('app-assets/vendors/css/vendors.min.css')); ?>">
-      <link rel="stylesheet" type="text/css" href="toastr.min.css">
-      <link rel="stylesheet" type="text/css" href="<?php echo e(asset('app-assets/vendors/css/tables/datatable/datatables.min.css')); ?>">
+  <!-- General CSS Files -->
+  <link rel="stylesheet" href="css/bootstrap.min.css">
 
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css">
+  <!-- Template CSS -->
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/components.css">
 
+  <!-- PACKAGES --> 
+  <link rel="stylesheet" href="packages/DataTables/datatables.min.css">
+  <link rel="stylesheet" href="packages/DataTables/DataTables-1.10.20/css/dataTables.bootstrap.min.css">
+  <link rel="stylesheet" href="packages/DataTables/DataTables-1.10.20/css/dataTables.bootstrap4.min.css">
+  <link rel="stylesheet" href="packages/DataTables/DataTables-1.10.20/css/dataTables.foundation.min.css">
+  <link rel="stylesheet" href="packages/DataTables/DataTables-1.10.20/css/dataTables.jqueryui.min.css">
+  <link rel="stylesheet" href="packages/DataTables/DataTables-1.10.20/css/dataTables.semanticui.min.css">
+  <link rel="stylesheet" href="packages/DataTables/DataTables-1.10.20/css/jquery.dataTables.min.css">
+  
 </head>
-<!-- END: Head-->
 
-<!-- BEGIN: Body-->
-
-<body class="horizontal-layout horizontal-menu 2-columns  " data-open="hover" data-menu="horizontal-menu" data-col="2-columns">
-<?php /**PATH /home/tanvir/LARAVEL/weTrack/resources/views/layouts/app_css.blade.php ENDPATH**/ ?>
+<body>
+  <div id="app">
+    <div class="main-wrapper"><?php /**PATH /home/tanvir/LARAVEL/weTrack/resources/views/layouts/app_css.blade.php ENDPATH**/ ?>
