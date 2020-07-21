@@ -106,7 +106,7 @@ class UserController extends Controller
                 $user_image->user_img = $img_name;
                 $user_image->save();
             }
-        Toastr::success('Sucessfully Updated', 'Account', ["positionClass" => "toast-top-center"]);
+        Toastr::success('Sucessfully Updated', 'Account', ["positionClass" => "toast-top-right"]);
         return redirect()->back();
     } 
 

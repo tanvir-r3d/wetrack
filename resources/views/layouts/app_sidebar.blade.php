@@ -1,22 +1,22 @@
       <div class="main-sidebar">
         <aside id="sidebar-wrapper">
           <div class="sidebar-brand">
-            <a href="index.html">Stisla</a>
+            <a href="/">We Track</a>
           </div>
           <div class="sidebar-brand sidebar-brand-sm">
-            <a href="index.html">St</a>
+            <a href="/">WT</a>
           </div>
           <ul class="sidebar-menu">
 
               <li class="menu-header">Dashboard</li>
               <li class="nav-item dropdown active">
-                <li><a class="nav-link" href="blank.html"><i class="fas fa-fire"></i><span>Dashboard</span></a></li>
+                <li><a class="nav-link" href="/home"><i class="fas fa-home"></i><span>Dashboard</span></a></li>
               </li>
           
               <li class="menu-header">Administrator</li>
-                <li><a class="nav-link" href="blank.html"><i class="fas fa-fire"></i><span>User</span></a></li>
+                <li><a class="nav-link" href="/user"><i class="fas fa-user"></i><span>User</span></a></li>
               <li class="nav-item dropdown">
-                <a href="#" class="nav-link has-dropdown"><i class="far fa-file-alt"></i> <span>RBAC</span></a>
+                <a href="#" class="nav-link has-dropdown"><i class="fas fa-key"></i> <span>RBAC</span></a>
                 <ul class="dropdown-menu">
                   <li><a class="nav-link" href="forms-advanced-form.html">Roles</a></li>
                   <li><a class="nav-link" href="forms-editor.html">Permissions</a></li>
@@ -27,7 +27,7 @@
 
               <li class="menu-header">Details</li>
               <li class="nav-item dropdown">
-                <a href="#" class="nav-link has-dropdown"><i class="far fa-file-alt"></i> <span>Company</span></a>
+                <a href="#" class="nav-link has-dropdown"><i class="fas fa-industry"></i> <span>Company</span></a>
                 <ul class="dropdown-menu">
                   <li><a class="nav-link" href="/company">Company</a></li>
                   <li><a class="nav-link" href="/branch">Branch</a></li>
@@ -35,7 +35,7 @@
               </li>
           
               <li class="nav-item dropdown">
-                <a href="#" class="nav-link has-dropdown"><i class="far fa-file-alt"></i> <span>Employee</span></a>
+                <a href="#" class="nav-link has-dropdown"><i class="fas fa-users-cog"></i> <span>Employee</span></a>
                 <ul class="dropdown-menu">
                   <li><a class="nav-link" href="forms-advanced-form.html">Employee Category</a></li>
                   <li><a class="nav-link" href="forms-validation.html">Employee</a></li>
@@ -43,7 +43,7 @@
               </li>
 
               <li class="nav-item dropdown">
-                <a href="#" class="nav-link has-dropdown"><i class="far fa-file-alt"></i> <span>Track Employee</span></a>
+                <a href="#" class="nav-link has-dropdown"><i class="fas fa-map-marked-alt"></i> <span>Track Employee</span></a>
                 <ul class="dropdown-menu">
                   <li><a class="nav-link" href="forms-advanced-form.html">Employee In field</a></li>
                   <li><a class="nav-link" href="forms-validation.html">Track List</a></li>

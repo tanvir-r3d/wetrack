@@ -11,7 +11,6 @@ class Employee extends Model
   protected $table="employees";
   protected $primaryKey="emp_id";
   public $fillable=[
-    // 'emp_id',
     'emp_full_name',
     'emp_branch_id',
     'emp_cat_id',
@@ -21,7 +20,8 @@ class Employee extends Model
     'emp_email', 
     'emp_password',
     'emp_address',
-    'emp_phone'
+    'emp_phone',
+    'emp_image'
   ];
 
   public function validation(){
@@ -47,7 +47,6 @@ class Employee extends Model
         'email'=>'required|unique:employees',
         'password'=>'required',
         'address'=>'required',
-
     ];
     }
       

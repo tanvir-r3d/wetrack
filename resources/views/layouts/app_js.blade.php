@@ -1,29 +1,28 @@
 <!-- General JS Scripts -->
-  <script src="js/jquery.min.js"></script>
-  <script src="js/popper.min.js"></script>
-  <script src="js/bootstrap.min.js"></script>
-  <script src="js/jquery.nicescroll.min.js"></script>
-  <script src="js/moment.min.js"></script>
-  <script src="js/stisla.js"></script>
+  <script src="/js/jquery.min.js"></script>
+  <script src="/js/popper.min.js"></script>
+  <script src="/js/bootstrap.min.js"></script>
+  <script src="/js/jquery.nicescroll.min.js"></script>
+  <script src="/js/moment.min.js"></script>
+  <script src="/js/stisla.js"></script>
   <!-- Template JS File -->
-  <script src="js/scripts.js"></script>
-  <script src="js/custom.js"></script>
+  <script src="/js/scripts.js"></script>
+  <script src="/js/custom.js"></script>
   <!-- PACKAGE -->
-  <script src="packages/DataTables/datatables.min.js"></script>
-  <script src="packages/DataTables/DataTables-1.10.20/js/dataTables.bootstrap.min.js"></script>
-  <script src="packages/DataTables/DataTables-1.10.20/js/dataTables.bootstrap4.min.js"></script>
-  <script src="packages/DataTables/DataTables-1.10.20/js/dataTables.foundation.min.js"></script>
-  <script src="packages/DataTables/DataTables-1.10.20/js/dataTables.jqueryui.min.js"></script>
-  <script src="packages/DataTables/DataTables-1.10.20/js/dataTables.semanticui.min.js"></script>
-  <script src="packages/DataTables/DataTables-1.10.20/js/jquery.dataTables.min.js"></script>
+  <script src="/packages/DataTables/datatables.min.js"></script>
+  <script src="/packages/DataTables/DataTables-1.10.20/js/dataTables.bootstrap.min.js"></script>
+  <script src="/packages/DataTables/DataTables-1.10.20/js/dataTables.bootstrap4.min.js"></script>
+  <script src="/packages/DataTables/DataTables-1.10.20/js/dataTables.foundation.min.js"></script>
+  <script src="/packages/DataTables/DataTables-1.10.20/js/dataTables.jqueryui.min.js"></script>
+  <script src="/packages/DataTables/DataTables-1.10.20/js/dataTables.semanticui.min.js"></script>
+  <script src="/packages/DataTables/DataTables-1.10.20/js/jquery.dataTables.min.js"></script>
+  <script src="/packages/DataTables/DataTables-1.10.20/js/jquery.dataTables.min.js"></script>
+  <script src="/packages/sweetalert.min.js"></script>
+  <script src="/packages/toastr/toastr.js"></script>
+
+<script type="text/javascript" src="{{ url('vendor/jsvalidation/js/jsvalidation.js')}}"></script>
+
   @yield('script')
-
-
-
-
-
-
-
 
 
 
@@ -65,8 +64,6 @@
 }
 @else
 @endif
-
+{!! Toastr::message() !!}
 </body>
-<!-- END: Body-->
-
 </html>

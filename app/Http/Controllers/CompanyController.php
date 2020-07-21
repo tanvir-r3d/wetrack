@@ -4,86 +4,102 @@ namespace App\Http\Controllers;
 
 use App\Company;
 use Illuminate\Http\Request;
-
+use Validator;
+use Toastr;
+use JsValidator;
 class CompanyController extends Controller
 {
     
     public function index()
     {
-       
+        $company=new Company;
         if(request()->ajax())
         {
             return datatables()->of(Company::latest()->get())
             ->addColumn('action',function($data){
-                $button='<button type="button" name="edit" id="'.$data->com_id.'" class="edit btn btn-primary">Edit</button>';
+                $button='<button type="button" name="edit" id="edit" data-toggle="modal" data-target="#editModal" data-id="'.$data->com_id.'" class="edit btn btn-primary"><i class="fas fa-edit"></i></button>';
                 $button.='&nbsp;&nbsp;';
-                $button='<button type="button" name="delete" id="'.$data->com_id.'" class="edit btn btn-delete">Delete</button>';
+                $button.='<button type="button" name="delete" id="delete" data-id="'.$data->com_id.'" class="delete btn btn-danger"><i class="fas fa-trash"></i></button>';
                 return $button;
             })
             ->rawColumns(['action'])
             ->make(true);
         }
-        return view('admin.company.index');
+        $validator=JsValidator::make($company->validation());
+        return view('admin.company.index',['validator'=>$validator]);
     }
 
-    public function create()
-    {
-        //
-    }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
-        //
+        $company = new Company;
+        $validation=Validator::make($request->all(),$company->validation());
+        $jsValidator = JsValidator::validator($validation);
+        
+            $company->com_name=$request->name;
+            $company->com_details=$request->details;
+            if($request->hasFile('logo'))
+            {
+                $ext = $request->file('logo')->getClientOriginalExtension();
+                $path = public_path('images/company/');
+                $name = 'logo' . time() . '.' . $ext;
+                $request->file('logo')->move($path, $name);
+                $company->com_logo = $name;
+            }
+            else
+            {
+                $company->com_logo = '';
+            }
+            $company->save();
+        Toastr::success('Congratulation! New Company Information Saved Successfully', 'Company',["positionClass" => "toast-top-center"]);
+        return redirect()->back();                                              
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Company  $company
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Company $company)
+
+    public function edit(Request $request)
     {
-        //
+        $id=$request->id;
+        $company=Company::find($id);
+        return response()->json($company);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Company  $company
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Company $company)
+    public function update(Request $request, $id)
     {
-        //
+        $company=New Company;
+        $validation=Validator::make($request->all(),$company->validation());
+        $jsValidator=JsValidator::validator($validation);
+        
+        $company=Company::find($id);
+            $company->com_name=$request->name;
+            $company->com_details=$request->details;
+            if($request->hasFile('logo'))
+            {
+                if($company->com_logo!='')
+                {
+                    unlink(public_path('images/company/').$company->com_logo);
+                }
+                else
+                {
+                    $ext = $request->file('logo')->getClientOriginalExtension();
+                    $path = public_path('images/company/');
+                    $name = 'logo' . time() . '.' . $ext;
+                    $request->file('logo')->move($path, $name);
+                    $company->com_logo = $name;
+                }
+            }
+        $company->save();
+        Toastr::success('Congratulation! New Company Information Updated Successfully', 'Company',["positionClass" => "toast-top-center"]);
+        return redirect()->back();
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Company  $company
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Company $company)
+    public function destroy($id)
     {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Company  $company
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Company $company)
-    {
-        //
+        Company::where('com_id',$id)->delete();
+        $status=200;
+        $response=[
+            'status'=>$status,
+            'message'=>'Successfully Deleted',
+        ];
+        return response()->json($response,$status);
     }
 }
