@@ -111,38 +111,5 @@ class UserController extends Controller
         return response()->json($response,$status);
     }
 
-    public function matchpass(Request $request)
-    {
-        if(Hash::check($request->old_pass, Auth::user()->password))
-        {
-            return response('1');
-        }
-        else
-        {
-            return response('0');
-        }
-    }
-
-    public function changepass(Request $request)
-    {
-        if($request->new_pass==$request->retype_pass)
-        {
-            $update=['password'=>Hash::make($request->new_pass)];
-            User::where('id',Auth::user()->id)->update($update);
-            $status=200;
-            $response=[
-                'status'=>$status,
-                'message'=>'Password Changed',
-            ];
-        }
-        else
-        {
-            $status=500;
-            $response=[
-                'status'=>$status,
-                'message'=>'Something Went Wrong',
-            ];
-        }
-        return response()->json($response,$status);
-    }
+    
 }
