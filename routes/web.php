@@ -39,10 +39,9 @@ Route::middleware('auth')->group(function () {
 
   //Employee Route
   Route::resource('/employee','EmployeeController');
-  Route::get('employee/show','EmployeeController@show')->name('employee.show');
-  Route::delete('employee/delete','EmployeeController@destroy')->name('employee.destroy');
-  Route::get('employee_edit','EmployeeController@emp_edit');
-  Route::post('employee/update','EmployeeController@update')->name('employee.update');
+  Route::get('/employee/delete/{id}','EmployeeController@destroy');
+  Route::get('employee_edit','EmployeeController@edit')->name('employee_edit');
+  Route::post('employee/update/{id}','EmployeeController@update');
 
   // Employee In Field
   Route::get('employee_status/','EmployeeStatusController@index');

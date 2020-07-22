@@ -16,44 +16,25 @@ class Employee extends Model
     'emp_cat_id',
     'emp_salery',
     'emp_gender',
-    'emp_username',
-    'emp_email', 
-    'emp_password',
+    'emp_com_id',
     'emp_address',
     'emp_phone',
-    'emp_image'
+    'emp_img'
   ];
 
   public function validation(){
-    if('id'){
+
       return[
         'full_name'=>'required',
         'branch_id'=>'required',
         'cat_id'=>'required',
-        'user_name'=>"required",
         'phone'=>'required',
-        'email'=>"required",
         'address'=>'required',
 
     ];
-    }
-    else{
-      return[
-        'full_name'=>'required',
-        'branch_id'=>'required',
-        'cat_id'=>'required',
-        'user_name'=>'required|unique:employees',
-        'phone'=>'required',
-        'email'=>'required|unique:employees',
-        'password'=>'required',
-        'address'=>'required',
-    ];
-    }
-      
+
+
   }
-    // public function image()
-    // {
-    //   return $this->hasMany('EmployeeImage', 'emp_id');
-    // }
+
 
 }
