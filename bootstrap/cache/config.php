@@ -10,7 +10,7 @@
     'locale' => 'en',
     'fallback_locale' => 'en',
     'faker_locale' => 'en_US',
-    'key' => 'base64:7MLeNfzDfm43cPheR5Mt9z4jP9pSJvjXsgPDVNZGkpg=',
+    'key' => 'base64:xgUTBxCHkzivDNTNiD9xUDZ95DQjG3wttMV8WWIe4yM=',
     'cipher' => 'AES-256-CBC',
     'providers' => 
     array (
@@ -177,7 +177,7 @@
       'file' => 
       array (
         'driver' => 'file',
-        'path' => '/home/tanvir/LARAVEL/weTrack/storage/framework/cache/data',
+        'path' => '/home/refat/Desktop/work/wetrack/storage/framework/cache/data',
       ),
       'memcached' => 
       array (
@@ -239,7 +239,7 @@
         'port' => '3306',
         'database' => 'wetrack',
         'username' => 'root',
-        'password' => 'root',
+        'password' => '',
         'unix_socket' => '',
         'charset' => 'utf8mb4',
         'collation' => 'utf8mb4_unicode_ci',
@@ -259,7 +259,7 @@
         'port' => '3306',
         'database' => 'wetrack',
         'username' => 'root',
-        'password' => 'root',
+        'password' => '',
         'charset' => 'utf8',
         'prefix' => '',
         'prefix_indexes' => true,
@@ -274,7 +274,7 @@
         'port' => '3306',
         'database' => 'wetrack',
         'username' => 'root',
-        'password' => 'root',
+        'password' => '',
         'charset' => 'utf8',
         'prefix' => '',
         'prefix_indexes' => true,
@@ -366,12 +366,12 @@
       'local' => 
       array (
         'driver' => 'local',
-        'root' => '/home/tanvir/LARAVEL/weTrack/storage/app',
+        'root' => '/home/refat/Desktop/work/wetrack/storage/app',
       ),
       'public' => 
       array (
         'driver' => 'local',
-        'root' => '/home/tanvir/LARAVEL/weTrack/storage/app/public',
+        'root' => '/home/refat/Desktop/work/wetrack/storage/app/public',
         'url' => 'http://127.0.0.1:8000//storage',
         'visibility' => 'public',
       ),
@@ -429,13 +429,13 @@
       'single' => 
       array (
         'driver' => 'single',
-        'path' => '/home/tanvir/LARAVEL/weTrack/storage/logs/laravel.log',
+        'path' => '/home/refat/Desktop/work/wetrack/storage/logs/laravel.log',
         'level' => 'debug',
       ),
       'daily' => 
       array (
         'driver' => 'daily',
-        'path' => '/home/tanvir/LARAVEL/weTrack/storage/logs/laravel.log',
+        'path' => '/home/refat/Desktop/work/wetrack/storage/logs/laravel.log',
         'level' => 'debug',
         'days' => 14,
       ),
@@ -485,30 +485,30 @@
       ),
       'emergency' => 
       array (
-        'path' => '/home/tanvir/LARAVEL/weTrack/storage/logs/laravel.log',
+        'path' => '/home/refat/Desktop/work/wetrack/storage/logs/laravel.log',
       ),
     ),
   ),
   'mail' => 
   array (
     'driver' => 'smtp',
-    'host' => 'smtp.mailtrap.io',
-    'port' => '2525',
+    'host' => 'smtp.gmail.com',
+    'port' => '587',
     'from' => 
     array (
-      'address' => NULL,
-      'name' => 'Laravel',
+      'address' => 'abrefat2190@gmail.com',
+      'name' => 'Gorib',
     ),
-    'encryption' => NULL,
-    'username' => NULL,
-    'password' => NULL,
+    'encryption' => 'tls',
+    'username' => 'abrefat2190@gmail.com',
+    'password' => '01852105142',
     'sendmail' => '/usr/sbin/sendmail -bs',
     'markdown' => 
     array (
       'theme' => 'default',
       'paths' => 
       array (
-        0 => '/home/tanvir/LARAVEL/weTrack/resources/views/vendor/mail',
+        0 => '/home/refat/Desktop/work/wetrack/resources/views/vendor/mail',
       ),
     ),
     'log_channel' => NULL,
@@ -587,7 +587,7 @@
     'lifetime' => '120',
     'expire_on_close' => false,
     'encrypt' => false,
-    'files' => '/home/tanvir/LARAVEL/weTrack/storage/framework/sessions',
+    'files' => '/home/refat/Desktop/work/wetrack/storage/framework/sessions',
     'connection' => NULL,
     'table' => 'sessions',
     'store' => NULL,
@@ -607,9 +607,9 @@
   array (
     'paths' => 
     array (
-      0 => '/home/tanvir/LARAVEL/weTrack/resources/views',
+      0 => '/home/refat/Desktop/work/wetrack/resources/views',
     ),
-    'compiled' => '/home/tanvir/LARAVEL/weTrack/storage/framework/views',
+    'compiled' => '/home/refat/Desktop/work/wetrack/storage/framework/views',
   ),
   'flare' => 
   array (
@@ -634,6 +634,7 @@
     'register_commands' => false,
     'ignored_solution_providers' => 
     array (
+      0 => 'Facade\\Ignition\\SolutionProviders\\MissingPackageSolutionProvider',
     ),
     'enable_runnable_solutions' => NULL,
     'remote_sites_path' => '',

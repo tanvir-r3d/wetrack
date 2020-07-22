@@ -9,7 +9,7 @@ use Toastr;
 use JsValidator;
 class CompanyController extends Controller
 {
-    
+
     public function index()
     {
         $company=new Company;
@@ -35,7 +35,7 @@ class CompanyController extends Controller
         $company = new Company;
         $validation=Validator::make($request->all(),$company->validation());
         $jsValidator = JsValidator::validator($validation);
-        
+
             $company->com_name=$request->name;
             $company->com_details=$request->details;
             if($request->hasFile('logo'))
@@ -51,8 +51,8 @@ class CompanyController extends Controller
                 $company->com_logo = '';
             }
             $company->save();
-        Toastr::success('Congratulation! New Company Information Saved Successfully', 'Company',["positionClass" => "toast-top-center"]);
-        return redirect()->back();                                              
+        Toastr::success('Congratulation! New Company Information Saved Successfully', 'Company',["positionClass" => "toast-top-right"]);
+        return redirect()->back();
     }
 
 
@@ -68,7 +68,7 @@ class CompanyController extends Controller
         $company=New Company;
         $validation=Validator::make($request->all(),$company->validation());
         $jsValidator=JsValidator::validator($validation);
-        
+
         $company=Company::find($id);
             $company->com_name=$request->name;
             $company->com_details=$request->details;
@@ -88,7 +88,7 @@ class CompanyController extends Controller
                 }
             }
         $company->save();
-        Toastr::success('Congratulation! New Company Information Updated Successfully', 'Company',["positionClass" => "toast-top-center"]);
+        Toastr::success('Congratulation! New Company Information Updated Successfully', 'Company',["positionClass" => "toast-top-right"]);
         return redirect()->back();
     }
 

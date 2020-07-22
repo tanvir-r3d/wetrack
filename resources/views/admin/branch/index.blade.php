@@ -1,234 +1,188 @@
 @extends('layouts.app')
-@section('page_name') Branch Data @endsection
+@section('page_name') Branch @endsection
+@section('section_header') Branch @endsection
 @section('breadcrumb')
-<li class="breadcrumb-item"><a href="/">Home</a>
-</li>
-<li class="breadcrumb-item active">Branch
-</li>
+<div class="breadcrumb-item"><a href="/">Home</a>
+</div>
+<div class="breadcrumb-item active">Branch</div>
 @endsection
 @section('content')
+<h2 class="section-title">Branch List</h2>
+<p class="section-lead">
+	<button class="btn btn-success mr-l" data-toggle="modal" data-target="#addModal">Add Branch</button>
+</p>
+<div class="row">
+	<div class="col-12">
+		<div class="card">
+			<div class="card-header">
+				<h4>Branch Table</h4>
+			</div>
+			<div class="card-body">
+				<div class="table-responsive">
+					<table id="dataTable" class="display dataTable table table-striped" style="width:100%">
+						<thead>
+							<tr>
 
-            <div class="content-body">
-                <section id="configuration">
-                    <div class="row">
-                        <div class="col-12">
-                            <div class="card">
-                                <div class="card-header">
-                                    <h4 class="card-title">Branch Table</h4>
-                                    <a class="heading-elements-toggle"><i class="fa fa-ellipsis-v font-medium-3"></i></a>
-                                    <div class="heading-elements">
-                                        <ul class="list-inline mb-0">
-                                            <li><button class="btn btn-secondary" data-toggle="modal" data-target="#addModal"><i class="feather icon-plus-circle"> Add</i></button></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                                <div class="card-content collapse show">
-                                    <div class="card-body card-dashboard" id="dataRow">
-                                        
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-            </div>
+								<th class="text-center">Name</th>
+								<th class="text-center">Location</th>
+								<th class="text-center">Action</th>
+							</tr>
+						</thead>
+						<tbody></tbody>
+						<tfoot>
+							<tr>
 
+								<th>Name</th>
+								<th>Location</th>
+								<th>Action</th>
+							</tr>
+						</tfoot>
+					</table>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+</div>
+</div>
 <!-- ADD MODAL -->
-<div class="modal fade text-left" id="addModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel35" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h3 class="modal-title" id="myModalLabel35">Add Branch</h3>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <form method="post" id="addForm">
-            @csrf
-                <div class="modal-body">
-                    <fieldset class="form-group floating-label-form-group">
-                        <label for="name">Name</label>
-                        <input type="text" class="form-control" id="name" name="name" placeholder="Enter Branch Name" required data-validation-required-message="This field is required">
-                    </fieldset>
-                    <br>
-                    <fieldset class="form-group floating-label-form-group">
-                        <label for="location">Location</label>
-                        <textarea class="form-control" name="location" id="location" placeholder="Enter Branch Location" required data-validation-required-message="This field is required"></textarea>
-                    </fieldset>
-                    <br>
-                    <fieldset class="form-group floating-label-form-group">
-                        <label for="details">Details</label>
-                        <textarea class="form-control" id="details" rows="3" name="details" placeholder="Enter Branch details" ></textarea>
-                    </fieldset>
-                </div>
-                <div class="modal-footer">
-                    <input type="reset" class="btn btn-outline-secondary" data-dismiss="modal" value="Close">
-                    <input type="submit" class="btn btn-outline-primary" value="Submit">
-                </div>
-            </form>
-        </div>
-    </div>
+<div class="modal fade" tabindex="-1" role="dialog" id="addModal">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title">Add Branch</h5>
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close"> <span aria-hidden="true">&times;</span>
+				</button>
+			</div>
+      <form action="{{route('branch.store')}}" method="post" id="addForm">
+      @csrf
+			<div class="modal-body">
+
+      <div class="form-group">
+        <label>Branch Name:</label>
+        <input type="text" class="form-control" name="name" id="name">
+      </div>
+
+      <div class="form-group">
+        <label>Branch Location:</label>
+          <input type="text"class="form-control" name="location" id="location" >
+      </div>
+
+      <div class="form-group">
+        <label>Branch Details:</label>
+        <textarea class="form-control" name="details" cols="30" rows="10"></textarea>
+      </div>
+			</div>
+			<div class="modal-footer bg-whitesmoke br">
+				<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+				<button class="btn btn-primary">Save</button>
+        </form>
+			</div>
+		</div>
+	</div>
 </div>
 
-<!-- VIEW MODAL -->
-<div class="modal fade text-left" id="viewModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel20" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h4 class="modal-title" id="myModalLabel20">Branch View</h4>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
+<!-- Edit MODAL -->
+<div class="modal fade" tabindex="-1" role="dialog" id="editModal">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title">Edit Branch</h5>
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close"> <span aria-hidden="true">&times;</span>
+				</button>
+			</div>
+      <form method="post" id="editForm" >
+      @csrf
+	<div class="modal-body">
+      <div class="form-group">
 
-            <div class="modal-body" id="viewBody"></div>
-            
-            <div class="modal-footer">
-                <button type="button" class="btn grey btn-outline-secondary" data-dismiss="modal">Close</button>
-            </div>
-        </div>
-    </div>
+
+      <div class="form-group">
+        <label>Branch Name:</label>
+        <input type="text" class="form-control" name="name" id="e_name">
+      </div>
+
+      <div class="form-group">
+        <label>Branch Location:</label>
+          <input type="text"class="form-control" name="location" id="e_location" >
+      </div>
+
+      <div class="form-group">
+        <label>Branch Details:</label>
+        <textarea class="form-control" name="details" id="e_details" cols="30" rows="10"></textarea>
+      </div>
+			</div>
+			<input type="hidden" id="edit_id" name="id">
+			<div class="modal-footer bg-whitesmoke br">
+				<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+				<button class="btn btn-primary">Save Changes</button>
+        </form>
+			</div>
+		</div>
+	</div>
 </div>
-
-<!-- EDIT MODAL -->
-<div class="modal fade text-left" id="editModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel35" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h3 class="modal-title" id="myModalLabel35">Edit Branch</h3>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <form method="post" id="editForm">
-            @csrf
-                <div class="modal-body">
-                    <fieldset class="form-group floating-label-form-group">
-                        <label for="name">Name</label>
-                        <input type="text" class="form-control" id="edit_name" name="name" placeholder="Enter Branch Name" required data-validation-required-message="This field is required">
-                    </fieldset>
-                    <br>
-                    <fieldset class="form-group floating-label-form-group">
-                        <label for="location">Location</label>
-                        <textarea class="form-control" name="location" id="edit_location" placeholder="Enter Branch Location" required data-validation-required-message="This field is required"></textarea>
-                    </fieldset>
-                    <br>
-                    <fieldset class="form-group floating-label-form-group">
-                        <label for="details">Details</label>
-                        <textarea class="form-control" id="edit_details" rows="3" name="details" placeholder="Enter Branch details" ></textarea>
-                    </fieldset>
-                    <input type="hidden" id="edit_id" name="id">
-                </div>
-                <div class="modal-footer">
-                    <input type="reset" class="btn btn-outline-secondary" data-dismiss="modal" value="Close">
-                    <input type="submit" class="btn btn-outline-primary" value="Update">
-                </div>
-            </form>
-        </div>
-    </div>
-</div>
-
 @endsection
 @section('script')
-<script type="text/javascript">
-$(document).ready(function(){
-    dataList();
+<script>
+	$(document).ready(function() {
+	    $('#dataTable').DataTable({
+	        processing: true,
+	        serverSide: true,
+	        ajax:"{{route('branch.index')}}",
+	        "columns":[
 
-   $("#addForm").submit(function(e){
-    e.preventDefault();
-    var data=$(this).serializeArray();
-    $.ajax({
-        url:"{{route('branch.store')}}",
-        data:data,
-        dataType:'json',
-        type:'post',
-        success:function(data)
-        {
-            $("#addModal").modal('hide');
-            $("#addForm").trigger( "reset" );
-            dataList();
-            toastr["success"](data.message);
-        }
-    });
+	            {
+	              data: 'branch_name',
+	              },
+                {
+  	              data: 'branch_location',
+  	              },
+	          
+	            {
+	              data: 'action',
+	              name: 'action',
+				  orderable:false,
+	              },
+	        ],
+	    });
 
-   });
+	$(document).on("click","#delete",function(){
+		var id=$(this).attr("data-id");
+		$.ajax({
+			url:"/branch/delete/"+id,
+			type:"get",
+			dataType:"json",
+			success:function(data)
+			{
+				location.reload();
+			}
+		});
+	});
 
-   $(document).on('click','.view',function(){
-    var id=$(this).attr("get_id");
-    $.ajax({
-        url:"{{route('branch.show')}}",
-        data:{'id':id},
-        dataType:'html',
-        type:'get',
-        success:function(data)
-        {
-            $("#viewBody").html(data);
-        }
-    });
-   });  
+	$(document).on("click","#edit",function(){
+		var id=$(this).attr("data-id");
+		var __this=$(this);
+		$.ajax({
+			url:"{{route('branch_edit')}}",
+			data:{'id':id,"_token": "{{ csrf_token() }}"},
+			type:"get",
+			dataType:"json",
+			success:function(data)
+			{
+				console.log(data);
+				$("#e_name").val(data.branch_name);
+        $("#e_location").val(data.branch_location)
+				$("#e_details").val(data.branch_details);
+				$("#editForm").attr("action","/branch/update/"+data.branch_id);
 
-   $(document).on('click','#delete',function(){
-    var id=$(this).attr("get_id");
-    $.ajax({
-        url:"{{route('branch.destroy')}}",
-        data:{'id':id, "_token": "{{ csrf_token() }}"},
-        dataType:'json',
-        type:'delete',
-        success:function(data)
-        {
-            dataList();
-            toastr["success"](data.message);
-        }
-    });
-   });  
+			}
+		});
+	});
 
-   $(document).on("click",".edit",function(){
-    var id=$(this).attr("get_id");
-    $("#edit_id").val(id);
-    $.ajax({
-        url:"{{url('branch_edit')}}",
-        type:"get",
-        data:{id:id},
-        dataType:"json",
-        success:function(data)
-        {
-            $("#edit_name").val(data.branch_name);
-            $("#edit_location").val(data.branch_location);
-            $("#edit_details").val(data.branch_details);
-        }
-    });
-   });
-   
-   $(document).on('submit','#editForm',function(e){
-    e.preventDefault();
-    var data=$(this).serializeArray();
-    $.ajax({
-        url:"{{route('branch.update')}}",
-        data:data,
-        type:"post",
-        dataType:"json",
-        success:function(data)
-        {
-            $("#editModal").modal('hide');
-            dataList();
-            toastr["success"](data.message);
-        }
-    });
+});
 
-   });
 
-}); 
-
-function dataList(){
-    $.ajax({
-        url:"{{route('branch.create')}}",
-        dataType:'html',
-        type:'get',
-        success:function(data)
-        {
-            $("#dataRow").html(data);
-        }
-    });
-};
 </script>
+{!! $validator->selector('#addForm') !!}
+{!! $validator->selector('#editForm') !!}
 @endsection
