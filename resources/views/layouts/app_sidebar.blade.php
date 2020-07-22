@@ -12,7 +12,7 @@
               <li class="nav-item dropdown active">
                 <li><a class="nav-link" href="/home"><i class="fas fa-home"></i><span>Dashboard</span></a></li>
               </li>
-          
+
               <li class="menu-header">Administrator</li>
                 <li><a class="nav-link" href="/user"><i class="fas fa-user"></i><span>User</span></a></li>
               <li class="nav-item dropdown">
@@ -33,11 +33,11 @@
                   <li><a class="nav-link" href="/branch">Branch</a></li>
                 </ul>
               </li>
-          
+
               <li class="nav-item dropdown">
                 <a href="#" class="nav-link has-dropdown"><i class="fas fa-users-cog"></i> <span>Employee</span></a>
                 <ul class="dropdown-menu">
-                  <li><a class="nav-link" href="forms-advanced-form.html">Employee Category</a></li>
+                  <li><a class="nav-link" href="/employeeCategorys">Employee Category</a></li>
                   <li><a class="nav-link" href="forms-validation.html">Employee</a></li>
                 </ul>
               </li>
@@ -49,7 +49,7 @@
                   <li><a class="nav-link" href="forms-validation.html">Track List</a></li>
                 </ul>
               </li>
-        
+
 
               <li class="menu-header"></li>
               <li class="nav-item dropdown">

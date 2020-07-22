@@ -33,10 +33,9 @@ Route::middleware('auth')->group(function () {
 
   //EmployeeCategory Route
   Route::resource('/employeeCategorys','EmployeeCategoryController');
-  Route::get('employeeCategorys/show','EmployeeCategoryController@show')->name('employeeCategorys.show');
-  Route::delete('employeeCategorys/delete','EmployeeCategoryController@destroy')->name('employeeCategorys.destroy');
-  Route::get('employeeCategorys_edit','EmployeeCategoryController@cat_edit');
-  Route::post('employeeCategorys/update','EmployeeCategoryController@update')->name('employeeCategorys.update');
+  Route::get('employeeCategorys/delete/{id}','EmployeeCategoryController@destroy');
+  Route::get('employeeCategorys_edit','EmployeeCategoryController@edit')->name('employeeCategorys_edit');
+  Route::post('employeeCategorys/update/{id}','EmployeeCategoryController@update');
 
   //Employee Route
   Route::resource('/employee','EmployeeController');
