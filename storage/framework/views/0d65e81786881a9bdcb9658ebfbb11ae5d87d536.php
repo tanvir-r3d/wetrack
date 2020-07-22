@@ -5,6 +5,8 @@
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no" name="viewport">
   <title><?php echo $__env->yieldContent('page_name'); ?>| Wetrack</title>
 
+  <!-- Custom CSS Files -->
+  <link rel="stylesheet" href="/css/custom.css">
   <!-- General CSS Files -->
   <link rel="stylesheet" href="/css/bootstrap.min.css">
 
@@ -13,7 +15,7 @@
   <link rel="stylesheet" href="/css/style.css">
   <link rel="stylesheet" href="/css/components.css">
 
-  <!-- PACKAGES --> 
+  <!-- PACKAGES -->
   <link rel="stylesheet" href="/packages/DataTables/datatables.min.css">
   <link rel="stylesheet" href="/packages/DataTables/DataTables-1.10.20/css/dataTables.bootstrap.min.css">
   <link rel="stylesheet" href="/packages/DataTables/DataTables-1.10.20/css/dataTables.bootstrap4.min.css">
@@ -22,9 +24,10 @@
   <link rel="stylesheet" href="/packages/DataTables/DataTables-1.10.20/css/dataTables.semanticui.min.css">
   <link rel="stylesheet" href="/packages/DataTables/DataTables-1.10.20/css/jquery.dataTables.min.css">
   <link rel="stylesheet" href="/packages/toastr/toastr.css">
-  
+
 </head>
 
 <body>
   <div id="app">
-    <div class="main-wrapper"><?php /**PATH /home/tanvir/LARAVEL/weTrack/resources/views/layouts/app_css.blade.php ENDPATH**/ ?>
+    <div class="main-wrapper">
+<?php /**PATH /home/tanvir/LARAVEL/weTrack/resources/views/layouts/app_css.blade.php ENDPATH**/ ?>
