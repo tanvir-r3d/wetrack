@@ -50,12 +50,15 @@ Route::middleware('auth')->group(function () {
   Route::get('employee_status/change','EmployeeStatusController@statusChange')->name('employee_status.change');
 
   //User Profile Route
-  Route::resource('profile','UserController');
-  Route::get('profile_list','UserController@create')->name('user.create');
-  Route::post('profile_store','UserController@store')->name('user.store');
-  Route::get('profile_settings','UserController@settings');
-  Route::post('profile/oldpass','UserController@matchpass');
-  Route::post('profile/changepass','UserController@changepass');
+  Route::resource('user','UserController');
+  Route::get('user/delete/{id}','UserController@destroy');
+  Route::get('user_show','UserController@show')->name('user_show');
+
+  // Route::get('profile_list','UserController@create')->name('user.create');
+  // Route::post('profile_store','UserController@store')->name('user.store');
+  // Route::get('profile_settings','UserController@settings');
+  // Route::post('profile/oldpass','UserController@matchpass');
+  // Route::post('profile/changepass','UserController@changepass');
 
   // Tracking Route
   Route::post('track_create','trackingController@latlonSave')->name('track_create');

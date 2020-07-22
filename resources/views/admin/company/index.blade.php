@@ -189,7 +189,6 @@
 			dataType:"json",
 			success:function(data)
 			{
-				console.log(data);
 				$("#e_name").val(data.com_name);
 				$("#e_details").val(data.com_details);
 				$("#editForm").attr("action","/company/update/"+data.com_id);
