@@ -78,14 +78,11 @@ class CompanyController extends Controller
                 {
                     unlink(public_path('images/company/').$company->com_logo);
                 }
-                else
-                {
                     $ext = $request->file('logo')->getClientOriginalExtension();
                     $path = public_path('images/company/');
                     $name = 'logo' . time() . '.' . $ext;
                     $request->file('logo')->move($path, $name);
                     $company->com_logo = $name;
-                }
             }
         $company->save();
         Toastr::success('Congratulation! New Company Information Updated Successfully', 'Company',["positionClass" => "toast-top-center"]);
@@ -94,6 +91,11 @@ class CompanyController extends Controller
 
     public function destroy($id)
     {
+        $company=Company::find($id);
+        if($company->com_logo!='')
+        {
+            unlink(public_path('images/company/').$company->com_logo);
+        }
         Company::where('com_id',$id)->delete();
         $status=200;
         $response=[
