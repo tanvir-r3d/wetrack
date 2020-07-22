@@ -5,25 +5,35 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\EmployeeCategory;
 use Validator;
+use JsValidator;
+use Toastr;
 
 class EmployeeCategoryController extends Controller
 {
-
-    public function index()
-    {
-        return view('admin.employee.employeeCategory.index');
-    }
-
     /**
-     * Show the form for creating a new resource.
+     * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function index()
     {
-        $data['employeeCategoryes']=EmployeeCategory::all();
-        return view('admin.employee.employeeCategory.dataRows',$data);
+      $employeeCategory=new EmployeeCategory;
+      if(request()->ajax())
+      {
+          return datatables()->of(EmployeeCategory::latest()->get())
+          ->addColumn('action',function($data){
+              $button='<button type="button" name="edit" id="edit" data-toggle="modal" data-target="#editModal" data-id="'.$data->emp_cat_id.'" class="edit btn btn-primary"><i class="fas fa-edit"></i></button>';
+              $button.='&nbsp;&nbsp;';
+              $button.='<button type="button" name="delete" id="delete" data-id="'.$data->emp_cat_id.'" class="delete btn btn-danger"><i class="fas fa-trash"></i></button>';
+              return $button;
+          })
+          ->rawColumns(['action'])
+          ->make(true);
+      }
+      $validator=JsValidator::make($employeeCategory->validation());
+      return view('admin.employee.employeeCategory.index',['validator'=>$validator]);
     }
+
 
     /**
      * Store a newly created resource in storage.
@@ -33,46 +43,21 @@ class EmployeeCategoryController extends Controller
      */
     public function store(Request $request)
     {
-        $employeeCategory=new EmployeeCategory;
-        $validation=Validator::make($request->all(),$employeeCategory->validation());
+      {
+          $employeeCategory = new EmployeeCategory;
+          $validation=Validator::make($request->all(),$employeeCategory->validation());
+          $jsValidator = JsValidator::validator($validation);
 
-        if($validation->fails())
-        {
-            $status=400;
-            $response=[
-                'status'=>$status,
-                'errors'=>$validation->errors(),
-            ];
-        }
-        else
-        {
-            $input=[
-                'emp_cat_name'=>$request->name,
+              $employeeCategory->emp_cat_name=$request->name;
+              $employeeCategory->emp_cat_detils=$request->details;
 
-                'emp_cat_detils'=>$request->details
-            ];
-            $employeeCategory->create($input);
-            $status=200;
-            $response=[
-                'status'=>$status,
-                'message'=>'EmployeeCategory Added',
-            ];
-            return response()->json($response,$status);
-        }
+              $employeeCategory->save();
+          Toastr::success('Congratulation! New EmployeeCategory Information Saved Successfully', 'EmployeeCategory',["positionClass" => "toast-top-right"]);
+          return redirect()->back();
+      }
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\EmployeeCategory  $employeeCategory
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Request $request)
-    {
-        $id=$request->id;
-        $data['employeeCategory']=EmployeeCategory::find($id);
-        return view('admin.employee.employeeCategory.viewBody',$data);
-    }
+
 
     /**
      * Show the form for editing the specified resource.
@@ -80,11 +65,11 @@ class EmployeeCategoryController extends Controller
      * @param  \App\EmployeeCategory  $employeeCategory
      * @return \Illuminate\Http\Response
      */
-    public function cat_edit(Request $request)
+    public function edit(Request $request)
     {
         $id=$request->id;
-        $value=EmployeeCategory::find($id);
-        return response()->json($value);
+        $employeeCategory=EmployeeCategory::find($id);
+        return response()->json($employeeCategory);
     }
 
     /**
@@ -94,37 +79,20 @@ class EmployeeCategoryController extends Controller
      * @param  \App\EmployeeCategory  $employeeCategory
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request)
+    public function update(Request $request, $id)
     {
-        $employeeCategory=new EmployeeCategory;
-        $data=[
-            'name'=>$request->name,
-            'details'=>$request->details,
-        ];
-        $validation=Validator::make($data,$employeeCategory->validation());
+      $employeeCategory=New EmployeeCategory;
+      $validation=Validator::make($request->all(),$employeeCategory->validation());
+      $jsValidator=JsValidator::validator($validation);
 
-        if($validation->fails())
-        {
-            $status=400;
-            $response=[
-                'status'=>$status,
-                'errors'=>$validation->errors(),
-            ];
-        }
-        else
-        {
-            $input=[
-                'emp_cat_name'=>$data['name'],
-                'emp_cat_detils'=>$data['details']
-            ];
-            $employeeCategory->where('emp_cat_id',$request->id)->update($input);
-            $status=200;
-            $response=[
-                'status'=>$status,
-                'message'=>'EmployeeCategory Updated',
-            ];
-            return response()->json($response,$status);
-        }
+      $employeeCategory=EmployeeCategory::find($id);
+          $employeeCategory->emp_cat_name=$request->name;
+          $employeeCategory->emp_cat_detils=$request->details;
+
+      $employeeCategory->save();
+      Toastr::success('Congratulation! New EmployeeCategory Information Updated Successfully', 'EmployeeCategory',["positionClass" => "toast-top-right"]);
+      return redirect()->back();
+
     }
 
     /**
@@ -133,14 +101,17 @@ class EmployeeCategoryController extends Controller
      * @param  \App\EmployeeCategory  $employeeCategory
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Request $request)
+    public function destroy($id)
     {
-        $id=$request->id;
-        EmployeeCategory::where('emp_cat_id',$id)->delete();
-        $status=200;
-        $response=[
-            'status'=>$status,
-            'message'=>'EmployeeCategory Deleted',];
-        return response()->json($response,$status);
+
+      EmployeeCategory::where('emp_cat_id',$id)->delete();
+      $status=200;
+      $response=[
+          'status'=>$status,
+          'message'=>'Successfully Deleted',
+      ];
+      return response()->json($response,$status);
+
+
     }
 }
