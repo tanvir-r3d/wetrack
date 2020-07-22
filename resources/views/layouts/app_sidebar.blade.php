@@ -38,7 +38,7 @@
                 <a href="#" class="nav-link has-dropdown"><i class="fas fa-users-cog"></i> <span>Employee</span></a>
                 <ul class="dropdown-menu">
                   <li><a class="nav-link" href="/employeeCategorys">Employee Category</a></li>
-                  <li><a class="nav-link" href="forms-validation.html">Employee</a></li>
+                  <li><a class="nav-link" href="/employee">Employee</a></li>
                 </ul>
               </li>
 
