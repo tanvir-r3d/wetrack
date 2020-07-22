@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Branch;
 use Illuminate\Http\Request;
 use Validator;
+use JsValidator;
+use Toastr;
 
 class BranchController extends Controller
 {
@@ -15,19 +17,23 @@ class BranchController extends Controller
      */
     public function index()
     {
-        return view('admin.branch.index');
+      $branch=new Branch;
+      if(request()->ajax())
+      {
+          return datatables()->of(Branch::latest()->get())
+          ->addColumn('action',function($data){
+              $button='<button type="button" name="edit" id="edit" data-toggle="modal" data-target="#editModal" data-id="'.$data->branch_id.'" class="edit btn btn-primary"><i class="fas fa-edit"></i></button>';
+              $button.='&nbsp;&nbsp;';
+              $button.='<button type="button" name="delete" id="delete" data-id="'.$data->branch_id.'" class="delete btn btn-danger"><i class="fas fa-trash"></i></button>';
+              return $button;
+          })
+          ->rawColumns(['action'])
+          ->make(true);
+      }
+      $validator=JsValidator::make($branch->validation());
+      return view('admin.branch.index',['validator'=>$validator]);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        $data['branches']=Branch::all();
-        return view('admin.branch.dataRows',$data);
-    }
 
     /**
      * Store a newly created resource in storage.
@@ -37,46 +43,22 @@ class BranchController extends Controller
      */
     public function store(Request $request)
     {
-        $branch=new Branch;
-        $validation=Validator::make($request->all(),$branch->validation());
+      {
+          $branch = new Branch;
+          $validation=Validator::make($request->all(),$branch->validation());
+          $jsValidator = JsValidator::validator($validation);
 
-        if($validation->fails())
-        {
-            $status=400;
-            $response=[
-                'status'=>$status,
-                'errors'=>$validation->errors(),
-            ];
-        }
-        else
-        {
-            $input=[
-                'branch_name'=>$request->name,
-                'branch_location'=>$request->location,
-                'branch_details'=>$request->details
-            ];
-            $branch->create($input);
-            $status=200;
-            $response=[
-                'status'=>$status,
-                'message'=>'Branch Added',
-            ];
-            return response()->json($response,$status);
-        }
+              $branch->branch_name=$request->name;
+              $branch->branch_location=$request->location;
+              $branch->branch_details=$request->details;
+
+              $branch->save();
+          Toastr::success('Congratulation! New Branch Information Saved Successfully', 'Branch',["positionClass" => "toast-top-right"]);
+          return redirect()->back();
+      }
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Branch  $branch
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Request $request)
-    {
-        $id=$request->id;
-        $data['branch']=Branch::find($id);
-        return view('admin.branch.viewBody',$data);
-    }
+
 
     /**
      * Show the form for editing the specified resource.
@@ -84,11 +66,11 @@ class BranchController extends Controller
      * @param  \App\Branch  $branch
      * @return \Illuminate\Http\Response
      */
-    public function b_edit(Request $request)
+    public function edit(Request $request)
     {
         $id=$request->id;
-        $value=Branch::find($id);
-        return response()->json($value);
+        $branch=Branch::find($id);
+        return response()->json($branch);
     }
 
     /**
@@ -98,39 +80,21 @@ class BranchController extends Controller
      * @param  \App\Branch  $branch
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request)
+    public function update(Request $request, $id)
     {
-        $branch=new Branch;
-        $data=[
-            'name'=>$request->name,
-            'location'=>$request->location,
-            'details'=>$request->details,
-        ];
-        $validation=Validator::make($data,$branch->validation());
+      $branch=New Branch;
+      $validation=Validator::make($request->all(),$branch->validation());
+      $jsValidator=JsValidator::validator($validation);
 
-        if($validation->fails())
-        {
-            $status=400;
-            $response=[
-                'status'=>$status,
-                'errors'=>$validation->errors(),
-            ];
-        }
-        else
-        {
-            $input=[
-                'branch_name'=>$data['name'],
-                'branch_location'=>$data['location'],
-                'branch_details'=>$data['details']
-            ];
-            $branch->where('branch_id',$request->id)->update($input);
-            $status=200;
-            $response=[
-                'status'=>$status,
-                'message'=>'Branch Updated',
-            ];
-            return response()->json($response,$status);
-        }
+      $branch=Branch::find($id);
+          $branch->branch_name=$request->name;
+          $branch->branch_location=$request->location;
+          $branch->branch_details=$request->details;
+
+      $branch->save();
+      Toastr::success('Congratulation! New Branch Information Updated Successfully', 'Branch',["positionClass" => "toast-top-right"]);
+      return redirect()->back();
+
     }
 
     /**
@@ -139,14 +103,17 @@ class BranchController extends Controller
      * @param  \App\Branch  $branch
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Request $request)
+    public function destroy($id)
     {
-        $id=$request->id;
-        Branch::where('branch_id',$id)->delete();
-        $status=200;
-        $response=[
-            'status'=>$status,
-            'message'=>'Branch Deleted',];
-        return response()->json($response,$status);
+
+      Branch::where('branch_id',$id)->delete();
+      $status=200;
+      $response=[
+          'status'=>$status,
+          'message'=>'Successfully Deleted',
+      ];
+      return response()->json($response,$status);
+
+
     }
 }

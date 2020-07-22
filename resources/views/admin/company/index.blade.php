@@ -1,15 +1,15 @@
-@extends('layouts.app') 
-@section('page_name') Company @endsection 
-@section('section_header') Company @endsection 
+@extends('layouts.app')
+@section('page_name') Company @endsection
+@section('section_header') Company @endsection
 @section('breadcrumb')
 <div class="breadcrumb-item"><a href="/">Home</a>
 </div>
 <div class="breadcrumb-item active">Company</div>
-@endsection 
+@endsection
 @section('content')
 <h2 class="section-title">Company List</h2>
 <p class="section-lead">
-	<button class="btn btn-success" data-toggle="modal" data-target="#addModal">Add Company</button>
+	<button class="btn btn-success mr-l" data-toggle="modal" data-target="#addModal">Add Company</button>
 </p>
 <div class="row">
 	<div class="col-12">
@@ -53,11 +53,11 @@
 				<h5 class="modal-title">Add Company</h5>
 				<button type="button" class="close" data-dismiss="modal" aria-label="Close"> <span aria-hidden="true">&times;</span>
 				</button>
-			</div> 
+			</div>
       <form action="{{route('company.store')}}" method="post" id="addForm" enctype="multipart/form-data">
       @csrf
 			<div class="modal-body">
-      
+
       <div class="form-group">
       <center><img alt="image" src="/example-image.jpg" id="previmage" width=150 height=140 class="rounded-circle imagecheck-image mb-3"></center>
       <div class="custom-file">
@@ -94,10 +94,10 @@
 				<h5 class="modal-title">Edit Company</h5>
 				<button type="button" class="close" data-dismiss="modal" aria-label="Close"> <span aria-hidden="true">&times;</span>
 				</button>
-			</div> 
+			</div>
       <form method="post" id="editForm" enctype="multipart/form-data">
       @csrf
-	<div class="modal-body">  
+	<div class="modal-body">
       <div class="form-group">
       <center><img alt="image" id="previmage" style="width:25%" src='' class="rounded-circle imagecheck-image mb-3 edit_logo"></center>
       <div class="custom-file">
@@ -126,7 +126,7 @@
 		</div>
 	</div>
 </div>
-@endsection 
+@endsection
 @section('script')
 <script>
 	$(document).ready(function() {
@@ -174,7 +174,7 @@
 			dataType:"json",
 			success:function(data)
 			{
-				location.reload();	
+				location.reload();
 			}
 		});
 	});
@@ -201,7 +201,7 @@
 					$(".edit_logo").attr("src","/example-image.jpg");
 				}
 			}
-		});	
+		});
 	});
 
 });
