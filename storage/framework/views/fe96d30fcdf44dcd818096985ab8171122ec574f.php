@@ -37,7 +37,7 @@
             <div class="col-12 col-md-12 col-lg-12">
                 <div class="card profile-widget">
                   <div class="profile-widget-header">
-                    <img alt="image" src="<?php echo e(Auth::user()->user_img ? '/images/user/'.Auth::user()->user_img : '/avatar.png'); ?>" class="rounded-circle profile-widget-picture">
+                    <img alt="image" height="100" src="<?php echo e(Auth::user()->user_img ? '/images/user/'.Auth::user()->user_img : '/avatar.png'); ?>" class="rounded-circle profile-widget-picture">
                     <div class="profile-widget-items">
                       <div class="profile-widget-item">
                         <div class="profile-widget-item-label">Role</div>

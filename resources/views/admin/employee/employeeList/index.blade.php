@@ -25,9 +25,10 @@
 
 								<th class="text-center">Profile</th>
 								<th class="text-center">Name</th>
+								<th class="text-center">Company</th>
+				                <th class="text-center">Branch</th>
 								<th class="text-center">Category</th>
-                <th class="text-center">Branch</th>
-                <th class="text-center">Phone</th>
+				                <th class="text-center">Phone</th>
 
 
 								<th class="text-center">Action</th>
@@ -38,9 +39,10 @@
 							<tr>
 								<th>Profile</th>
 								<th>Name</th>
+								<th>Company</th>
+				                <th>Branch</th>
 								<th>Category</th>
-                <th>Branch</th>
-                <th>Phone</th>
+				                <th>Phone</th>
 
 
 								<th>Action</th>
@@ -70,7 +72,7 @@
 			<div class="row">
 			<div class="col-md-6">
 
-			     <center>	<img alt="image" id="previmage" style="width:35%" src='/avatar.png' class="rounded-circle imagecheck-image mb-3 emp_img"></center>
+			     <center>	<img alt="image" id="previmage" width="120" height="120" src='/avatar.png' class="rounded-circle mb-3 emp_img"></center>
 
 		 </div>
 
@@ -78,7 +80,7 @@
 				<div class="custom-file">
 					<input type="file" class="custom-file-input" id="image" name="image" onchange="readURL(this);">
 					<label class="custom-file-label" for="image">Choose image</label>
-					<small class="form-text text-muted">File must be .png</small>
+					<small class="form-text text-muted">File must be .jpg or .png</small>
 				</div>
 			</div>
 
@@ -90,6 +92,7 @@
 					<div class="form-group">
 							 <label for="com_id">Select Company</label>
 							 <select class="form-control" id="com_id" name="com_id">
+							 	<option selected hidden disabled>Select Company</option>
 								 @foreach($companys as $company)
 								<option value="{{$company->com_id}}">{{ $company->com_name}}</option>
 								@endforeach
@@ -101,6 +104,7 @@
             <div class="form-group">
                  <label for="branch_id">Select Branch</label>
                  <select class="form-control" id="branch_id" name="branch_id">
+					<option selected hidden disabled>Select Branch</option>
                    @foreach($branchs as $branch)
                   <option value="{{$branch->branch_id}}">{{ $branch->branch_name}}</option>
                   @endforeach
@@ -124,7 +128,7 @@
           <div class="col-md-6">
             <div id="div_id_gender" class="form-group">
                <label for="id_gender"  class="control-label col-md-4">Gender </label>
-               <div class="controls col-md-8 "  style="margin-bottom: 10px">
+               <div class="controls col-md-8"  style="margin-bottom: 10px">
                     <label class="radio-inline"> <input type="radio" name="gender" id="gender_1" value="1"  style="margin-bottom: 10px">Male</label>
                     <label class="radio-inline"> <input type="radio" name="gender" id="gender_2" value="2"  style="margin-bottom: 10px">Female </label>
                </div>
@@ -137,6 +141,7 @@
 						<div class="form-group">
 								 <label for="cat_id">Select Category</label>
 								 <select class="form-control" id="cat_id" name="cat_id">
+							 		<option selected hidden disabled>Select Category</option>
 									 @foreach($categorys as $category)
 									 <option value="{{$category->emp_cat_id}}">{{ $category->emp_cat_name}}</option>
 									 @endforeach
@@ -173,8 +178,8 @@
 
 					<div class="col-md-6">
  					 <fieldset class="form-group floating-label-form-group">
- 							 <label for="user_name">User Name</label>
- 							 <input type="text" class="form-control" id="user_name" name="user_name" placeholder="Enter Employee Name" required data-validation-required-message="This field is required">
+ 							 <label for="username">User Name</label>
+ 							 <input type="text" class="form-control" id="username" name="username" placeholder="Enter Employee Name" required data-validation-required-message="This field is required">
  					 </fieldset>
  				 </div>
 
@@ -233,13 +238,13 @@
 			<div class="row">
 			<div class="col-md-6">
 
-					 <center>	<img alt="image" id="previmage" style="width:35%" src='' class="rounded-circle imagecheck-image mb-3 emp_img"></center>
+					 <center>	<img alt="image" id="previmage" height="120" width="120" src='' class="rounded-circle mb-3 emp_img"></center>
 
 		 </div>
 
 				<div class="col-md-6 mt-5">
 				<div class="custom-file">
-					<input type="file" class="custom-file-input" id="e_image" name="e_image" onchange="readURL(this);">
+					<input type="file" class="custom-file-input" id="image" name="image" onchange="readURL(this);">
 					<label class="custom-file-label" for="e_image">Choose image</label>
 					<small class="form-text text-muted">File must be .png</small>
 				</div>
@@ -253,6 +258,7 @@
 					<div class="form-group">
 							 <label for="e_com_id">Select Company</label>
 							 <select class="form-control" id="e_com_id" name="com_id">
+							 	<option selected hidden disabled>Select Company</option>
 								 @foreach($companys as $company)
 								<option value="{{$company->com_id}}">{{ $company->com_name}}</option>
 								@endforeach
@@ -264,6 +270,7 @@
 						<div class="form-group">
 								 <label for="e_branch_id">Select Branch</label>
 								 <select class="form-control" id="e_branch_id" name="branch_id">
+							 	<option selected hidden disabled>Select Branch</option>
 									 @foreach($branchs as $branch)
 									<option value="{{$branch->branch_id}}">{{ $branch->branch_name}}</option>
 									@endforeach
@@ -280,7 +287,7 @@
 
 						<fieldset class="form-group floating-label-form-group">
 								<label for="e_name">Full Name</label>
-								<input type="text" class="form-control" id="e_name" name="name" placeholder="Enter Employee Name" required data-validation-required-message="This field is required">
+								<input type="text" class="form-control" id="e_name" name="full_name" placeholder="Enter Employee Name" >
 						</fieldset>
 					</div>
 
@@ -300,6 +307,7 @@
 						<div class="form-group">
 								 <label for="e_cat_id">Select Category</label>
 								 <select class="form-control" id="e_cat_id" name="cat_id">
+							 		<option selected hidden disabled>Select Category</option>
 									 @foreach($categorys as $category)
 									 <option value="{{$category->emp_cat_id}}">{{ $category->emp_cat_name}}</option>
 									 @endforeach
@@ -360,11 +368,11 @@
 				  {
 					  if(data)
 					  {
-						return "<img src='/images/employee/"+data+"' class='rounded-circle' width='45'/>"
+						return "<img src='/images/employee/"+data+"' class='rounded-circle' width='45' height='45'/>"
 					  }
 					  else
 					  {
-						return "<img src='/example-image.jpg' class='rounded-circle' width='45'/>"
+						return "<img src='/example-image.jpg' class='rounded-circle' width='45' height='45'/>"
 					  }
 				  },
 	              orderable:false,
@@ -373,10 +381,13 @@
 	              data: 'emp_full_name',
 	              },
                 {
-                 data: 'emp_cat_id',
+                 data: 'company_name',
                  },
 	            {
-	              data: 'emp_branch_id',
+	              data: 'branch_name',
+	              },
+	            {
+	              data: 'category_name',
 	              },
                 {
                  data: 'emp_phone',
@@ -459,6 +470,6 @@ if (input.files && input.files[0]) {
 }
 }
 </script>
-{!! $validator->selector('#addForm') !!}
-{!! $validator->selector('#editForm') !!}
+{!! $addValidator->selector('#addForm') !!}
+{!! $editValidator->selector('#editForm') !!}
 @endsection

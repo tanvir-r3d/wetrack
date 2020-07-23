@@ -23,17 +23,35 @@ class Employee extends Model
   ];
 
   public function validation(){
-
       return[
         'full_name'=>'required',
         'branch_id'=>'required',
         'cat_id'=>'required',
+        'com_id'=>'required',
         'phone'=>'required',
+        'gender'=>'required',
         'address'=>'required',
-
+        'image'=>'mimes:jpg,png',
+        'password' => 'required|regex:/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/g|min:6',
+        'retypePassword' => 'required|same:password',
+        'username' => 'required|unique:users,username',
+        'email' => 'required|unique:users,email',
     ];
+  }
 
-
+  public function fieldName()
+  {
+        return [
+        'full_name'=>'Full Name',
+        'branch_id'=>'Branch',
+        'cat_id'=>'Category',
+        'phone'=>'Phone',
+        'address'=>'Address',
+        'password' => 'Password',
+        'retypePassword' => 'Retype Password',
+        'username' => 'Username',
+        'email' => 'Email Address',
+       ];
   }
 
 

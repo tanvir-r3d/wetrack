@@ -9,7 +9,7 @@
 @section('content')
 <h2 class="section-title">User List</h2>
 <p class="section-lead">
-	<button class="btn btn-primary" data-toggle="modal" data-target="#addModal">Add User</button>
+	<button class="btn btn-primary mr-l" data-toggle="modal" data-target="#addModal">Add User</button>
 </p>
 <div class="row">
 	<div class="col-12">
@@ -151,24 +151,23 @@
 			</div>
 				<div class="modal-body">
 
+                	<form action="" method="post" id="user_view" enctype="multipart/form-data">
+                		@csrf
                 <div class="card card">
                             <div class="text-center">
                                 <div class="card-body">
                                <div class="container">
-
-                                    <img src="" id="user_image" width=150 height=140 class="rounded-circle mb-2 img-over" alt="Card image"><div class="des"><img class="" src="/camera.svg"></div>
+                                    <img src="" id="user_image" width=150 height=140 class="rounded-circle mb-2 img-over" alt="Card image"><label class="btn" for="image"><div class="des"><img src="/camera.svg"><input type="file" hidden name="image" id="image"></div></label>
 
                                </div>
-
+							
                                     <h3 id="name"> </h3>
 
                                 </div>
                                 <div class="card-body">
-                                    <h4 class="card-title" id="user_name"></h4>
-                                    <h6 class="card-subtitle text-muted" id="user_email"></h6>
-                                </div>
-                                <div class="card-body">
-                                    <button type="button" id="delete" class="btn btn-danger"  data-dismiss="modal"><i class="fa fa-trash"></i> Delete</button>
+                                    <h6 class="card-title mr-5">Username:&nbsp<strong id="user_name"></strong></h6>
+                                    <h6 class="card-subtitle">Email:&nbsp<strong id="user_email"></strong></h6>
+                                    <button name="delete" id="delete" class="delete_btn btn"><i class="fa fa-trash"></i></button>
                                 </div>
                             </div>
                             <div class="card-body">
@@ -183,6 +182,7 @@
 				</div>
 				<div class="modal-footer bg-whitesmoke br">
 					<button type="button" class="btn btn-dark" data-dismiss="modal">Close</button>
+					<button class="btn btn-primary" id="update" type="submit">Save Changes</button>
 			</form>
 			</div>
 		</div>
@@ -245,6 +245,7 @@
 
 	$(document).on("click","#view",function(){
 		var id=$(this).attr("data-id");
+		
 		$.ajax({
 			url:"{{route('user_show')}}",
 			data:{'id':id,"_token": "{{ csrf_token() }}"},
@@ -257,7 +258,8 @@
 				$("#user_name").text(data.username);
 				$("#user_email").text(data.email);
 				$("#user_contact").text(data.user_contact);
-
+				$(".delete_btn").attr("data-id",data.id);
+				$("#user_view").attr("action",'/user/image/'+data.id);
                 if(data.user_gender==1)
                 {
                     $("#gender").text("Male");
@@ -282,6 +284,10 @@
 	});
 
 });
+// function unhide()
+// {
+// 	$("#update").removeAttr('hidden');
+// }
 
 function readURL(input) {
 if (input.files && input.files[0]) {
