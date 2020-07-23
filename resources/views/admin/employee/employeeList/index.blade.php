@@ -94,7 +94,7 @@
 								<option value="{{$company->com_id}}">{{ $company->com_name}}</option>
 								@endforeach
 							 </select>
-						 </div>
+			 			 </div>
 					 </div>
 
           <div class="col-md-6">
@@ -412,7 +412,7 @@
 			dataType:"json",
 			success:function(data)
 			{
-				
+
 
 				$("#e_name").val(data.emp_full_name);
 		        $("#e_branch_id").val(data.emp_branch_id);
