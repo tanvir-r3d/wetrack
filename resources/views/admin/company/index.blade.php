@@ -9,7 +9,7 @@
 @section('content')
 <h2 class="section-title">Company List</h2>
 <p class="section-lead">
-	<button class="btn btn-success mr-l" data-toggle="modal" data-target="#addModal">Add Company</button>
+	<button class="btn btn-primary mr-l" data-toggle="modal" data-target="#addModal">Add Company</button>
 </p>
 <div class="row">
 	<div class="col-12">

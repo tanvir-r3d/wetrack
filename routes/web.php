@@ -52,6 +52,7 @@ Route::middleware('auth')->group(function () {
   Route::resource('user','UserController');
   Route::get('user/delete/{id}','UserController@destroy');
   Route::get('user_show','UserController@show')->name('user_show');
+  Route::post('user/image/{id}','UserController@image');
 
   Route::get('profile/','profileController@index');
   Route::post('profile/update','profileController@update');

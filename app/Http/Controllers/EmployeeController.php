@@ -13,6 +13,8 @@ use App\EmployeeStatus;
 use DB;
 use App\Company;
 use App\User;
+use Hash;
+
 class EmployeeController extends Controller
 {
     /**
@@ -22,10 +24,9 @@ class EmployeeController extends Controller
      */
     public function index()
     {
-        $data['branchs'] = Branch::get();
-        $data['categorys'] = EmployeeCategory::get();
-        $data['companys'] = Company::get();
-
+        $branchs = Branch::get();
+        $categorys = EmployeeCategory::get();
+        $companys = Company::get();
 
         $employee=new Employee;
         if(request()->ajax())
@@ -37,11 +38,27 @@ class EmployeeController extends Controller
                 $button.='<button type="button" name="delete" id="delete" data-id="'.$data->emp_id.'" class="delete btn btn-danger"><i class="fas fa-trash"></i></button>';
                 return $button;
             })
+            ->addColumn('branch_name',function($data) use ($branchs)
+            {
+              $branch=collect($branchs)->where('branch_id',$data->emp_branch_id)->first();
+              return $branch->branch_name;
+            })
+            ->addColumn('company_name',function($data) use ($companys)
+            {
+              $company=collect($companys)->where('com_id',$data->emp_com_id)->first();
+              return $company->com_name;
+            })
+            ->addColumn('category_name',function($data) use ($categorys)
+            {
+              $category=collect($categorys)->where('emp_cat_id',$data->emp_cat_id)->first();
+              return $category->emp_cat_name;
+            })
             ->rawColumns(['action'])
             ->make(true);
         }
-        $validator=JsValidator::make($employee->validation());
-        return view('admin.employee.employeeList.index',['validator'=>$validator],$data);
+        $addValidator=JsValidator::make($employee->validation());
+        $editValidator=JsValidator::make($employee->validation());
+        return view('admin.employee.employeeList.index',compact('addValidator','editValidator','categorys','companys','branchs'));
 
 
     }
@@ -84,9 +101,9 @@ class EmployeeController extends Controller
           }
           $employee->save();
 
-          $user->username = $request->user_name;
+          $user->username = $request->username;
           $user->email = $request->email;
-          $user->password = $request->password;
+          $user->password = Hash::make($request->password);
           $user->emp_id = $employee->emp_id;
           $user->user_type =1;
           $user->save();
@@ -126,27 +143,24 @@ class EmployeeController extends Controller
                 $employee=Employee::find($id);
                 $employee->emp_branch_id = $request->branch_id;
                 $employee->emp_cat_id = $request->cat_id;
+                $employee->emp_com_id = $request->com_id;
                 $employee->emp_full_name = $request->full_name;
                 $employee->emp_gender = $request->gender;
                 $employee->emp_salery = $request->salery;
                 $employee->emp_phone = $request->phone;
-                $employee->emp_username = $request->user_name;
-                $employee->emp_email = $request->email;
                 $employee->emp_address = $request->address;
               if($request->hasFile('image'))
               {
-                  if($employee->emp_img!='')
+                  if($employee->emp_img)
                   {
                       unlink(public_path('images/employee/').$employee->emp_img);
                   }
-                  else
-                  {
+               
                       $ext = $request->file('image')->getClientOriginalExtension();
                       $path = public_path('images/employee/');
                       $name = 'image' . time() . '.' . $ext;
                       $request->file('image')->move($path, $name);
                       $employee->emp_img = $name;
-                  }
               }
           $employee->save();
           Toastr::success('Congratulation! New Employee Information Updated Successfully', 'Employee',["positionClass" => "toast-top-right"]);

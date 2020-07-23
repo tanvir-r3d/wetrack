@@ -57,6 +57,15 @@
       <?php echo csrf_field(); ?>
 			<div class="modal-body">
 
+				<div class="form-group">
+						 <label for="com_id">Select Company</label>
+						 <select class="form-control" id="com_id" name="com_id">
+							 <?php $__currentLoopData = $companys; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $company): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+							<option value="<?php echo e($company->com_id); ?>"><?php echo e($company->com_name); ?></option>
+							<?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+						 </select>
+					 </div>
+
       <div class="form-group">
         <label>Branch Name:</label>
         <input type="text" class="form-control" name="name" id="name">
@@ -94,7 +103,14 @@
       <?php echo csrf_field(); ?>
 	<div class="modal-body">
       <div class="form-group">
-
+				<div class="form-group">
+						 <label for="e_com_id">Select Company</label>
+						 <select class="form-control" id="e_com_id" name="com_id">
+							 <?php $__currentLoopData = $companys; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $company): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+							<option value="<?php echo e($company->com_id); ?>"><?php echo e($company->com_name); ?></option>
+							<?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+						 </select>
+					 </div>
 
       <div class="form-group">
         <label>Branch Name:</label>
@@ -136,7 +152,7 @@
                 {
   	              data: 'branch_location',
   	              },
-	          
+
 	            {
 	              data: 'action',
 	              name: 'action',
@@ -169,6 +185,7 @@
 			success:function(data)
 			{
 				console.log(data);
+				$("#e_com_id").val(data.com_id); 
 				$("#e_name").val(data.branch_name);
         $("#e_location").val(data.branch_location)
 				$("#e_details").val(data.branch_details);

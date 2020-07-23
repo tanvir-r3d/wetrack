@@ -37,7 +37,7 @@
             <div class="col-12 col-md-12 col-lg-12">
                 <div class="card profile-widget">
                   <div class="profile-widget-header">
-                    <img alt="image" src="{{Auth::user()->user_img ? '/images/user/'.Auth::user()->user_img : '/avatar.png'}}" class="rounded-circle profile-widget-picture">
+                    <img alt="image" height="100" src="{{Auth::user()->user_img ? '/images/user/'.Auth::user()->user_img : '/avatar.png'}}" class="rounded-circle profile-widget-picture">
                     <div class="profile-widget-items">
                       <div class="profile-widget-item">
                         <div class="profile-widget-item-label">Role</div>
@@ -154,7 +154,7 @@
                                  </div>
                                  @endif
                                  <div class="col-12 d-flex flex-sm-row flex-column justify-content-end">
-                                    <button type="submit" class="btn btn-success mr-sm-1 mb-1 mb-sm-0">Save
+                                    <button type="submit" class="btn btn-primary mr-sm-1 mb-1 mb-sm-0">Save
                                     changes</button>
                                     <button type="reset" class="btn btn-light">Cancel</button>
                                  </div>

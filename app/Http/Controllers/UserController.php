@@ -110,5 +110,21 @@ class UserController extends Controller
         return response()->json($response,$status);
     }
 
-    
+    public function image($id,Request $request)
+    {
+        $user=User::find($id);
+        if($request->hasFile('image'))
+        {
+            if ($user->user_img) 
+            {
+                unlink(public_path('images/user/').$user->user_img);
+            }
+            $ext = $request->file('image')->getClientOriginalExtension();
+            $path = public_path('images/user/');
+            $img_name = 'user' . time() . '.' . $ext;
+            $request->file('image')->move($path, $img_name);
+            $user->user_img = $img_name;
+        }
+        $user->save();
+    }
 }

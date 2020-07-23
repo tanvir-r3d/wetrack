@@ -119,8 +119,6 @@ unset($__errorArgs, $__bag); ?>" name="email" value="<?php echo e(old('email'));
   <script src="/js/scripts.js"></script>
   <script src="/js/custom.js"></script>
 
-  <script src="../node_modules/jquery-pwstrength/jquery.pwstrength.min.js"></script>
-  <script src="../node_modules/selectric/public/jquery.selectric.min.js"></script>
   <script src="/js/page/auth-register.js"></script>
 </body>
 </html>
