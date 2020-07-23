@@ -10,32 +10,27 @@ use Hash;
 use Auth;
 use DB;
 use JsValidator;
-
+use App\Rules\MatchOldPassword;
 class profileController extends Controller
 {
 	function index()
 	{
-		$validator=JsValidator::make([
-			'username' => 'required','string','max:255','unique:users,username,'.Auth::user()->id,
-            'first_name' => 'required', 'string', 'max:255',
-            'gender' => 'required',
-            'image' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-            'email' => 'required', 'email', 'max:255', 'unique:users,email,'.Auth::user()->id]);
-		return view('admin.profile.index',['validator'=>$validator]);
+        $user=new User;
+
+		$generalValidator=JsValidator::make($user->generalValidate());
+        $passValidator=JsValidator::make([
+            'old_pass' => ['required',new MatchOldPassword],
+            'new_pass' => ['required|regex:/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/g','min:6'],
+            'retype_pass' => ['same:new_pass'],
+        ],[],$user->fieldName());
+		return view('admin.profile.index',compact('generalValidator','passValidator'));
 	}
 
 	function update(Request $request)
 	{
 		$user = User::find(Auth::user()->id);
 
-         $validation= Validator::make($request->all(),[
-            'username' => 'required', 'string', 'max:255',
-            'first_name' => 'required', 'string', 'max:255',
-            'gender' => 'required',
-            'image' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-            'email' => 'required', 'email', 'max:255', 'unique:users,email,'.Auth::user()->id,
-            'password' => 'required', 'string', 'min:8', 'confirmed']);
-        $jsValidator = JsValidator::validator($validation);
+        $validation= Validator::make($request->all(),$user->generalValidate());
         
         
             DB::beginTransaction();
@@ -46,7 +41,7 @@ class profileController extends Controller
             $user->username = $request->username;
             $user->email = $request->email;
          
-            if($request->hasFile('image'))
+            if($request->hasFile('image')) 
             {
             	if (Auth::user()->user_img) 
             	{
@@ -64,38 +59,15 @@ class profileController extends Controller
         return redirect()->back();
 	}
 
-    public function matchpass(Request $request)
-    {
-        if(Hash::check($request->old_pass, Auth::user()->password))
-        {
-            return response('1');
-        }
-        else
-        {
-            return response('0');
-        }
-    }
 
     public function changepass(Request $request)
     {
-        if($request->new_pass==$request->retype_pass)
-        {
-            $update=['password'=>Hash::make($request->new_pass)];
-            User::where('id',Auth::user()->id)->update($update);
-            $status=200;
-            $response=[
-                'status'=>$status,
-                'message'=>'Password Changed',
-            ];
-        }
-        else
-        {
-            $status=500;
-            $response=[
-                'status'=>$status,
-                'message'=>'Something Went Wrong',
-            ];
-        }
-        return response()->json($response,$status);
+        $user=new User;
+        $validator=Validator::make($request()->all,$user->passValidate());
+
+        User::where('id',Auth::user()->id)->update(['password'=>Hash::make($request->new_pass)]);
+            
+        Toastr::success('Congratulation! Password Changed Successfully', 'Password',["positionClass" => "toast-top-right"]);
+        return redirect()->back();
     }
 }

@@ -5,7 +5,9 @@ namespace App;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
-
+use App\Rules\MatchOldPassword;
+use Auth;
+use Hash;
 class User extends Authenticatable
 {
     use Notifiable;
@@ -36,4 +38,33 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function passValidate()
+    {
+         return [
+            'old_pass' => ['required',new MatchOldPassword],
+            'new_pass' => ['required|regex:/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/g','min:6'],
+            'retype_pass' => ['same:new_pass'],
+        ];
+    }
+
+    public function fieldName()
+    {
+        return [
+        'old_pass' => 'Current Password',
+        'new_pass' => 'New Password',
+        'retype_pass' => 'Retype Password',
+       ];
+    }
+
+    public function generalValidate()
+    {
+         return [
+            'username' => 'required','string','max:255','unique:users,username,'.Auth::user()->id,
+            'first_name' => 'required', 'string', 'max:255',
+            'gender' => 'required',
+            'image' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'email' => 'required', 'email', 'max:255', 'unique:users,email,'.Auth::user()->id];
+    }
+
 }
