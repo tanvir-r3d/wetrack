@@ -1,11 +1,11 @@
-@extends('layouts.app') 
-@section('page_name') User @endsection 
-@section('section_header') Users @endsection 
+@extends('layouts.app')
+@section('page_name') User @endsection
+@section('section_header') Users @endsection
 @section('breadcrumb')
 <div class="breadcrumb-item"><a href="/">Home</a>
 </div>
 <div class="breadcrumb-item active">User List</div>
-@endsection 
+@endsection
 @section('content')
 <h2 class="section-title">User List</h2>
 <p class="section-lead">
@@ -150,34 +150,36 @@
 				</button>
 			</div>
 				<div class="modal-body">
-                    
+
                 <div class="card card">
                             <div class="text-center">
                                 <div class="card-body">
                                <div class="container">
-                                    <img src="" id="user_image" width=150 height=140 class="rounded-circle mb-2 img-over" alt="Card image"><span class="badge badge-dark">x</span>
+
+                                    <img src="" id="user_image" width=150 height=140 class="rounded-circle mb-2 img-over" alt="Card image"><div class="des"><img class="" src="/camera.svg"></div>
+
                                </div>
-                                    
+
                                     <h3 id="name"> </h3>
-                               
+
                                 </div>
                                 <div class="card-body">
                                     <h4 class="card-title" id="user_name"></h4>
                                     <h6 class="card-subtitle text-muted" id="user_email"></h6>
                                 </div>
                                 <div class="card-body">
-                                    <button type="button" id="delete" class="btn btn-danger"  data-dismiss="modal"><i class="fa fa-trash"></i> Delete</button>                                
+                                    <button type="button" id="delete" class="btn btn-danger"  data-dismiss="modal"><i class="fa fa-trash"></i> Delete</button>
                                 </div>
                             </div>
                             <div class="card-body">
-                   
+
                   <div class="row"><h4>Gender:&nbsp<small class="text-muted" id="gender"></small></h4></div>
                   <div class="row mt-1"><h4>Contact:&nbsp<small class="text-muted" id="user_contact"></small></h4></div>
-                
+
                   </div>
-    
+
                         </div>
-			
+
 				</div>
 				<div class="modal-footer bg-whitesmoke br">
 					<button type="button" class="btn btn-dark" data-dismiss="modal">Close</button>
@@ -236,7 +238,7 @@
 			dataType:"json",
 			success:function(data)
 			{
-				location.reload();	
+				location.reload();
 			}
 		});
 	});
@@ -267,16 +269,16 @@
                 else{
                     $("#gender").text("Not Defined");
                 }
-                
+
 				if(!data.user_img)
 				{
-					$("#user_image").attr("src","/avatar.png");
+					$("#user_image").attr("src","/profile.png");
 				}
 				else{
 					$("#user_image").attr("src","/images/user/"+data.user_img);
 				}
 			}
-		});	
+		});
 	});
 
 });
@@ -294,5 +296,5 @@ if (input.files && input.files[0]) {
 }
 }
 </script>
-{!! $user_validator->selector('#addUserForm') !!} 
+{!! $user_validator->selector('#addUserForm') !!}
 @endsection
