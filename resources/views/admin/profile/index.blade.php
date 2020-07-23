@@ -163,39 +163,34 @@
                         </div>
 
                         <div class="tab-pane fade " id="account-vertical-password" role="tabpanel" aria-labelledby="account-pill-password" aria-expanded="false">
-                           <form id="pass" method="POST">
+                           <form id="passForm" method="POST" action="/profile/changepass">
                               <div class="row">
                                  <div class="col-12">
                                     <div class="form-group">
                                        <div class="controls">
-                                          <label for="account-old-password">Old Password</label>
-                                          <input type="password" class="form-control old_pass" id="account-old-password" required placeholder="Old Password" data-validation-required-message="This old password field is required">
-                                          <span id="oldpass"></span>
-
+                                          <label for="old_pass">Current Password</label>
+                                          <input type="password" class="form-control old_pass" id="old_pass" name="old_pass" placeholder="Current Password">
                                        </div>
                                     </div>
                                  </div>
                                  <div class="col-12">
                                     <div class="form-group">
                                        <div class="controls">
-                                          <label for="account-new-password">New Password</label>
-                                          <input type="password" name="password" id="account-new-password" class="form-control new_pass" placeholder="New Password" required data-validation-required-message="The password field is required" minlength="6" readonly>
-                                          <span id="pass_error" style="color:red"></span>
+                                          <label for="new_pass">New Password</label>
+                                          <input type="password" name="new_pass" id="new_pass" class="form-control new_pass" placeholder="New Password">
                                        </div>
                                     </div>
                                  </div>
                                  <div class="col-12">
                                     <div class="form-group">
                                        <div class="controls">
-                                          <label for="account-retype-new-password">Retype New
-                                          Password</label>
-                                          <input type="password" name="con-password" class="form-control retype_pass" required id="account-retype-new-password" data-validation-match-match="password" placeholder="Retype Password" data-validation-required-message="The Confirm password field is required" minlength="6" readonly>
-                                          <span id="pass_match"></span>
+                                          <label for="retype_pass">Retype New Password</label>
+                                          <input type="password" name="retype_pass" class="form-control retype_pass" id="retype_pass" placeholder="Retype Password">
                                        </div>
                                     </div>
                                  </div>
                                  <div class="col-12 d-flex flex-sm-row flex-column justify-content-end">
-                                    <button type="submit" class="btn btn-primary mr-sm-1 mb-1 mb-sm-0" id="change_btn" disabled>Change Password</button>
+                                    <button type="submit" class="btn btn-primary mr-sm-1 mb-1 mb-sm-0">Change Password</button>
                                     <button type="reset" class="btn btn-light">Cancel</button>
                                  </div>
                               </div>
@@ -209,97 +204,6 @@
    
 @endsection
 @section('script')
-<script>
-var patt =/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/g;
-   $(document).on("keyup change",".old_pass",function(){
-      var old_pass=$(this).val();
-
-      $.ajax({
-         url:"{{url('/profile/oldpass')}}",
-         data:{'old_pass':old_pass, "_token": "{{ csrf_token() }}"},
-         type:'post',
-         success:function(data)
-         {
-            if(data==0)
-            {
-               $(".new_pass").attr("readonly", "readonly");
-               $("#oldpass").html('<span style=\'color:red\'><i class=\'fa fa-times\'></i>&nbsp Old Password Incorrect</span>');
-            }
-            else if(data==1)
-            {
-               $(".new_pass").removeAttr("readonly");
-               $("#oldpass").html('<span style=\'color:green\'><i class=\'fa fa-check\'></i>&nbsp Old Password Correct</span>');
-
-            }
-            else
-            {
-               $(".new_pass").attr("readonly", "readonly");
-               $("#oldpass").html('<span style=\'color:red\'><i class=\'fa fa-times\'></i>&nbsp Old Password Incorrect</span>');
-            }
-         }
-      });  
-
-      $(document).on('change keyup',".new_pass",function(){
-         var new_pass= $(this).val();
-      
-         if(!$(this).val().match(patt))
-         {
-            $("#pass_error").removeAttr("hidden","hidden");
-            $("#pass_error").html("<p>Password Must Contain At least one digit [0-9] <br> At least one lowercase character [a-z] <br> At least one uppercase character [A-Z] <br> At least 8 characters in length.</p>");
-            $(".retype_pass").attr("readonly", "readonly");
-         }
-         else if($(this).val().match(patt))
-         {
-            $("#pass_error").attr("hidden","hidden");
-            $(".retype_pass").removeAttr("readonly");
-         }
-         else
-         {
-            $("#pass_error").removeAttr("hidden","hidden");
-            $("#pass_error").html("<p>Password Must Contain At least one digit [0-9] <br> At least one lowercase character [a-z] <br> At least one uppercase character [A-Z] <br> At least 8 characters in length.</p>");
-            $(".retype_pass").attr("readonly", "readonly");
-         }
-      });     
-      
-      $(document).on("change keyup",".retype_pass",function(){
-         var new_pass=$(".new_pass").val();
-         var retype_pass= $(this).val();
-            if(new_pass == '' && retype_pass =='' && new_pass != retype_pass)
-            {
-               $("#pass_match").html("<p style='color:red'><i class='fa fa-times'></i>&nbsp Not Matched</p>");
-               $("#change_btn").attr("disabled","disabled");
-            }
-            else if(new_pass != '' && retype_pass !='' && new_pass == retype_pass)
-            {
-               $("#pass_match").html("<p style='color:green'><i class='fa fa-check'></i>&nbsp Matched</p>");
-               $("#change_btn").removeAttr("disabled","disabled");
-            }
-            else
-            {
-               $("#pass_match").html("<p style='color:red'><i class='fa fa-times'></i>&nbsp Not Matched</p>");
-               $("#change_btn").attr("disabled","disabled");
-            }
-      });
-   });
-   $("#change_btn").click(function(e){
-      e.preventDefault();
-      var new_pass=$(".new_pass").val();
-      var retype_pass=$(".retype_pass").val();
-      if(new_pass != '' && retype_pass !='' && new_pass == retype_pass)
-      {
-         $.ajax({
-            url:"{{url('/profile/changepass')}}",
-            type:"post",
-            dataType:"json",
-            data:{'new_pass':new_pass, 'retype_pass':retype_pass, "_token": "{{ csrf_token() }}"},
-            success:function(data)
-            {
-               $("#pass").trigger( "reset" );
-               toastr["success"](data.message);
-            }
-         });
-      }
-   });
-</script>
-{!! $validator->selector('#generalForm') !!} 
+{!! $generalValidator->selector('#generalForm') !!} 
+{!! $passValidator->selector('#passForm') !!} 
 @endsection

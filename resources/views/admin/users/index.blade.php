@@ -56,11 +56,12 @@
 				<button type="button" class="close" data-dismiss="modal" aria-label="Close"> <span aria-hidden="true">&times;</span>
 				</button>
 			</div>
-			<form action="{{route('user.store')}}" method="post" id="addForm" enctype="multipart/form-data">@csrf
+			<form action="{{route('user.store')}}" method="post" id="addUserForm" enctype="multipart/form-data">@csrf
 				<div class="modal-body">
 					<div class="form-group">
 						<center>
 							<img alt="image" src="/avatar.png" id="previmage" width=150 height=140 class="rounded-circle imagecheck-image mb-3">
+
 						</center>
 						<div class="custom-file">
 							<input type="file" class="custom-file-input" id="image" name="image" onchange="readURL(this);">
@@ -119,13 +120,13 @@
 					<div class="row">
 						<div class="col-md-6">
 							<div class="form-group">
-								<label>Password:</label>
-								<input type="password" class="form-control" name="password" id="password">
+								<label for="pass">Password:</label>
+								<input type="password" class="form-control" name="pass" id="pass">
 							</div>
 						</div>
 						<div class="col-md-6">
 							<div class="form-group">
-								<label>Re-Type Password:</label>
+								<label for="retype">Re-Type Password:</label>
 								<input type="password" class="form-control" name="retype" id="retype">
 							</div>
 						</div>
@@ -153,8 +154,10 @@
                 <div class="card card">
                             <div class="text-center">
                                 <div class="card-body">
-                               
-                                    <img src="" id="user_image" width=150 height=140 class="rounded-circle mb-2" alt="Card image">
+                               <div class="container">
+                                    <img src="" id="user_image" width=150 height=140 class="rounded-circle mb-2 img-over" alt="Card image"><span class="badge badge-dark">x</span>
+                               </div>
+                                    
                                     <h3 id="name"> </h3>
                                
                                 </div>
@@ -291,6 +294,5 @@ if (input.files && input.files[0]) {
 }
 }
 </script>
-{!! $validator->selector('#addForm') !!} 
-{!! $validator->selector('#editForm') !!} 
+{!! $user_validator->selector('#addUserForm') !!} 
 @endsection

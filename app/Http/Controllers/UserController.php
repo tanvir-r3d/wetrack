@@ -27,15 +27,15 @@ class UserController extends Controller
             ->rawColumns(['action'])
             ->make(true);
         }
-        $user=new User;
-        $validator=JsValidator::make([
-            'username' => 'required', 'string', 'max:255',
-            'first_name' => 'required', 'string', 'max:255',
+        $user_validator=JsValidator::make([
+            'username' => 'required|string|max:255',
+            'first_name' => 'required|string|max:255',
             'gender' => 'required',
             'image' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-            'email' => 'required', 'string', 'email', 'max:255', 'unique:users',
-            'password' => 'required', 'string', 'min:8', 'confirmed']);
-        return view('admin.users.index',['validator'=>$validator]);
+            'email' => 'required|string|email|max:255|unique:users',
+            'pass' => 'required|regex:/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/g|min:6',
+            'retype'=>'required|same:pass']);
+        return view('admin.users.index',['user_validator'=>$user_validator]);
     }
     
     public function settings()
@@ -56,14 +56,13 @@ class UserController extends Controller
         $user = new User;
 
          $validation= Validator::make($request->all(),[
-            'username' => 'required', 'string', 'max:255',
+             'username' => 'required', 'string', 'max:255',
             'first_name' => 'required', 'string', 'max:255',
             'gender' => 'required',
             'image' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-            'email' => 'required', 'email', 'max:255', 'unique:users',
-            'password' => 'required', 'string', 'min:8', 'confirmed']);
-        $jsValidator = JsValidator::validator($validation);
-        
+            'email' => 'required', 'string', 'email', 'max:255', 'unique:users',
+            'pass' => 'required','regex:/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/g','min:6',
+            'retype'=>'required','same:pass']);        
         
             DB::beginTransaction();
             $user->user_first_name = $request->first_name;
