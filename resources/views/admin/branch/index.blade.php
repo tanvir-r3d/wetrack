@@ -58,6 +58,15 @@
       @csrf
 			<div class="modal-body">
 
+				<div class="form-group">
+						 <label for="com_id">Select Company</label>
+						 <select class="form-control" id="com_id" name="com_id">
+							 @foreach($companys as $company)
+							<option value="{{$company->com_id}}">{{ $company->com_name}}</option>
+							@endforeach
+						 </select>
+					 </div>
+
       <div class="form-group">
         <label>Branch Name:</label>
         <input type="text" class="form-control" name="name" id="name">
@@ -95,7 +104,14 @@
       @csrf
 	<div class="modal-body">
       <div class="form-group">
-
+				<div class="form-group">
+						 <label for="e_com_id">Select Company</label>
+						 <select class="form-control" id="e_com_id" name="com_id">
+							 @foreach($companys as $company)
+							<option value="{{$company->com_id}}">{{ $company->com_name}}</option>
+							@endforeach
+						 </select>
+					 </div>
 
       <div class="form-group">
         <label>Branch Name:</label>
@@ -137,7 +153,7 @@
                 {
   	              data: 'branch_location',
   	              },
-	          
+
 	            {
 	              data: 'action',
 	              name: 'action',
@@ -170,6 +186,7 @@
 			success:function(data)
 			{
 				console.log(data);
+				$("#e_com_id").val(data.com_id); 
 				$("#e_name").val(data.branch_name);
         $("#e_location").val(data.branch_location)
 				$("#e_details").val(data.branch_details);

@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Validator;
 use JsValidator;
 use Toastr;
+use App\Company;
 
 class BranchController extends Controller
 {
@@ -18,6 +19,7 @@ class BranchController extends Controller
     public function index()
     {
       $branch=new Branch;
+      $data['companys'] = Company::get();
       if(request()->ajax())
       {
           return datatables()->of(Branch::latest()->get())
@@ -31,7 +33,7 @@ class BranchController extends Controller
           ->make(true);
       }
       $validator=JsValidator::make($branch->validation());
-      return view('admin.branch.index',['validator'=>$validator]);
+      return view('admin.branch.index',['validator'=>$validator],$data);
     }
 
 
@@ -48,6 +50,7 @@ class BranchController extends Controller
           $validation=Validator::make($request->all(),$branch->validation());
           $jsValidator = JsValidator::validator($validation);
 
+              $branch->com_id=$request->com_id;
               $branch->branch_name=$request->name;
               $branch->branch_location=$request->location;
               $branch->branch_details=$request->details;
