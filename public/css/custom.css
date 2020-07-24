@@ -16,8 +16,9 @@
   text-align: center;
   white-space: nowrap;
   border: 1px solid #c1b8b8;
-  margin-right: 41%;
+  margin-right: 44%;
   cursor: pointer;
+  margin-bottom: 41%;
     }
 .des:hover{
       background: #dcddde;
