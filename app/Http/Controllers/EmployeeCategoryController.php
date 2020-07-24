@@ -46,8 +46,9 @@ class EmployeeCategoryController extends Controller
       {
           $employeeCategory = new EmployeeCategory;
           $validation=Validator::make($request->all(),$employeeCategory->validation());
-          $jsValidator = JsValidator::validator($validation);
-
+          if ($validation->fails()) {
+            return back()->withInput()->withErrors($validation);
+            } 
               $employeeCategory->emp_cat_name=$request->name;
               $employeeCategory->emp_cat_detils=$request->details;
 
@@ -83,8 +84,9 @@ class EmployeeCategoryController extends Controller
     {
       $employeeCategory=New EmployeeCategory;
       $validation=Validator::make($request->all(),$employeeCategory->validation());
-      $jsValidator=JsValidator::validator($validation);
-
+        if ($validation->fails()) {
+        return back()->withInput()->withErrors($validation);
+      } 
       $employeeCategory=EmployeeCategory::find($id);
           $employeeCategory->emp_cat_name=$request->name;
           $employeeCategory->emp_cat_detils=$request->details;

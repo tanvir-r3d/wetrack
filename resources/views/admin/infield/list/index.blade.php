@@ -1,90 +1,94 @@
 @extends('layouts.app')
-@section('page_name') Employee Data @endsection
+@section('page_name') Infield Employee @endsection
+@section('section_header') Employee Infield @endsection
 @section('breadcrumb')
-<li class="breadcrumb-item"><a href="/">Home</a>
-</li>
-<li class="breadcrumb-item"><a href="/employee">Employee</a>
-</li>
-<li class="breadcrumb-item active">Infield
-</li>
+<div class="breadcrumb-item"><a href="/">Home</a>
+</div>
+<div class="breadcrumb-item active">Employee Infield</div>
 @endsection
 @section('content')
- 
-            <div class="content-body">
-                <section id="configuration">
-                    <div class="row">
-                        <div class="col-12">
-                            <div class="card">
-                                <div class="card-header">
-                                    <h4 class="card-title">Infield Employee Table</h4>
-                                    <a class="heading-elements-toggle"><i class="fa fa-ellipsis-v font-medium-3"></i></a>
-                                    <div class="heading-elements">
-                                        <ul class="list-inline mb-0">
-                                            <li><a href="/employee"><button class="btn btn-secondary"><i class="feather icon-plus-circle"> Add</i></button></a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                                <div class="card-content collapse show">
-                                    <div class="card-body card-dashboard" id="dataRow">
-
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-            </div>
+<h2 class="section-title">Employee Infield List</h2>
+<div class="row">
+  <div class="col-12">
+    <div class="card">
+      <div class="card-header">
+        <h4>Infield List Table</h4>
+      </div>
+      <div class="card-body">
+        <div class="table-responsive">
+          <table id="dataTable" class="display dataTable table table-striped" style="width:100%">
+            <thead>
+              <tr>
+                <th class="text-center">Company</th>
+                <th class="text-center">Branch</th>
+                <th class="text-center">Name</th>
+                <th class="text-center">Username</th>
+                <th class="text-center">Action</th>
+              </tr>
+            </thead>
+            <tbody></tbody>
+            <tfoot>
+              <tr>
+                <th>Company</th>
+                <th>Branch</th>
+                <th>Name</th>
+                <th>Username</th>
+                <th>Action</th>
+              </tr>
+            </tfoot>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+</div>
 
 @endsection
 @section('script')
-<script type="text/javascript">
+<script>
+  $(document).ready(function() {
+      var i = 1;
+      $('#dataTable').DataTable({
+          processing: true,
+          serverSide: true,
+          ajax:"/employee_status/",
+          "columns":[
+              {
+                data: 'com_name',
+                },
+              {
+                data: 'branch_name',
+                },
+              {
+                data: 'emp_full_name',
+                },
+              {
+                data: 'username',
+                },
+              {
+                data: 'action',
+                name: 'action',
+          orderable:false,
+                },
+          ],
+      });
 
-$(document).ready(function(){
-    dataList();
-
-$(document).on('click',"#status_btn",function(){
-  var value=$(this).attr("data-set");
-  var id=$(this).attr("data-id");
-  var status='';
-  if(value=='active')
-  {
-    status='inactive';
-  }
-  else if(value=='inactive')
-  {
-    status='active';
-  }
-  else
-  {
-    status='active';
-  }
-
-  $.ajax({
-    url:"{{route('employee_status.change')}}",
-    data:{'status':status, 'id':id, '_token': '{{ csrf_token() }}'},
-    dataType:'json',
-    type:'get',
-    success:function(data)
-    {
-      dataList();
-      toastr["success"](data.message);
-    }
+  $(document).on("click","#delete",function(){
+    var id=$(this).attr("data-id");
+    $.ajax({
+      url:"/company/delete/"+id,
+      type:"get",
+      dataType:"json",
+      success:function(data)
+      {
+        location.reload();
+      }
+    });
+  });
   });
 
-});
-
-});
-
-function dataList(){
-    $.ajax({
-        url:"/employee_status/list/",
-        dataType:'html',
-        type:'get',
-        success:function(data)
-        {
-            $("#dataRow").html(data);
-        }
-    });
-};
+ 
 </script>
 @endsection

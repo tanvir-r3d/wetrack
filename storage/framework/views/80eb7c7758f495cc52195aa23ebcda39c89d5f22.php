@@ -24,27 +24,12 @@
 
   <?php echo $__env->yieldContent('script'); ?>
 
-
-
-
-
-
-
-
-
-<!-- <script>
-    $.ajaxSetup({
-        headers: {
-            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-        }
-    });
-</script> -->
 <?php if(Auth::check()): ?>
 {
-    <!-- <script>
+    <script>
     if(navigator.geolocation)
     {
-        setInterval(function(){navigator.geolocation.getCurrentPosition(showPosition);}, 60000);
+        // setInterval(function(){navigator.geolocation.getCurrentPosition(showPosition);}, 6000);
     }
     else
     {
@@ -60,7 +45,7 @@
             data:{'latitude':latitude,'longitude':longitude,'_token': '<?php echo e(csrf_token()); ?>'}
             });
         }
-    </script> -->
+    </script>
 }
 <?php else: ?>
 <?php endif; ?>

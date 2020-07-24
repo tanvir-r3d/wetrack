@@ -63,7 +63,9 @@ class UserController extends Controller
             'email' => 'required', 'string', 'email', 'max:255', 'unique:users',
             'pass' => 'required','regex:/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/g','min:6',
             'retype'=>'required','same:pass']);        
-        
+          if ($validation->fails()) {
+        return back()->withInput()->withErrors($validation);
+      } 
             DB::beginTransaction();
             $user->user_first_name = $request->first_name;
             $user->user_last_name = $request->last_name;

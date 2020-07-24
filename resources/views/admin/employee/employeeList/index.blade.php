@@ -17,6 +17,13 @@
 			<div class="card-header">
 				<h4>Employee Table</h4>
 			</div>
+			@if($errors)
+			 @foreach($errors->all() as $error)
+        <div>
+           {{$error}}
+        </div>
+   @endforeach
+@endif
 			<div class="card-body">
 				<div class="table-responsive">
 					<table id="dataTable" class="display dataTable table table-striped" style="width:100%">
@@ -28,9 +35,8 @@
 								<th class="text-center">Company</th>
 				                <th class="text-center">Branch</th>
 								<th class="text-center">Category</th>
+				                <th class="text-center">Status</th>
 				                <th class="text-center">Phone</th>
-
-
 								<th class="text-center">Action</th>
 							</tr>
 						</thead>
@@ -43,8 +49,7 @@
 				                <th>Branch</th>
 								<th>Category</th>
 				                <th>Phone</th>
-
-
+				                <th>Status</th>
 								<th>Action</th>
 							</tr>
 						</tfoot>
@@ -117,27 +122,7 @@
 
 
         <div class="row">
-          <div class="col-md-6">
-
-            <fieldset class="form-group floating-label-form-group">
-                <label for="name">Full Name</label>
-                <input type="text" class="form-control" id="name" name="full_name" placeholder="Enter Employee Name" required data-validation-required-message="This field is required">
-            </fieldset>
-          </div>
-
-          <div class="col-md-6">
-            <div id="div_id_gender" class="form-group">
-               <label for="id_gender"  class="control-label col-md-4">Gender </label>
-               <div class="controls col-md-8"  style="margin-bottom: 10px">
-                    <label class="radio-inline"> <input type="radio" name="gender" id="gender_1" value="1"  style="margin-bottom: 10px">Male</label>
-                    <label class="radio-inline"> <input type="radio" name="gender" id="gender_2" value="2"  style="margin-bottom: 10px">Female </label>
-               </div>
-           </div>
-          </div>
-
-        </div>
-				<div class="row">
-					<div class="col-md-6">
+        	<div class="col-md-6">
 						<div class="form-group">
 								 <label for="cat_id">Select Category</label>
 								 <select class="form-control" id="cat_id" name="cat_id">
@@ -148,12 +133,42 @@
 								 </select>
 							 </div>
 					</div>
+          <div class="col-md-6">
+
+            <dic class="form-group floating-label-form-group">
+                <label for="name">Full Name</label>
+                <input type="text" class="form-control" id="name" name="full_name" placeholder="Enter Full Name" >
+            </dic>
+          </div>
+
+        </div>
+				<div class="row">
 				<div class="col-md-6">
-					<fieldset class="form-group floating-label-form-group">
-							<label for="name">Phone</label>
-							<input type="text" class="form-control" id="name" name="phone" placeholder="Enter Employee Name" required data-validation-required-message="This field is required">
-					</fieldset>
+					<div class="form-group floating-label-form-group">
+							<label for="contact">Phone</label>
+							<input type="text" class="form-control" id="contact" name="phone" placeholder="Enter Contact" >
+					</div>
 				</div>
+				<div class="col-md-3">
+            <div id="div_id_gender" class="form-group">
+               <label for="id_gender"  class="control-label col-md-4">Gender </label>
+               <div class="controls col-md-11"  style="margin-bottom: 10px">
+                    <label class="radio-inline"> <input type="radio" name="gender" id="gender_1" value="1"  style="margin-bottom: 10px">&nbsp Male</label>
+                    <label class="radio-inline"> <input type="radio" name="gender" id="gender_2" value="2"  style="margin-bottom: 10px">&nbsp Female</label>
+               </div>
+           </div>
+          </div>
+          
+          <div class="col-md-3">
+			<div class="form-group">
+                      <div class="control-label">Status</div>
+                      <label class="custom-switch" style="margin-left: -2.25rem;margin-top: 10px;">
+                        <input type="checkbox" name="status" class="custom-switch-input">
+                        <span class="custom-switch-indicator"></span>
+                        <span class="custom-switch-description">Inactive/Active</span>
+                      </label>
+                    </div>
+        </div>
 			</div>
 
 
@@ -161,13 +176,13 @@
 					<div class="col-md-6">
 						<fieldset class="form-group floating-label-form-group">
 								<label for="detaaddressils">Address</label>
-								<textarea class="form-control" id="address" rows="3" name="address" placeholder="Enter Employee Address" ></textarea>
+								<textarea class="form-control" id="address" rows="3" name="address" placeholder="Enter Address" ></textarea>
 						</fieldset>
 					</div>
           <div class="col-md-6">
             <fieldset class="form-group floating-label-form-group">
                 <label for="salery">Salary</label>
-                <input type="text" class="form-control" id="salery" name="salery" placeholder="Enter Employee Name" required data-validation-required-message="This field is required">
+                <input type="text" class="form-control" id="salery" name="salery" placeholder="Enter Salary">
             </fieldset>
           </div>
 
@@ -179,14 +194,14 @@
 					<div class="col-md-6">
  					 <fieldset class="form-group floating-label-form-group">
  							 <label for="username">User Name</label>
- 							 <input type="text" class="form-control" id="username" name="username" placeholder="Enter Employee Name" required data-validation-required-message="This field is required">
+ 							 <input type="text" class="form-control" id="username" name="username" placeholder="Enter Username">
  					 </fieldset>
  				 </div>
 
           <div class="col-md-6">
             <div class="form-group">
                 <label for="email">Email address</label>
-                 <input type="email" class="form-control" id="email" name="email" placeholder="Enter Your Email ">
+                 <input type="email" class="form-control" id="email" name="email" placeholder="Enter Email ">
             </div>
           </div>
         </div>
@@ -201,7 +216,7 @@
 					<div class="col-md-6">
 						<div class="form-group">
 								<label for="retypePassword" class=" col-form-label">Retype Password</label>
-									<input type="password" class="form-control" name="retypePassword" id="retypePassword" placeholder="Password">
+									<input type="password" class="form-control" name="retypePassword" id="retypePassword" placeholder="Retype Password">
 						</div>
 					</div>
 
@@ -244,7 +259,7 @@
 
 				<div class="col-md-6 mt-5">
 				<div class="custom-file">
-					<input type="file" class="custom-file-input" id="image" name="image" onchange="readURL(this);">
+					<input type="file" class="custom-file-input" name="image" onchange="readURL(this);">
 					<label class="custom-file-label" for="e_image">Choose image</label>
 					<small class="form-text text-muted">File must be .png</small>
 				</div>
@@ -284,26 +299,6 @@
 
 				<div class="row">
 					<div class="col-md-6">
-
-						<fieldset class="form-group floating-label-form-group">
-								<label for="e_name">Full Name</label>
-								<input type="text" class="form-control" id="e_name" name="full_name" placeholder="Enter Employee Name" >
-						</fieldset>
-					</div>
-
-					<div class="col-md-6">
-						<div id="e_div_id_gender" class="form-group">
-							 <label for="id_gender"  class="control-label col-md-4">Gender </label>
-							 <div class="controls col-md-8 "  style="margin-bottom: 10px">
-										<label class="radio-inline"> <input type="radio" name="gender" id="male" value="1"  style="margin-bottom: 10px">Male</label>
-										<label class="radio-inline"> <input type="radio" name="gender" id="female" value="2"  style="margin-bottom: 10px">Female </label>
-							 </div>
-					 </div>
-					</div>
-
-				</div>
-				<div class="row">
-					<div class="col-md-6">
 						<div class="form-group">
 								 <label for="e_cat_id">Select Category</label>
 								 <select class="form-control" id="e_cat_id" name="cat_id">
@@ -314,12 +309,45 @@
 								 </select>
 							 </div>
 					</div>
+
+					<div class="col-md-6">
+
+						<div class="form-group floating-label-form-group">
+								<label for="e_name">Full Name</label>
+								<input type="text" class="form-control" id="e_name" name="full_name" placeholder="Enter Employee Name" >
+						</div>
+					</div>
+
+				</div>
+				<div class="row">
+					
 				<div class="col-md-6">
 					<fieldset class="form-group floating-label-form-group">
 							<label for="e_phone">Phone</label>
 							<input type="text" class="form-control" id="e_phone" name="phone" placeholder="Enter Employee Name" required data-validation-required-message="This field is required">
 					</fieldset>
 				</div>
+
+				<div class="col-md-3">
+						<div id="e_div_id_gender" class="form-group">
+							 <label for="id_gender"  class="control-label col-md-4">Gender </label>
+							 <div class="controls col-md-11"  style="margin-bottom: 10px">
+										<label class="radio-inline"> <input type="radio" name="gender" id="male" value="1"  style="margin-bottom: 10px">&nbsp Male</label>
+										<label class="radio-inline"> <input type="radio" name="gender" id="female" value="2"  style="margin-bottom: 10px">&nbsp Female</label>
+							 </div>
+					 </div>
+					</div>
+
+					<div class="col-md-3">
+			<div class="form-group">
+                      <div class="control-label">Status</div>
+                      <label class="custom-switch" style="margin-left: -2.25rem;margin-top: 10px;">
+                        <input type="checkbox" name="status" id="e_status" class="custom-switch-input">
+                        <span class="custom-switch-indicator"></span>
+                        <span class="custom-switch-description">Inactive/Active</span>
+                      </label>
+                    </div>
+        </div>
 			</div>
 
 
@@ -392,6 +420,10 @@
                 {
                  data: 'emp_phone',
                  },
+                 {
+                 	data:'status',
+                 	name:'status',
+                 },
 	            {
 	              data: 'action',
 	              name: 'action',
@@ -435,16 +467,24 @@
 		        $("#e_phone").val(data.emp_phone);
 
 
-				$("#editForm").attr("action","/employee/update/"+data.emp_id);
-				if(data.emp_img!='')
+				$("#editForm").attr("action","/employee/update/"+data.employee.emp_id);
+				if (data.emp_status=='on') 
 				{
-					$(".emp_img").attr("src","/images/employee/"+data.emp_img);
+					$("#e_status").attr('checked','checked');
+				}
+				else
+				{
+					$("#e_status").removeAttr('checked','checked');
+				}
+				if(data.employee.emp_img!='')
+				{
+					$(".emp_img").attr("src","/images/employee/"+data.employee.emp_img);
 				}
 				else{
 					$(".emp_img").attr("src","/example-image.jpg");
 				}
 
-				if(data.emp_gender==1)
+				if(data.employee.emp_gender==1)
 				{
 					$("#male").attr("checked","checked");
 				}
@@ -454,7 +494,23 @@
 			}
 		});
 	});
-
+$(document).on('click',"#status",function(){
+	var id=$(this).attr('data-id');
+	var status=$(this).attr('data-status');
+	var value='';
+	if (status=='active') { value=null }
+	else{ value='on' }
+		$.ajax({
+			url:"/employee_status/change",
+			data:{'status':value,'id':id,"_token": "{{ csrf_token() }}"},
+			type:'get',
+			dataType:'json',
+			success:function(data)
+			{
+				location.reload();
+			}		
+		})
+});
 });
 
 function readURL(input) {

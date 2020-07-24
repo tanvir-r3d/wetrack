@@ -16,7 +16,7 @@ class EmployeeStatus extends Migration
         Schema::create('employee_statuss', function (Blueprint $table) {
             $table->bigIncrements('emp_status_id');
             $table->integer('emp_id');
-            $table->string('emp_status', 10);
+            $table->string('emp_status', 10)->nullable();
             $table->timestamps();
         });
     }

@@ -151,14 +151,12 @@
 			</div>
 				<div class="modal-body">
 
-                	<form action="" method="post" id="user_view" enctype="multipart/form-data">
-                		@csrf
+                	
                 <div class="card card">
                             <div class="text-center">
                                 <div class="card-body">
                                <div class="container">
-                                    <img src="" id="user_image" width=150 height=140 class="rounded-circle mb-2 img-over" alt="Card image"><label class="btn" for="image"><div class="des"><img src="/camera.svg"><input type="file" hidden name="image" id="image"></div></label>
-
+                                    <img src="" id="user_image" width=150 height=140 class="rounded-circle mb-2 img-over" alt="Card image"><label class="btn" for="image"><div class="des"><img src="/camera.svg"><input type="file" hidden name="image" id="u_image"></div></label>
                                </div>
 							
                                     <h3 id="name"> </h3>
@@ -181,9 +179,7 @@
 
 				</div>
 				<div class="modal-footer bg-whitesmoke br">
-					<button type="button" class="btn btn-dark" data-dismiss="modal">Close</button>
-					<button class="btn btn-primary" id="update" type="submit">Save Changes</button>
-			</form>
+					<button type="button" class="btn btn-dark" data-dismiss="modal">Close</button>			
 			</div>
 		</div>
 	</div>
@@ -284,10 +280,9 @@
 	});
 
 });
-// function unhide()
-// {
-// 	$("#update").removeAttr('hidden');
-// }
+document.getElementById("u_image").onchange = function() {
+    document.getElementById("user_view").submit();
+};
 
 function readURL(input) {
 if (input.files && input.files[0]) {

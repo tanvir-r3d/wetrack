@@ -8,7 +8,7 @@
 <?php $__env->startSection('content'); ?>
 <h2 class="section-title">Employee Category List</h2>
 <p class="section-lead">
-	<button class="btn btn-success mr-l" data-toggle="modal" data-target="#addModal">Add Employee Category</button>
+	<button class="btn btn-primary mr-l" data-toggle="modal" data-target="#addModal">Add Employee Category</button>
 </p>
 <div class="row">
 	<div class="col-12">

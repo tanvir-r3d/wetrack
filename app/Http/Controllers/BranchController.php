@@ -48,8 +48,9 @@ class BranchController extends Controller
       {
           $branch = new Branch;
           $validation=Validator::make($request->all(),$branch->validation());
-          $jsValidator = JsValidator::validator($validation);
-
+  if ($validation->fails()) {
+        return back()->withInput()->withErrors($validation);
+      } 
               $branch->com_id=$request->com_id;
               $branch->branch_name=$request->name;
               $branch->branch_location=$request->location;
@@ -87,8 +88,9 @@ class BranchController extends Controller
     {
       $branch=New Branch;
       $validation=Validator::make($request->all(),$branch->validation());
-      $jsValidator=JsValidator::validator($validation);
-
+        if ($validation->fails()) {
+        return back()->withInput()->withErrors($validation);
+      } 
       $branch=Branch::find($id);
           $branch->branch_name=$request->name;
           $branch->branch_location=$request->location;
