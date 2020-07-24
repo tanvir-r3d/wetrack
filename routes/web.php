@@ -42,7 +42,7 @@ Route::middleware('auth')->group(function () {
   Route::get('/employee/delete/{id}','EmployeeController@destroy');
   Route::get('employee_edit','EmployeeController@edit')->name('employee_edit');
   Route::post('employee/update/{id}','EmployeeController@update');
-
+ 
   // Employee In Field
   Route::get('employee_status/','EmployeeStatusController@index');
   Route::get('employee_status/list','EmployeeStatusController@create');
@@ -61,5 +61,6 @@ Route::middleware('auth')->group(function () {
 
   // Tracking Route
   Route::post('track_create','trackingController@latlonSave')->name('track_create');
-  Route::get('track_map','trackingController@gmap')->name('track_map');
+  Route::get('track_map/{id?}','trackingController@gmap');
+  Route::get('track/get','trackingController@get');
 });

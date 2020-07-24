@@ -32,7 +32,9 @@ class profileController extends Controller
 
         $validation= Validator::make($request->all(),$user->generalValidate());
         
-        
+          if ($validation->fails()) {
+        return back()->withInput()->withErrors($validation);
+      } 
             DB::beginTransaction();
             $user->user_first_name = $request->first_name;
             $user->user_last_name = $request->last_name;

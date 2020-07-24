@@ -34,8 +34,9 @@ class CompanyController extends Controller
     {
         $company = new Company;
         $validation=Validator::make($request->all(),$company->validation());
-        $jsValidator = JsValidator::validator($validation);
-
+          if ($validation->fails()) {
+        return back()->withInput()->withErrors($validation);
+      } 
             $company->com_name=$request->name;
             $company->com_details=$request->details;
             if($request->hasFile('logo'))
@@ -67,8 +68,9 @@ class CompanyController extends Controller
     {
         $company=New Company;
         $validation=Validator::make($request->all(),$company->validation());
-        $jsValidator=JsValidator::validator($validation);
-
+          if ($validation->fails()) {
+        return back()->withInput()->withErrors($validation);
+      } 
         $company=Company::find($id);
             $company->com_name=$request->name;
             $company->com_details=$request->details;

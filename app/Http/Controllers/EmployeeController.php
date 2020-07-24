@@ -9,7 +9,6 @@ use Toastr;
 use JsValidator;
 use App\EmployeeCategory;
 use App\Branch;
-use App\EmployeeStatus;
 use DB;
 use App\Company;
 use App\User;
@@ -27,7 +26,6 @@ class EmployeeController extends Controller
         $branchs = Branch::get();
         $categorys = EmployeeCategory::get();
         $companys = Company::get();
-
         $employee=new Employee;
         if(request()->ajax())
         {
@@ -53,7 +51,19 @@ class EmployeeController extends Controller
               $category=collect($categorys)->where('emp_cat_id',$data->emp_cat_id)->first();
               return $category->emp_cat_name;
             })
-            ->rawColumns(['action'])
+            ->addColumn('status',function($data)
+            {
+              if($data->emp_status) 
+              {
+                $button='<button type="button" name="status" id="status" data-id="'.$data->emp_id.'" data-status="active" class="status btn" style="color:green"><i class="fas fa-check"> Active</i></button>';
+              }
+              else
+              {
+                $button='<button type="button" name="status" id="status" data-id="'.$data->emp_id.'" data-status="inactive" class="status btn"><i class="fas fa-times"> Inactive</i></button>';
+              }
+              return $button;
+            })
+            ->rawColumns(['action','status'])
             ->make(true);
         }
         $addValidator=JsValidator::make($employee->validation());
@@ -76,16 +86,20 @@ class EmployeeController extends Controller
       $employee = new Employee;
       $user = new User;
       $validation=Validator::make($request->all(),$employee->validation());
-      $jsValidator = JsValidator::validator($validation);
-
-            $employee->emp_full_name = $request->full_name;
-            $employee->emp_branch_id = $request->branch_id;
-            $employee->emp_cat_id = $request->cat_id;
-            $employee->emp_com_id = $request->com_id;
-            $employee->emp_salery = $request->salery;
-            $employee->emp_gender = $request->gender;
-            $employee->emp_address = $request->address;
-            $employee->emp_phone = $request->phone;
+      if ($validation->fails()) {
+        return back()->withInput()->withErrors($validation);
+      } 
+      else
+      {
+        $employee->emp_full_name = $request->full_name;
+        $employee->emp_branch_id = $request->branch_id;
+        $employee->emp_cat_id = $request->cat_id;
+        $employee->emp_com_id = $request->com_id;
+        $employee->emp_salery = $request->salery;
+        $employee->emp_gender = $request->gender;
+        $employee->emp_address = $request->address;
+        $employee->emp_phone = $request->phone;
+        $employee->emp_status=$request->status;
 
           if($request->hasFile('image'))
           {
@@ -107,15 +121,9 @@ class EmployeeController extends Controller
           $user->emp_id = $employee->emp_id;
           $user->user_type =1;
           $user->save();
-
-
-
       Toastr::success('Congratulation! New Employee Information Saved Successfully', 'Employee',["positionClass" => "toast-top-right"]);
       return redirect()->back();
-
-
-
-
+      }
     }
 
     /**
@@ -127,18 +135,16 @@ class EmployeeController extends Controller
     public function edit(Request $request)
     {
         $id = $request->id;
-        $data= Employee::find($id);
-        return response()->json($data);
+        $employee= Employee::find($id);
+        return response()->json($employee);
 
 
     }
 
     public function update(Request $request,$id)
     {
-
           $employee=New Employee;
           $validation=Validator::make($request->all(),$employee->validation());
-          $jsValidator=JsValidator::validator($validation);
 
                 $employee=Employee::find($id);
                 $employee->emp_branch_id = $request->branch_id;
@@ -149,6 +155,8 @@ class EmployeeController extends Controller
                 $employee->emp_salery = $request->salery;
                 $employee->emp_phone = $request->phone;
                 $employee->emp_address = $request->address;
+                $employee->emp_status = $request->status;
+                
               if($request->hasFile('image'))
               {
                   if($employee->emp_img)
@@ -163,6 +171,7 @@ class EmployeeController extends Controller
                       $employee->emp_img = $name;
               }
           $employee->save();
+
           Toastr::success('Congratulation! New Employee Information Updated Successfully', 'Employee',["positionClass" => "toast-top-right"]);
           return redirect()->back();
 

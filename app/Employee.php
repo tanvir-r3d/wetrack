@@ -19,6 +19,7 @@ class Employee extends Model
     'emp_com_id',
     'emp_address',
     'emp_phone',
+    'emp_status',
     'emp_img'
   ];
 
@@ -31,8 +32,8 @@ class Employee extends Model
         'phone'=>'required',
         'gender'=>'required',
         'address'=>'required',
-        'image'=>'mimes:jpg,png',
-        'password' => 'required|regex:/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/g|min:6',
+        'image'=>'image|max:2048',
+        'password' => 'required|regex:/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/|min:6',
         'retypePassword' => 'required|same:password',
         'username' => 'required|unique:users,username',
         'email' => 'required|unique:users,email',
