@@ -195,8 +195,5 @@ class EmployeeController extends Controller
               'message'=>'Successfully Deleted',
           ];
           return response()->json($response,$status);
-
-
-
     }
 }
