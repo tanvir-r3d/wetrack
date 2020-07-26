@@ -12,7 +12,7 @@ use DB;
 use JsValidator;
 
 class UserController extends Controller
-{ 
+{
     public function index()
     {
         if(request()->ajax())
@@ -37,13 +37,13 @@ class UserController extends Controller
             'retype'=>'required|same:pass']);
         return view('admin.users.index',['user_validator'=>$user_validator]);
     }
-    
+
     public function settings()
     {
         // $data['images']=UserImage::get();
         // return view('admin.profile.settings',$data);
     }
-    
+
     public function create()
     {
         $data['users']=User::select('id','user_first_name','user_last_name','username','email')->get();
@@ -62,10 +62,10 @@ class UserController extends Controller
             'image' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             'email' => 'required', 'string', 'email', 'max:255', 'unique:users',
             'pass' => 'required','regex:/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/g','min:6',
-            'retype'=>'required','same:pass']);        
+            'retype'=>'required','same:pass']);
           if ($validation->fails()) {
         return back()->withInput()->withErrors($validation);
-      } 
+      }
             DB::beginTransaction();
             $user->user_first_name = $request->first_name;
             $user->user_last_name = $request->last_name;
@@ -117,7 +117,7 @@ class UserController extends Controller
         $user=User::find($id);
         if($request->hasFile('image'))
         {
-            if ($user->user_img) 
+            if ($user->user_img)
             {
                 unlink(public_path('images/user/').$user->user_img);
             }
