@@ -15,15 +15,16 @@ class CompanyController extends Controller
         $company=new Company;
         if(request()->ajax())
         {
-            return datatables()->of(Company::latest()->get())
-            ->addColumn('action',function($data){
-                $button='<button type="button" name="edit" id="edit" data-toggle="modal" data-target="#editModal" data-id="'.$data->com_id.'" class="edit btn btn-primary"><i class="fas fa-edit"></i></button>';
-                $button.='&nbsp;&nbsp;';
-                $button.='<button type="button" name="delete" id="delete" data-id="'.$data->com_id.'" class="delete btn btn-danger"><i class="fas fa-trash"></i></button>';
-                return $button;
-            })
-            ->rawColumns(['action'])
-            ->make(true);
+            return $company->datatable(Company::latest()->get());
+//            return datatables()->of(Company::latest()->get())
+//            ->addColumn('action',function($data){
+//                $button='<button type="button" name="edit" id="edit" data-toggle="modal" data-target="#editModal" data-id="'.$data->com_id.'" class="edit btn btn-primary"><i class="fas fa-edit"></i></button>';
+//                $button.='&nbsp;&nbsp;';
+//                $button.='<button type="button" name="delete" id="delete" data-id="'.$data->com_id.'" class="delete btn btn-danger"><i class="fas fa-trash"></i></button>';
+//                return $button;
+//            })
+//            ->rawColumns(['action'])
+//            ->make(true);
         }
         $validator=JsValidator::make($company->validation());
         return view('admin.company.index',['validator'=>$validator]);
@@ -36,7 +37,7 @@ class CompanyController extends Controller
         $validation=Validator::make($request->all(),$company->validation());
           if ($validation->fails()) {
         return back()->withInput()->withErrors($validation);
-      } 
+      }
             $company->com_name=$request->name;
             $company->com_details=$request->details;
             if($request->hasFile('logo'))
@@ -70,7 +71,7 @@ class CompanyController extends Controller
         $validation=Validator::make($request->all(),$company->validation());
           if ($validation->fails()) {
         return back()->withInput()->withErrors($validation);
-      } 
+      }
         $company=Company::find($id);
             $company->com_name=$request->name;
             $company->com_details=$request->details;

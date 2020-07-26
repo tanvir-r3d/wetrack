@@ -2,10 +2,12 @@
 
 namespace App;
 
+use App\Traits\Datatableable;
 use Illuminate\Database\Eloquent\Model;
 
 class Company extends Model
 {
+    use Datatableable;
     protected $table="companies";
     protected $primaryKey="com_id";
     public $fillable=[
@@ -13,8 +15,8 @@ class Company extends Model
       'com_logo',
       'com_details',
     ];
-  
-    public function validation(){      
+
+    public function validation(){
         return[
           'name'=>'required',
           'logo'=>'mimes:png',
