@@ -39,101 +39,116 @@
 @endsection
 @section('script')
 <script>
-
-var latitude  = parseFloat("");
-var longitude = parseFloat("");
-var from_places = parseFloat("");
-var to_places = parseFloat("");
-
-  $(document).on("click","#employee",function(){
-    var user_id=$(this).attr("data-id");
-     $.ajax
-     ({
-        url:'/track/get',
-        data:{'user_id':user_id,"_token": "{{ csrf_token() }}"},
-        type:'get',
-        dataType:'json',
-        success:function(data)
-        {
-          from_places=(data.firstData.tracking_latitude)+','+(data.firstData.tracking_longitude);
-          to_places=(data.lastData.tracking_latitude)+','+(data.lastData.tracking_longitude);
-
-
-          var origin = from_places;
-          var destination = to_places;
-          var travel_mode = 'WALKING';
-          var directionsDisplay = new google.maps.DirectionsRenderer({'draggable': false});
-          var directionsService = new google.maps.DirectionsService();
-          displayRoute(travel_mode, origin, destination, directionsService, directionsDisplay);
-
-        }
-    });
-
+$(document).on("click","#employee",function(){
+  var user_id=$(this).attr("data-id");
+   $.ajax
+   ({
+      url:'/track/get',
+      data:{'user_id':user_id,"_token": "{{ csrf_token() }}"},
+      type:'get',
+      dataType:'json',
+      success:function(data)
+      {
+        var from_places=(data.firstData.tracking_latitude)+','+(data.firstData.tracking_longitude);
+        var to_places=(data.lastData.tracking_latitude)+','+(data.lastData.tracking_longitude);
+        
+        console.log(from_places);
+        var origin = from_places;
+        var destination = to_places;
+      
+        calcRoute(origin,destination);
+      }
   });
 
+});
 
 
 
-   google.maps.event.addDomListener(window, 'load', function (listener) {
-            initMap();
-        });
+var map;
+var directionsRenderer;
+var directionsService;
+var stepDisplay;
+var markerArray = [];
 
+function initMap() {
+  // Instantiate a directions service.
+  directionsService = new google.maps.DirectionsService();
 
-function initMap() 
-    {
-        // initial map setting
-        map = new google.maps.Map(document.getElementById('map'), {
-          zoom: 15,
-          mapTypeId: 'roadmap',
-        });
-        map.setCenter({lat: latitude, lng: longitude});
+  // Create a map and center it on Manhattan.
+  var manhattan = new google.maps.LatLng(40.7711329, -73.9741874);
+  var mapOptions = {
+    zoom: 13,
+    center: manhattan
+  }
+  map = new google.maps.Map(document.getElementById('map'), mapOptions);
 
-        // find geoLocation
-        if (!latitude || !longitude)
-        if (navigator.geolocation) 
-        {
-            navigator.geolocation.getCurrentPosition(function geolocationSuccess(position) { 
-                document.getElementById('latitude').value = position.coords.latitude;
-                document.getElementById('longitude').value = position.coords.longitude;
+  // Create a renderer for directions and bind it to the map.
+  var rendererOptions = {
+    map: map
+  }
+  directionsRenderer = new google.maps.DirectionsRenderer(rendererOptions)
 
-                map.setCenter({
-                    lat: position.coords.latitude, 
-                    lng: position.coords.longitude
-                });
-            }, function() {
-                document.getElementById('error').innerHTML = 'Browser doesn\'t support geolocation';
-                toastr.error("Browser doesn't support geolocation" , "Error!"); 
-                document.getElementById('error').classList.remove("sr-only");
-                $(".submit").attr("disabled", 'disabled');
-            });
-        }  
+  // Instantiate an info window to hold step text.
+  stepDisplay = new google.maps.InfoWindow();
 }
 
-function displayRoute(travel_mode, origin, destination, directionsService, directionsDisplay) {
-    directionsService.route({
-        origin: origin,
-        destination: destination,
-        travelMode: travel_mode,
-        avoidTolls: true
-    }, function (response, status) {
-        if (status === 'OK') {
-            directionsDisplay.setMap(map);
-            directionsDisplay.setDirections(response);
-        } else {
+
+
+function calcRoute(origin,destination) {
+
+  // First, clear out any existing markerArray
+  // from previous calculations.
+  for (i = 0; i < markerArray.length; i++) {
+    markerArray[i].setMap(null);
+  }
+
+
+  var request = {
+      origin: origin,
+      destination: destination,
+      travelMode: 'WALKING'
+  };
+
+  // Route the directions and pass the response to a
+  // function to create markers for each step.
+  directionsService.route(request, function(response, status) {
+    console.log(response);
+    if (status == "OK") {
+      var warnings = document.getElementById("warnings_panel");
+      directionsRenderer.setDirections(response);
+      showSteps(response);
+    }
+     else {
             directionsDisplay.setMap(null);
             directionsDisplay.setDirections(null);
             alert('Could not display directions due to: ' + status);
         }
-    });
+  });
 }
 
+function showSteps(directionResult) {
+  // For each step, place a marker, and add the text to the marker's
+  // info window. Also attach the marker to an array so we
+  // can keep track of it and remove it when calculating new
+  // routes.
+  var myRoute = directionResult.routes[0].legs[0];
 
+  for (var i = 0; i < myRoute.steps.length; i++) {
+      var marker = new google.maps.Marker({
+        position: myRoute.steps[i].start_point,
+        map: map
+      });
+      attachInstructionText(marker, myRoute.steps[i].instructions);
+      markerArray[i] = marker;
+  }
+}
 
+function attachInstructionText(marker, text) {
+  google.maps.event.addListener(marker, 'click', function() {
+    stepDisplay.setContent(text);
+    stepDisplay.open(map, marker);
+  });
+}
 
-</script>
-<script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
-<script async defer
-  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAeyiyPuXk0_dH9lja_hxNfmlLrbH8noIs&callback=initMap"
-      defer>
 </script>
 @endsection
