@@ -15,7 +15,7 @@ class TrackingData extends Migration
     {
         Schema::create('tracking_datas', function (Blueprint $table) {
         $table->bigIncrements('tracking_id');
-        $table->integer('user_id');
+        $table->integer('emp_id');
         $table->string('tracking_longitude', 1000);
         $table->string('tracking_latitude', 1000);
         $table->timestamps();

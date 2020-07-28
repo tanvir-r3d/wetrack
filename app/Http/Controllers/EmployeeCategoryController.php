@@ -20,15 +20,6 @@ class EmployeeCategoryController extends Controller
         $employeeCategory = new EmployeeCategory;
         if (request()->ajax()) {
             return $employeeCategory->datatable(EmployeeCategory::latest()->get());
-//          return datatables()->of(EmployeeCategory::latest()->get())
-//          ->addColumn('action',function($data){
-//              $button='<button type="button" name="edit" id="edit" data-toggle="modal" data-target="#editModal" data-id="'.$data->emp_cat_id.'" class="edit btn btn-primary"><i class="fas fa-edit"></i></button>';
-//              $button.='&nbsp;&nbsp;';
-//              $button.='<button type="button" name="delete" id="delete" data-id="'.$data->emp_cat_id.'" class="delete btn btn-danger"><i class="fas fa-trash"></i></button>';
-//              return $button;
-//          })
-//          ->rawColumns(['action'])
-//          ->make(true);
         }
         $validator = JsValidator::make($employeeCategory->validation());
         return view('admin.employee.employeeCategory.index' , ['validator' => $validator]);

@@ -5,7 +5,7 @@ namespace App\Traits;
 
 trait Datatableable
 {
-    public function datatable ($data,$view=false,$edit=true,$delete=true)
+    public function datatable($data,$view=false,$edit=true,$delete=true)
     {
         return datatables()->of($data)
             ->addColumn('action' , function ($data) use($view,$edit,$delete) {
@@ -13,9 +13,9 @@ trait Datatableable
                 $button="";
                 if($edit===true)
                 {
-                $button .= '<button type="button" name="edit" id="edit" data-toggle="modal" data-target="#editModal" data-id="' . $data->$primaryKey . '" class="edit btn btn-primary"><i class="fas fa-edit"></i></button>';    
+                $button .= '<button type="button" name="edit" id="edit" data-toggle="modal" data-target="#editModal" data-id="' . $data->$primaryKey . '" class="edit btn btn-primary"><i class="fas fa-edit"></i></button>';
                 $button .= '&nbsp;&nbsp;';
-                
+
                 }
                 if($view===true)
                 {
@@ -23,11 +23,11 @@ trait Datatableable
                 $button .= '&nbsp;&nbsp;';
 
                 }
-                if ($delete===true) 
+                if ($delete===true)
                 {
-                $button .= '<button type="button" name="delete" id="delete" data-id="' .$data->$primaryKey . '" class="delete btn btn-danger"><i class="fas fa-trash"></i></button>';    
+                    $button .= '<button type="button" name="delete" id="delete" data-id="' .$data->$primaryKey . '" class="delete btn btn-danger"><i class="fas fa-trash"></i></button>';
                 }
-                
+
                 return $button;
             })
             ->rawColumns(['action'])
