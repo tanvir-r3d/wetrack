@@ -39,7 +39,9 @@ class UserController extends Controller
             'pass' => 'required|regex:/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/g|min:6',
             'retype'=>'required|same:pass']);
         return view('admin.users.index',['user_validator'=>$user_validator]);
-    }
+
+
+
 
     public function settings()
     {

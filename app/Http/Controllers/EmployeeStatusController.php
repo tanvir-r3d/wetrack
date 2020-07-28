@@ -10,18 +10,17 @@ use Illuminate\Http\Request;
 
 class EmployeeStatusController extends Controller
 {
- 
+
     public function index()
     {
         $branchs = Branch::get();
         $companys = Company::get();
-        $employees= Employee::get();
         $users=User::get();
         if(request()->ajax())
         {
           return datatables()->of(Employee::where('emp_status','on')->get())
           ->addColumn('action',function($data){
-              $button='<a type="button" name="track" id="track" href="/track_map/'.$data->emp_id.'" class="track btn btn-primary"><i class="fas fa-map-marker-alt"></i></a>';
+              $button='<button type="button" name="track" data-toggle="modal" data-target="#trackModal" data-id="' .$data->emp_id . '" class="track btn btn-primary track"><i class="fas fa-map-marker-alt"></i></button>';
               $button.='&nbsp;&nbsp;';
               $button.='<button type="button" name="delete" id="delete" data-id="'.$data->emp_id.'" class="delete btn btn-danger"><i class="fas fa-trash"></i></button>';
               return $button;
@@ -48,7 +47,7 @@ class EmployeeStatusController extends Controller
     }
 
     public function statusChange(Request $request)
-    { 
+    {
         $id=$request->id;
         $status=$request->status;
         Employee::where('emp_id',$id)->update(['emp_status'=>$status]);

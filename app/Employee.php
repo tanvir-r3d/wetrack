@@ -3,14 +3,12 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
-use App\EmployeeImage;
-
 class Employee extends Model
 {
 
-  protected $table="employees";
-  protected $primaryKey="emp_id";
-  public $fillable=[
+    protected $table="employees";
+    protected $primaryKey="emp_id";
+    public $fillable=[
     'emp_full_name',
     'emp_branch_id',
     'emp_cat_id',
@@ -21,7 +19,7 @@ class Employee extends Model
     'emp_phone',
     'emp_status',
     'emp_img'
-  ];
+    ];
 
   public function validation(){
       return[
@@ -55,5 +53,9 @@ class Employee extends Model
        ];
   }
 
+    public function user()
+    {
+        return $this->hasOne('App\User');
+    }
 
 }

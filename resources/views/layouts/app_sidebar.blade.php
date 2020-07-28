@@ -18,10 +18,10 @@
               <li class="nav-item dropdown">
                 <a href="#" class="nav-link has-dropdown"><i class="fas fa-key"></i> <span>RBAC</span></a>
                 <ul class="dropdown-menu">
-                  <li><a class="nav-link" href="forms-advanced-form.html">Roles</a></li>
-                  <li><a class="nav-link" href="forms-editor.html">Permissions</a></li>
-                  <li><a class="nav-link" href="forms-editor.html">Roles Permission</a></li>
-                  <li><a class="nav-link" href="forms-editor.html">User Roles</a></li>
+                  <li><a class="nav-link" href="/role">Roles</a></li>
+                  <li><a class="nav-link" href="/premission">Permissions</a></li>
+                  <li><a class="nav-link" href="/role_permission">Roles Permission</a></li>
+                  <li><a class="nav-link" href="/user_roles">User Roles</a></li>
                 </ul>
               </li>
 
@@ -46,7 +46,6 @@
                 <a href="#" class="nav-link has-dropdown"><i class="fas fa-map-marked-alt"></i> <span>Track Employee</span></a>
                 <ul class="dropdown-menu">
                   <li><a class="nav-link" href="/employee_status/">Employee In field</a></li>
-                  <li><a class="nav-link" href="{{url('/track_map','')}}">Track</a></li>
                 </ul>
               </li>
 
