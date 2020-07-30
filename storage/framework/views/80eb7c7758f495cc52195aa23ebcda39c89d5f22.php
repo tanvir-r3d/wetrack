@@ -26,10 +26,12 @@
 
 <?php if(Auth::check()): ?>
 {
+    <?php if(Auth::user()->emp_id): ?>
+    {
     <script>
     if(navigator.geolocation)
     {
-        setInterval(function(){navigator.geolocation.getCurrentPosition(showPosition);}, 6000);
+        // setInterval(function(){navigator.geolocation.getCurrentPosition(showPosition);}, 6000);
     }
     else
     {
@@ -46,10 +48,12 @@
             });
         }
     </script>
+    }<?php endif; ?>
 }
 <?php else: ?>
 <?php endif; ?>
 <?php echo Toastr::message(); ?>
 
 </body>
-</html><?php /**PATH /home/tanvir/LARAVEL/weTrack/resources/views/layouts/app_js.blade.php ENDPATH**/ ?>
+</html>
+<?php /**PATH /home/tanvir/LARAVEL/weTrack/resources/views/layouts/app_js.blade.php ENDPATH**/ ?>

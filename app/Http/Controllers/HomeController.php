@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use App\Employee;
+use App\Company;
+use App\Branch;
 class HomeController extends Controller
 {
     /**
@@ -23,6 +25,9 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('admin.dashboard');
+        $employee=Employee::get();
+        $company=Company::get();
+        $branch=Branch::get();
+        return view('admin.dashboard',compact('employee','company','branch'));
     }
 }

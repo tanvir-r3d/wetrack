@@ -53,7 +53,7 @@ class EmployeeController extends Controller
             })
             ->addColumn('status',function($data)
             {
-              if($data->emp_status) 
+              if($data->emp_status)
               {
                 $button='<button type="button" name="status" id="status" data-id="'.$data->emp_id.'" data-status="active" class="status btn" style="color:green"><i class="fas fa-check"> Active</i></button>';
               }
@@ -88,7 +88,7 @@ class EmployeeController extends Controller
       $validation=Validator::make($request->all(),$employee->validation());
       if ($validation->fails()) {
         return back()->withInput()->withErrors($validation);
-      } 
+      }
       else
       {
         $employee->emp_full_name = $request->full_name;
@@ -156,14 +156,14 @@ class EmployeeController extends Controller
                 $employee->emp_phone = $request->phone;
                 $employee->emp_address = $request->address;
                 $employee->emp_status = $request->status;
-                
+
               if($request->hasFile('image'))
               {
                   if($employee->emp_img)
                   {
                       unlink(public_path('images/employee/').$employee->emp_img);
                   }
-               
+
                       $ext = $request->file('image')->getClientOriginalExtension();
                       $path = public_path('images/employee/');
                       $name = 'image' . time() . '.' . $ext;

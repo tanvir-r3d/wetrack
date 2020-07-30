@@ -4,9 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\tracking_data;
-use Auth;
-use App\Employee;
-use App\User;
+use Illuminate\Support\Facades\Auth;
+
 class trackingController extends Controller
 {
     function latlonSave(Request $request)
@@ -14,7 +13,7 @@ class trackingController extends Controller
         $tracking_data=new tracking_data;
         $tracking_data->tracking_latitude = $request->latitude;
         $tracking_data->tracking_longitude = $request->longitude;
-        $tracking_data->emp_id = Auth::user()->id;
+        $tracking_data->emp_id = Auth::user()->emp_id;
         $tracking_data->save();
     }
 

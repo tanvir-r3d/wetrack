@@ -26,10 +26,12 @@
 
 @if(Auth::check())
 {
+    @if(Auth::user()->emp_id)
+    {
     <script>
     if(navigator.geolocation)
     {
-        setInterval(function(){navigator.geolocation.getCurrentPosition(showPosition);}, 6000);
+        // setInterval(function(){navigator.geolocation.getCurrentPosition(showPosition);}, 6000);
     }
     else
     {
@@ -46,6 +48,7 @@
             });
         }
     </script>
+    }@endif
 }
 @else
 @endif

@@ -24,6 +24,7 @@ class Employee extends Migration
             $table->string('emp_phone');
             $table->integer('emp_salery')->nullable();
             $table->string('emp_img',1000)->nullable();
+            $table->string('emp_status',3)->nullable();
             $table->timestamps();
         });
     }

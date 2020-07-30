@@ -7,7 +7,7 @@ use App\Branch;
 use App\Company;
 use App\User;
 use Illuminate\Http\Request;
-
+use App\tracking_data;
 class EmployeeStatusController extends Controller
 {
 
@@ -16,11 +16,15 @@ class EmployeeStatusController extends Controller
         $branchs = Branch::get();
         $companys = Company::get();
         $users=User::get();
+        $tracking_data=tracking_data::get();
+
         if(request()->ajax())
         {
           return datatables()->of(Employee::where('emp_status','on')->get())
-          ->addColumn('action',function($data){
-              $button='<button type="button" name="track" data-toggle="modal" data-target="#trackModal" data-id="' .$data->emp_id . '" class="track btn btn-primary track"><i class="fas fa-map-marker-alt"></i></button>';
+          ->addColumn('action',function($data) use($branchs,$companys){
+            $company=collect($companys)->where('com_id',$data->emp_com_id)->first();
+            $branch=collect($branchs)->where('branch_id',$data->emp_branch_id)->first();
+              $button='<button type="button" name="track" data-toggle="modal" data-target="#trackModal" data-id="' .$data->emp_id . '" data-employee="'.$data->emp_full_name.'" data-phone="'.$data->emp_phone.'" data-branch="'.$branch->branch_name.'" data-company="'.$company->com_name.'" class="track btn btn-primary track"><i class="fas fa-map-marker-alt"></i></button>';
               $button.='&nbsp;&nbsp;';
               $button.='<button type="button" name="delete" id="delete" data-id="'.$data->emp_id.'" class="delete btn btn-danger"><i class="fas fa-trash"></i></button>';
               return $button;
@@ -39,6 +43,11 @@ class EmployeeStatusController extends Controller
             {
               $user=collect($users)->where('emp_id',$data->emp_id)->first();
               return $user->username;
+            })
+            ->addColumn('tracking',function($data) use ($tracking_data)
+            {
+              $track=collect($tracking_data)->where('emp_id',$data->emp_id)->sortByDesc('tracking_id')->first();
+              return $track->created_at->diffForHumans();
             })
           ->rawColumns(['action'])
           ->make(true);

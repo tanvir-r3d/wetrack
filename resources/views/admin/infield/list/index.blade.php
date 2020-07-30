@@ -24,6 +24,7 @@
                 <th class="text-center">Name</th>
                 <th class="text-center">Username</th>
                 <th class="text-center">Action</th>
+                <th class="text-center">Last Update</th>
               </tr>
             </thead>
             <tbody></tbody>
@@ -34,6 +35,7 @@
                 <th>Name</th>
                 <th>Username</th>
                 <th>Action</th>
+                <th>Last Update</th>
               </tr>
             </tfoot>
           </table>
@@ -50,20 +52,32 @@
     <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title">Track Employee</h5>
+                <h5 class="modal-title">Tracker</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"> <span aria-hidden="true">&times;</span>
                 </button>
             </div>
 
                 <div class="modal-body">
                     <div class="card-body">
-                        <center>
+                        <div class="row">
+                            <div class="col-md-8">
+                               <div class="row">
+                                   <div class="col-md-6 text-dark"><h6>Company: <small id="company"></small></h6></div>
+                                    <div class="col-md-6 text-dark"><h6>Branch: <small id="branch"></small></h6></div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6 text-dark"><h6>Name: <small id="name"></small></h6></div>
+                                    <div class="col-md-6 text-dark"><h6>Phone: <small id="phone"></small></h6></div>
+                                </div>
+                            </div>
+                        <div class="col-md-4">
                                 <label class="custom-switch" style="margin-left: -2.25rem;">
                                     <input type="checkbox" name="status" id="refresh" class="custom-switch-input">
                                     <span class="custom-switch-indicator"></span>
                                     <span class="custom-switch-description">Auto Refresh Location</span>
                                 </label>
-                        </center>
+                        </div>
+                    </div>
                     </div>
                     <div class="card-body">
                         <div id="map" data-height="400"></div>
@@ -84,7 +98,6 @@
 <script>
     var emp_id="";
   $(document).ready(function() {
-      var i = 1;
       $('#dataTable').DataTable({
           processing: true,
           serverSide: true,
@@ -107,6 +120,9 @@
                 name: 'action',
           orderable:false,
                 },
+                {
+                    data:'tracking',
+                },
           ],
       });
 
@@ -125,6 +141,14 @@
   });
 
   $(document).on("click",".track",function(){
+      var company=$(this).attr("data-company");
+      $("#company").text(company);
+      var branch=$(this).attr("data-branch");
+      $("#branch").text(branch);
+      var name=$(this).attr("data-employee");
+      $("#name").text(name);
+      var phone=$(this).attr("data-phone");
+      $("#phone").text(phone);
       emp_id=$(this).attr("data-id");
       getEmployeeLocation(emp_id);
 
@@ -155,7 +179,222 @@
       var dhaka = new google.maps.LatLng(23.8223, 90.3654);
       var mapOptions = {
           zoom: 13,
-          center: dhaka
+          center: dhaka,
+          styles:[
+  {
+    "elementType": "geometry",
+    "stylers": [
+      {
+        "color": "#ebe3cd"
+      }
+    ]
+  },
+  {
+    "elementType": "labels.text.fill",
+    "stylers": [
+      {
+        "color": "#523735"
+      }
+    ]
+  },
+  {
+    "elementType": "labels.text.stroke",
+    "stylers": [
+      {
+        "color": "#f5f1e6"
+      }
+    ]
+  },
+  {
+    "featureType": "administrative",
+    "elementType": "geometry.stroke",
+    "stylers": [
+      {
+        "color": "#c9b2a6"
+      }
+    ]
+  },
+  {
+    "featureType": "administrative.land_parcel",
+    "elementType": "geometry.stroke",
+    "stylers": [
+      {
+        "color": "#dcd2be"
+      }
+    ]
+  },
+  {
+    "featureType": "administrative.land_parcel",
+    "elementType": "labels.text.fill",
+    "stylers": [
+      {
+        "color": "#ae9e90"
+      }
+    ]
+  },
+  {
+    "featureType": "landscape.natural",
+    "elementType": "geometry",
+    "stylers": [
+      {
+        "color": "#dfd2ae"
+      }
+    ]
+  },
+  {
+    "featureType": "poi",
+    "elementType": "geometry",
+    "stylers": [
+      {
+        "color": "#dfd2ae"
+      }
+    ]
+  },
+  {
+    "featureType": "poi",
+    "elementType": "labels.text.fill",
+    "stylers": [
+      {
+        "color": "#93817c"
+      }
+    ]
+  },
+  {
+    "featureType": "poi.park",
+    "elementType": "geometry.fill",
+    "stylers": [
+      {
+        "color": "#a5b076"
+      }
+    ]
+  },
+  {
+    "featureType": "poi.park",
+    "elementType": "labels.text.fill",
+    "stylers": [
+      {
+        "color": "#447530"
+      }
+    ]
+  },
+  {
+    "featureType": "road",
+    "elementType": "geometry",
+    "stylers": [
+      {
+        "color": "#f5f1e6"
+      }
+    ]
+  },
+  {
+    "featureType": "road.arterial",
+    "elementType": "geometry",
+    "stylers": [
+      {
+        "color": "#fdfcf8"
+      }
+    ]
+  },
+  {
+    "featureType": "road.highway",
+    "elementType": "geometry",
+    "stylers": [
+      {
+        "color": "#f8c967"
+      }
+    ]
+  },
+  {
+    "featureType": "road.highway",
+    "elementType": "geometry.stroke",
+    "stylers": [
+      {
+        "color": "#e9bc62"
+      }
+    ]
+  },
+  {
+    "featureType": "road.highway.controlled_access",
+    "elementType": "geometry",
+    "stylers": [
+      {
+        "color": "#e98d58"
+      }
+    ]
+  },
+  {
+    "featureType": "road.highway.controlled_access",
+    "elementType": "geometry.stroke",
+    "stylers": [
+      {
+        "color": "#db8555"
+      }
+    ]
+  },
+  {
+    "featureType": "road.local",
+    "elementType": "labels.text.fill",
+    "stylers": [
+      {
+        "color": "#806b63"
+      }
+    ]
+  },
+  {
+    "featureType": "transit.line",
+    "elementType": "geometry",
+    "stylers": [
+      {
+        "color": "#dfd2ae"
+      }
+    ]
+  },
+  {
+    "featureType": "transit.line",
+    "elementType": "labels.text.fill",
+    "stylers": [
+      {
+        "color": "#8f7d77"
+      }
+    ]
+  },
+  {
+    "featureType": "transit.line",
+    "elementType": "labels.text.stroke",
+    "stylers": [
+      {
+        "color": "#ebe3cd"
+      }
+    ]
+  },
+  {
+    "featureType": "transit.station",
+    "elementType": "geometry",
+    "stylers": [
+      {
+        "color": "#dfd2ae"
+      }
+    ]
+  },
+  {
+    "featureType": "water",
+    "elementType": "geometry.fill",
+    "stylers": [
+      {
+        "color": "#b9d3c2"
+      }
+    ]
+  },
+  {
+    "featureType": "water",
+    "elementType": "labels.text.fill",
+    "stylers": [
+      {
+        "color": "#92998d"
+      }
+    ]
+  }
+]
       }
       map = new google.maps.Map(document.getElementById('map'), mapOptions);
 
