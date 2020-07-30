@@ -158,7 +158,7 @@
                </div>
            </div>
           </div>
-          
+
           <div class="col-md-3">
 			<div class="form-group">
                       <div class="control-label">Status</div>
@@ -320,7 +320,7 @@
 
 				</div>
 				<div class="row">
-					
+
 				<div class="col-md-6">
 					<fieldset class="form-group floating-label-form-group">
 							<label for="e_phone">Phone</label>
@@ -455,8 +455,6 @@
 			dataType:"json",
 			success:function(data)
 			{
-
-
 				$("#e_name").val(data.emp_full_name);
 		        $("#e_branch_id").val(data.emp_branch_id);
 		        $("#e_com_id").val(data.emp_com_id);
@@ -467,8 +465,8 @@
 		        $("#e_phone").val(data.emp_phone);
 
 
-				$("#editForm").attr("action","/employee/update/"+data.employee.emp_id);
-				if (data.emp_status=='on') 
+				$("#editForm").attr("action","/employee/update/"+data.emp_id);
+				if (data.emp_status=='on')
 				{
 					$("#e_status").attr('checked','checked');
 				}
@@ -476,15 +474,15 @@
 				{
 					$("#e_status").removeAttr('checked','checked');
 				}
-				if(data.employee.emp_img!='')
+				if(data.emp_img!='')
 				{
-					$(".emp_img").attr("src","/images/employee/"+data.employee.emp_img);
+					$(".emp_img").attr("src","/images/employee/"+data.emp_img);
 				}
 				else{
 					$(".emp_img").attr("src","/example-image.jpg");
 				}
 
-				if(data.employee.emp_gender==1)
+				if(data.emp_gender==1)
 				{
 					$("#male").attr("checked","checked");
 				}
@@ -508,7 +506,7 @@ $(document).on('click',"#status",function(){
 			success:function(data)
 			{
 				location.reload();
-			}		
+			}
 		})
 });
 });
