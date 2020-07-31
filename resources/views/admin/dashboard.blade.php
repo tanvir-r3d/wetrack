@@ -82,19 +82,14 @@
                         <table id="dataTable" class="dataTable table table-striped mb-0">
                           <thead>
                             <tr>
-                              <th>Company Name</th>
-                              <th>Branch Name</th>
-                              <th>Employee Name</th>
-                              <th>Employee Phone</th>
+                              <th>Company</th>
+                              <th>Branch</th>
+                              <th>Employee</th>
+                              <th>Phone</th>
+                              <th>Action</th>
+                              <th>Updated</th>
                             </tr>
                           </thead>
-                          <tbody>
-                            <tr>
-                              <td></td>
-                              <td></td>
-                              <td></td>
-                            </tr>
-                          </tbody>
                         </table>
                       </div>
                 </div>
@@ -107,7 +102,7 @@
                   <h4>Your Location</h4>
                 </div>
                 <div class="card-body">
-                    <div id="map" data-height="400"></div>
+                    <div id="mapholder" data-height="400"></div>
                     <input type="text" id="latitude" hidden>
                     <input type="text" id="longitude" hidden>
                 </div>
@@ -146,5 +141,241 @@
                 },
           ],
       });
+
+// let map;
+
+// function initMap() {
+//   map = new google.maps.Map(document.getElementById("mapholder"), {
+//     center: { lat: -34.397, lng: 150.644 },
+//     zoom: 8
+//   });
+// }
+
+
+
+
+
+var latitude = parseFloat("");
+var longitude = parseFloat("");
+function initMap() {
+    // initial map setting
+    map = new google.maps.Map(document.getElementById('mapholder'), {
+        zoom: 16,
+        styles:[
+    {
+        "featureType": "water",
+        "stylers": [
+            {
+                "color": "#19a0d8"
+            }
+        ]
+    },
+    {
+        "featureType": "administrative",
+        "elementType": "labels.text.stroke",
+        "stylers": [
+            {
+                "color": "#ffffff"
+            },
+            {
+                "weight": 6
+            }
+        ]
+    },
+    {
+        "featureType": "administrative",
+        "elementType": "labels.text.fill",
+        "stylers": [
+            {
+                "color": "#e85113"
+            }
+        ]
+    },
+    {
+        "featureType": "road.highway",
+        "elementType": "geometry.stroke",
+        "stylers": [
+            {
+                "color": "#efe9e4"
+            },
+            {
+                "lightness": -40
+            }
+        ]
+    },
+    {
+        "featureType": "road.arterial",
+        "elementType": "geometry.stroke",
+        "stylers": [
+            {
+                "color": "#efe9e4"
+            },
+            {
+                "lightness": -20
+            }
+        ]
+    },
+    {
+        "featureType": "road",
+        "elementType": "labels.text.stroke",
+        "stylers": [
+            {
+                "lightness": 100
+            }
+        ]
+    },
+    {
+        "featureType": "road",
+        "elementType": "labels.text.fill",
+        "stylers": [
+            {
+                "lightness": -100
+            }
+        ]
+    },
+    {
+        "featureType": "road.highway",
+        "elementType": "labels.icon"
+    },
+    {
+        "featureType": "landscape",
+        "elementType": "labels",
+        "stylers": [
+            {
+                "visibility": "off"
+            }
+        ]
+    },
+    {
+        "featureType": "landscape",
+        "stylers": [
+            {
+                "lightness": 20
+            },
+            {
+                "color": "#efe9e4"
+            }
+        ]
+    },
+    {
+        "featureType": "landscape.man_made",
+        "stylers": [
+            {
+                "visibility": "off"
+            }
+        ]
+    },
+    {
+        "featureType": "water",
+        "elementType": "labels.text.stroke",
+        "stylers": [
+            {
+                "lightness": 100
+            }
+        ]
+    },
+    {
+        "featureType": "water",
+        "elementType": "labels.text.fill",
+        "stylers": [
+            {
+                "lightness": -100
+            }
+        ]
+    },
+    {
+        "featureType": "poi",
+        "elementType": "labels.text.fill",
+        "stylers": [
+            {
+                "hue": "#11ff00"
+            }
+        ]
+    },
+    {
+        "featureType": "poi",
+        "elementType": "labels.text.stroke",
+        "stylers": [
+            {
+                "lightness": 100
+            }
+        ]
+    },
+    {
+        "featureType": "poi",
+        "elementType": "labels.icon",
+        "stylers": [
+            {
+                "hue": "#4cff00"
+            },
+            {
+                "saturation": 58
+            }
+        ]
+    },
+    {
+        "featureType": "poi",
+        "elementType": "geometry",
+        "stylers": [
+            {
+                "visibility": "on"
+            },
+            {
+                "color": "#f0e4d3"
+            }
+        ]
+    },
+    {
+        "featureType": "road.highway",
+        "elementType": "geometry.fill",
+        "stylers": [
+            {
+                "color": "#efe9e4"
+            },
+            {
+                "lightness": -25
+            }
+        ]
+    },
+    {
+        "featureType": "road.arterial",
+        "elementType": "geometry.fill",
+        "stylers": [
+            {
+                "color": "#efe9e4"
+            },
+            {
+                "lightness": -10
+            }
+        ]
+    },
+    {
+        "featureType": "poi",
+        "elementType": "labels",
+        "stylers": [
+            {
+                "visibility": "simplified"
+            }
+        ]
+    }
+]
+    });
+    map.setCenter({lat: latitude, lng: longitude});
+
+
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(function geolocationSuccess(position) {
+                latitude=position.coords.latitude;
+                longitude=position.coords.longitude;
+                map.setCenter({
+                    lat: position.coords.latitude,
+                    lng: position.coords.longitude
+                });
+            }, function () {
+                document.getElementById('error').innerHTML = 'Browser doesn\'t support geolocation';
+                toastr.error("Browser doesn't support geolocation", "Error!");
+            });
+        }
+}
 </script>
 @endsection

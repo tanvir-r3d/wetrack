@@ -6,8 +6,7 @@ use App\User;
 use Illuminate\Http\Request;
 use Validator;
 use Toastr;
-use Hash;
-use Auth;
+use Illuminate\Support\Facades\Hash;
 use DB;
 use JsValidator;
 
@@ -19,16 +18,6 @@ class UserController extends Controller
         if(request()->ajax())
         {
             return $user->datatable(User::latest()->get(),$view=true,$edit=false,$delete=true);
-
-            // return datatables()->of(User::latest()->get())
-            // ->addColumn('action',function($data){
-            //     $button='<button type="button" name="view" id="view" data-toggle="modal" data-target="#viewModal" data-id="'.$data->id.'" class="view btn btn-info"><i class="far fa-eye"></i></button>';
-            //     $button.='&nbsp;&nbsp;';
-            //     $button.='<button type="button" name="delete" id="delete" data-id="'.$data->id.'" class="delete btn btn-danger"><i class="fas fa-trash"></i></button>';
-            //     return $button;
-            // })
-            // ->rawColumns(['action'])
-            // ->make(true);
         }
         $user_validator=JsValidator::make([
             'username' => 'required|string|max:255',
@@ -40,19 +29,11 @@ class UserController extends Controller
             'retype'=>'required|same:pass']);
         return view('admin.users.index',['user_validator'=>$user_validator]);
 
-
-
-
-    public function settings()
-    {
-        // $data['images']=UserImage::get();
-        // return view('admin.profile.settings',$data);
-    }
+        }
 
     public function create()
     {
         $data['users']=User::all('id','user_first_name','user_last_name','username','email');
-        // $data['images']=UserImage::get();
         return view('admin.users.list',$data);
     }
 

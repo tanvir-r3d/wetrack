@@ -98,33 +98,38 @@
 <script>
     var emp_id="";
   $(document).ready(function() {
-      $('#dataTable').DataTable({
-          processing: true,
-          serverSide: true,
-          ajax:"/employee_status/",
-          "columns":[
-              {
-                data: 'com_name',
-                },
-              {
-                data: 'branch_name',
-                },
-              {
-                data: 'emp_full_name',
-                },
-              {
-                data: 'emp_phone',
-                },
-              {
-                data: 'action',
-                name: 'action',
-          orderable:false,
-                },
+      try {
+            $('#dataTable').DataTable({
+            processing: true,
+            serverSide: true,
+            ajax:"/employee_status/",
+            "columns":[
                 {
-                    data:'tracking',
-                },
-          ],
-      });
+                    data: 'com_name',
+                    },
+                {
+                    data: 'branch_name',
+                    },
+                {
+                    data: 'emp_full_name',
+                    },
+                {
+                    data: 'emp_phone',
+                    },
+                {
+                    data: 'action',
+                    name: 'action',
+            orderable:false,
+                    },
+                    {
+                        data:'tracking',
+                    },
+            ],
+        });
+      } catch (err) {
+        alert("Employee Infield Data in Empty.");
+      }
+
 
   $(document).on("click","#delete",function(){
     var id=$(this).attr("data-id");
