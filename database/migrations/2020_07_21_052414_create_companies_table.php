@@ -17,7 +17,7 @@ class CreateCompaniesTable extends Migration
             $table->bigIncrements('com_id');
             $table->string('com_logo',1000);
             $table->string('com_name',1000);
-            $table->string('com_details',1000);
+            $table->string('com_details',1000)->nullable();
             $table->timestamps();
         });
     }

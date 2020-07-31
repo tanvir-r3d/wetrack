@@ -46,8 +46,15 @@ class EmployeeStatusController extends Controller
             })
             ->addColumn('tracking',function($data) use ($tracking_data)
             {
-              $track=collect($tracking_data)->where('emp_id',$data->emp_id)->sortByDesc('tracking_id')->first();
-              return $track->created_at->diffForHumans();
+                $track=collect($tracking_data)->where('emp_id',$data->emp_id)->sortByDesc('tracking_id')->first();
+                if($track)
+                {
+                    return $track->created_at->diffForHumans();
+                }
+                else
+                {
+                    return "null";
+                }
             })
           ->rawColumns(['action'])
           ->make(true);

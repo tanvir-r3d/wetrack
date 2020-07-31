@@ -194,6 +194,7 @@
 	        ajax:"{{route('user.index')}}",
 	        "columns":[
 	            {
+                 draw:1,
 	              data: 'user_img',
 	              name: 'user_img',
 				  render:function(data,type,full,meta)

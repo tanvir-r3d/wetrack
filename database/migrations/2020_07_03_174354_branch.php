@@ -18,7 +18,7 @@ class Branch extends Migration
             $table->integer('com_id');
             $table->string('branch_name', 1000);
             $table->string('branch_location', 1000);
-            $table->string('branch_details',1000);
+            $table->string('branch_details',1000)->nullable();
             $table->timestamps();
         });
     }
