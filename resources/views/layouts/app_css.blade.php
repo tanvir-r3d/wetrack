@@ -26,7 +26,6 @@
   <link rel="stylesheet" href="/packages/toastr/toastr.css">
 
 <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
-<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDDXkzEIj9sB3J_ohqT0woVWqAJQiyRmAE&libraries=places&callback=initMap"></script>
 
 </head>
 

@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Employee;
 use App\Company;
 use App\Branch;
+
 class HomeController extends Controller
 {
     /**

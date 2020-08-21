@@ -95,7 +95,8 @@
 </div>
 @endsection
 @section('script')
-<script>
+    <script defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDDXkzEIj9sB3J_ohqT0woVWqAJQiyRmAE&libraries=places&callback=initMap"></script>
+    <script>
     var emp_id="";
   $(document).ready(function() {
       try {

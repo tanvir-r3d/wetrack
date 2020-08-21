@@ -113,7 +113,9 @@
 
 @endsection
 @section('script')
-<script>
+    <script defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDDXkzEIj9sB3J_ohqT0woVWqAJQiyRmAE&libraries=places&callback=initMap"></script>
+
+    <script>
  $('#dataTable').DataTable({
           processing: true,
           serverSide: true,
@@ -141,18 +143,6 @@
                 },
           ],
       });
-
-// let map;
-
-// function initMap() {
-//   map = new google.maps.Map(document.getElementById("mapholder"), {
-//     center: { lat: -34.397, lng: 150.644 },
-//     zoom: 8
-//   });
-// }
-
-
-
 
 
 var latitude = parseFloat("");
@@ -360,8 +350,6 @@ function initMap() {
     }
 ]
     });
-    map.setCenter({lat: latitude, lng: longitude});
-
 
         if (navigator.geolocation) {
             navigator.geolocation.getCurrentPosition(function geolocationSuccess(position) {
@@ -376,6 +364,8 @@ function initMap() {
                 toastr.error("Browser doesn't support geolocation", "Error!");
             });
         }
+
+    map.setCenter({lat: latitude, lng: longitude});
 }
 </script>
 @endsection
