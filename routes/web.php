@@ -12,7 +12,9 @@
 */
 
 
-Route::get('/','HomeController@index');
+Route::get('/',function (){
+    return redirect('/home');
+});
 Auth::routes();
 Route::middleware('auth')->group(function () {
 
@@ -62,4 +64,7 @@ Route::middleware('auth')->group(function () {
   // Tracking Route
   Route::post('track_create','trackingController@latlonSave')->name('track_create');
   Route::get('track/get','trackingController@get');
+});
+Route::get("/about_us",function (){
+    return view("About Us.about_us");
 });

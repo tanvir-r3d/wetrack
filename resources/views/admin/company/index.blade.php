@@ -101,7 +101,7 @@
       <div class="form-group">
       <center><img alt="image" id="previmage" style="width:25%" src='' class="rounded-circle imagecheck-image mb-3 edit_logo"></center>
       <div class="custom-file">
-        <input type="file" class="custom-file-input" id="logo" name="logo" onchange="readURL(this);">
+        <input type="file" class="custom-file-input" id="e_logo" name="logo" onchange="readURL(this);">
         <label class="custom-file-label" for="logo">Choose Logo</label>
         <small class="form-text text-muted">File must be .png</small>
       </div>
