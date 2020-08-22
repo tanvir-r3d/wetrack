@@ -3,8 +3,13 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Laravel\Scout\Searchable;
+
 class Employee extends Model
 {
+    use Searchable;
+
+
 
     protected $table="employees";
     protected $primaryKey="emp_id";
@@ -52,6 +57,20 @@ class Employee extends Model
         'email' => 'Email Address',
        ];
   }
+
+    public function toSearchableArray()
+    {
+        $array = $this->toArray();
+
+        $data = [
+            'name' => $array['emp_full_name'],
+            'details' => $array['emp_address'],
+            'phone' => $array['emp_phone'],
+            'link' => '/employee'
+        ];
+
+        return $data;
+    }
 
     public function user()
     {

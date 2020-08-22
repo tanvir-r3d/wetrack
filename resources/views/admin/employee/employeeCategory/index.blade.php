@@ -7,10 +7,10 @@
 <div class="breadcrumb-item active">Employee Category</div>
 @endsection
 @section('content')
-<h2 class="section-title">Employee Category List</h2>
-<p class="section-lead">
-	<button class="btn btn-primary mr-l" data-toggle="modal" data-target="#addModal">Add Employee Category</button>
-</p>
+<div class="row custom-row">
+    <h2 class="section-title">Employee Category List</h2>
+    <button class="btn btn-primary mr-l mr-3" data-toggle="modal" data-target="#addModal">Add Category</button>
+</div>
 <div class="row">
 	<div class="col-12">
 		<div class="card">

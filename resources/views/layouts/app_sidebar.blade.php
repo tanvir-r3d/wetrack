@@ -45,7 +45,7 @@
               <li class="nav-item dropdown">
                 <a href="#" class="nav-link has-dropdown"><i class="fas fa-map-marked-alt"></i> <span>Track Employee</span></a>
                 <ul class="dropdown-menu">
-                  <li><a class="nav-link" href="/employee_status/">Employee In field</a></li>
+                  <li><a class="nav-link" href="/employee_status/">Tracking List</a></li>
                 </ul>
               </li>
 

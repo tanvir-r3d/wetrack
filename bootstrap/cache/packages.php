@@ -1,4 +1,11 @@
 <?php return array (
+  'algolia/scout-extended' => 
+  array (
+    'providers' => 
+    array (
+      0 => 'Algolia\\ScoutExtended\\ScoutExtendedServiceProvider',
+    ),
+  ),
   'barryvdh/laravel-debugbar' => 
   array (
     'providers' => 
@@ -39,11 +46,11 @@
       0 => 'Fideloper\\Proxy\\TrustedProxyServiceProvider',
     ),
   ),
-  'haruncpi/laravel-id-generator' => 
+  'laravel/scout' => 
   array (
     'providers' => 
     array (
-      0 => 'Haruncpi\\LaravelIdGenerator\\IdGeneratorServiceProvider',
+      0 => 'Laravel\\Scout\\ScoutServiceProvider',
     ),
   ),
   'laravel/tinker' => 

@@ -22,6 +22,32 @@
 
 <script type="text/javascript" src="{{ url('vendor/jsvalidation/js/jsvalidation.js')}}"></script>
 
+<script type="text/javascript">
+    $(document).on("keyup","#search",function (){
+        let searchKey= $(this).val();
+        $.ajax({
+            url:'/search',
+            data:{'searchKey':searchKey,"_token": "{{ csrf_token() }}"},
+            type:'get',
+            dataType:'json',
+            success:function(data){
+                // console.log(data);
+                $(".search-item").remove();
+                data.hits.forEach(result =>{
+                    console.log(result);
+                $("#search-items").append(`<div class="search-item">
+                                            <a href="${result.link}">
+                                                <img class="mr-3 rounded" width="30" src="logo.png" alt="product">
+                                                ${result.name}&nbsp&nbsp&nbsp&nbsp<small>${result.details}</small>
+                                            </a>
+                                        </div>`);
+                });
+
+            }
+        });
+    })
+</script>
+
   @yield('script')
 
 @if(Auth::check())

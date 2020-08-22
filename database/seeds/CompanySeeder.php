@@ -11,12 +11,6 @@ class CompanySeeder extends Seeder
      */
     public function run()
     {
-        for ($i=0; $i < 30; $i++) { 
-            Company::insert([
-            'com_logo' => Str::random(10),
-            'com_name' => Str::random(10),
-            'com_details' => Str::random(100),
-        ]);
-        }
+        factory(App\Company::class, 50)->create();
     }
 }
