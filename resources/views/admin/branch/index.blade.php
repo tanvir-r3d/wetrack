@@ -7,10 +7,10 @@
 <div class="breadcrumb-item active">Branch</div>
 @endsection
 @section('content')
-<h2 class="section-title">Branch List</h2>
-<p class="section-lead">
-	<button class="btn btn-primary mr-l" data-toggle="modal" data-target="#addModal">Add Branch</button>
-</p>
+<div class="row custom-row">
+    <h2 class="section-title">Branch List</h2>
+	<button class="btn btn-primary mr-l mr-3" data-toggle="modal" data-target="#addModal">Add Branch</button>
+</div>
 <div class="row">
 	<div class="col-12">
 		<div class="card">
@@ -186,7 +186,7 @@
 			success:function(data)
 			{
 				console.log(data);
-				$("#e_com_id").val(data.com_id); 
+				$("#e_com_id").val(data.com_id);
 				$("#e_name").val(data.branch_name);
         $("#e_location").val(data.branch_location)
 				$("#e_details").val(data.branch_details);

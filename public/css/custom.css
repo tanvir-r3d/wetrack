@@ -1,5 +1,10 @@
 .mr-l{
-  margin-left: 85%;
+    margin-left: auto;
+    height: 40px;
+}
+.custom-row{
+    display: flex;
+    justify-content: space-between;
 }
 * {box-sizing: border-box;}
 
@@ -19,7 +24,7 @@
   margin-right: 44%;
   cursor: pointer;
   margin-bottom: 41%;
-    }
+}
 .des:hover{
       background: #dcddde;
         opacity: 1;

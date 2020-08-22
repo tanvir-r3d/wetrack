@@ -1,18 +1,18 @@
 @extends('layouts.app')
-@section('page_name') Infield Employee @endsection
-@section('section_header') Employee Infield @endsection
+@section('page_name') Tracking Employee @endsection
+@section('section_header') Employee Tracking @endsection
 @section('breadcrumb')
 <div class="breadcrumb-item"><a href="/">Home</a>
 </div>
-<div class="breadcrumb-item active">Employee Infield</div>
+<div class="breadcrumb-item active">Employee Tracking</div>
 @endsection
 @section('content')
-<h2 class="section-title">Employee Infield List</h2>
+<h2 class="section-title">Employee Tracking List</h2>
 <div class="row">
   <div class="col-12">
     <div class="card">
       <div class="card-header">
-        <h4>Infield List Table</h4>
+        <h4>Tracking List</h4>
       </div>
       <div class="card-body">
         <div class="table-responsive">

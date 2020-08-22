@@ -15,10 +15,12 @@
 Route::get('/',function (){
     return redirect('/home');
 });
+Route::get('/search','HomeController@search');
 Auth::routes();
 Route::middleware('auth')->group(function () {
 
-  Route::get('/home', 'HomeController@index')->name('home');
+
+    Route::get('/home', 'HomeController@index')->name('home');
 
   // Company Route
   Route::resource('/company','CompanyController');

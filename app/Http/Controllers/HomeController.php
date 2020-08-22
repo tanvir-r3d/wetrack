@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use App\Employee;
 use App\Company;
 use App\Branch;
-
+use App\Search\Admin;
 class HomeController extends Controller
 {
     /**
@@ -17,6 +17,13 @@ class HomeController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
+    }
+
+    public function search(Request $request)
+    {
+        $query=$request->searchKey;
+        $companies = Admin::search($query)->raw();
+        return response()->json($companies);
     }
 
     /**
