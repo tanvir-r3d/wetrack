@@ -34,7 +34,6 @@
                 // console.log(data);
                 $(".search-item").remove();
                 data.hits.forEach(result =>{
-                    console.log(result);
                 $("#search-items").append(`<div class="search-item">
                                             <a href="${result.link}">
                                                 <img class="mr-3 rounded" width="30" src="logo.png" alt="product">
