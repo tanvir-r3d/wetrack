@@ -34,7 +34,8 @@ Route::middleware('auth')->group(function () {
   Route::get('branch_edit','BranchController@edit')->name('branch_edit');
   Route::post('branch/update/{id}','BranchController@update');
 
-
+//  Setting Route
+  Route::resource('/settings','SettingController');
   //EmployeeCategory Route
   Route::resource('/employeeCategorys','EmployeeCategoryController');
   Route::get('employeeCategorys/delete/{id}','EmployeeCategoryController@destroy');

@@ -3,8 +3,11 @@
 <head>
   <meta charset="UTF-8">
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no" name="viewport">
-  <title>@yield('page_name')| Wetrack</title>
-
+    @php
+        $setting = DB::table('settings')->whereSettingId(1)->first();
+    @endphp
+  <title>@yield('page_name')| {{$setting->site_title}}</title>
+    <link rel="icon" href="{{$setting->site_favicon ? '/setting/'.$setting->site_favicon : 'favicon.ico'}}" type="image/x-icon">
   <!-- Custom CSS Files -->
   <link rel="stylesheet" href="/css/custom.css">
   <!-- General CSS Files -->
