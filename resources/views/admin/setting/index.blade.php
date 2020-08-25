@@ -75,7 +75,7 @@
                 </div>
 
                 <div class="tab-pane fade" id="email" role="tabpanel" aria-labelledby="email-tab">
-                    <form id="mail-form" method="post">
+                    <form id="mail-form" method="post" action="/settings/mail">
                         @csrf
                         <div class="card" id="settings-card">
                             <div class="card-header">
@@ -83,17 +83,16 @@
                             </div>
                             <div class="card-body">
                                 <div class="form-group row align-items-center">
-                                    <label for="site-title" class="form-control-label col-sm-3 text-md-right">Your Mail Address</label>
+                                    <label for="mail_address" class="form-control-label col-sm-3 text-md-right">Your Mail Address</label>
                                     <div class="col-sm-6 col-md-9">
-                                        <input type="text" name="site_title" class="form-control" id="site-title">
+                                        <input type="email" name="mail_username" class="form-control" id="mail_address">
                                     </div>
                                 </div>
 
-
                                 <div class="form-group row">
-                                    <label class="form-control-label col-sm-3 mt-3 text-md-right">Google Analytics Code</label>
+                                    <label class="form-control-label col-sm-3 mt-3 text-md-right" for="mail_password">Mail Password</label>
                                     <div class="col-sm-6 col-md-9">
-                                        <textarea class="form-control codeeditor" name="google_analytics_code"></textarea>
+                                        <input class="form-control" name="mail_password" id="mail_password" type="password">
                                     </div>
                                 </div>
                             </div>

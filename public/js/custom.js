@@ -1,8 +1,9 @@
-/**
- *
- * You can write your JS code here, DO NOT touch the default style file
- * because it will make it harder for you to update.
- *
- */
-
-"use strict";
+(function($){
+  'use strict';
+    $(window).on('load', function () {
+        if ($(".spinner-wrapper").length > 0)
+        {
+            $(".spinner-wrapper").fadeOut("slow");
+        }
+    });
+})(jQuery)
