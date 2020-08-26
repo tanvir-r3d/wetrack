@@ -1,11 +1,9 @@
       <div class="main-sidebar">
         <aside id="sidebar-wrapper">
           <div class="sidebar-brand">
-              @php
-                  $setting = DB::table('settings')->whereSettingId(1)->first();
-              @endphp
-                        <a href="/"><img src="{{ $setting->site_logo ? '/setting/'.$setting->site_logo : '/logo.png'}}" alt="" width="30">&nbsp
-                            {{$setting->site_title ? $setting->site_title : 'We Track'}}</a>
+             
+                        <a href="/"><img src="{{ $settings->site_logo ? '/setting/'.$settings->site_logo : '/logo.png'}}" alt="" width="30">&nbsp
+                            {{$settings->site_title ? $settings->site_title : 'We Track'}}</a>
                         </div>
                         <div class="sidebar-brand sidebar-brand-sm">
                           <a href="/"><img src="/logo.png" alt="" width="30"></a>
