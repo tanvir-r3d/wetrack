@@ -4,7 +4,10 @@ namespace App\Providers;
 
 use App\Search\Admin;
 use Illuminate\Support\ServiceProvider;
-
+use Illuminate\Support\Facades\View;
+use Illuminate\Support\Facades\Cache;
+use App\Observers\SettingsObserver;
+use App\Setting;
 class AppServiceProvider extends ServiceProvider
 {
     /**
@@ -24,6 +27,13 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+        Setting::observe(SettingsObserver::class);
         Admin::bootSearchable();
+        View::composer(["layouts.app_css","layouts.app_sidebar"],function($view){
+            
+            $view->with("settings",Cache::rememberForever("settings",function(){
+                return Setting::first();
+            }));
+        });
     }
 }
