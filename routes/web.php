@@ -69,6 +69,13 @@ Route::middleware('auth')->group(function () {
     Route::resource('/settings','SettingController');
     Route::post('/settings/mail','SettingController@mail');
 
+
+    //Role Route
+    Route::resource('/role','RoleController');
+    Route::get('/role/delete/{id}','RoleController@destroy');
+    Route::get('role_edit','RoleController@edit')->name('role_edit');
+    Route::post('role/update/{id}','RoleController@update');
+
 });
 Route::get("/about_us",function (){
     return view("About Us.about_us");
