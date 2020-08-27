@@ -12,12 +12,15 @@
 */
 
 
+
 Route::get('/',function (){
     return redirect('/home');
 });
+
 Route::get('/search','HomeController@search');
 Auth::routes();
 Route::middleware('auth')->group(function () {
+
 
     Route::get('/home', 'HomeController@index')->name('home');
 
@@ -75,6 +78,10 @@ Route::middleware('auth')->group(function () {
     Route::get('/role/delete/{id}','RoleController@destroy');
     Route::get('role_edit','RoleController@edit')->name('role_edit');
     Route::post('role/update/{id}','RoleController@update');
+    
+    //Permission
+    Route::resource('/permission','PermissionController');
+    
 
 });
 Route::get("/about_us",function (){
