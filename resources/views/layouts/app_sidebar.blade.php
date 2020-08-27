@@ -23,7 +23,7 @@
                 <a href="#" class="nav-link has-dropdown"><i class="fas fa-key"></i> <span>RBAC</span></a>
                 <ul class="dropdown-menu">
                   <li><a class="nav-link" href="/role">Roles</a></li>
-                  <li><a class="nav-link" href="/premission">Permissions</a></li>
+                  <li><a class="nav-link" href="/permission">Permissions</a></li>
                   <li><a class="nav-link" href="/role_permission">Roles Permission</a></li>
                   <li><a class="nav-link" href="/user_roles">User Roles</a></li>
                 </ul>
