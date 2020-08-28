@@ -3,113 +3,126 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Role;
 use Validator;
 use JsValidator;
 use Toastr;
+use Spatie\Permission\Models\Role;
 class RoleController extends Controller
-{
-     /**
-     * Display a listing of the resource.
+{ 
+
+
+    public function index()
+    {  
+
+     // $data=JsValidator::make([
+     //       'name' => ['required', 'string', 'unique:users']
+     //     ]);
+     
+     
+        $data = Role::orderBY('id','asc')->paginate(6);
+
+      
+        
+        return view('admin.rbac.role_index',compact('data'));
+    }
+
+    /**
+     * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index ()
+    public function create()
     {
-        $role = new Role;
-        if (request()->ajax()) {
-            return $role->datatable(Role::latest()->get());
-
-        }
-        $validator = JsValidator::make($role->validation());
-        return view('admin.rbac.role_index' , ['validator' => $validator]);
+        //
     }
-
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param \Illuminate\Http\Request $request
-     *
+     * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store (Request $request)
+    public function store(Request $request)
     {
-        {
-            $role = new Role;
-            $validation = Validator::make($request->all() , $role->validation());
-            if ($validation->fails()) {
-                return back()->withInput()->withErrors($validation);
-            }
-           
-            $role->name = $request->name;
-            $role->guard_name = $request->guard_name;
-            
+      //     $val= $request->validate
+      //   ([
+        
+      //   'name' => ['required', 'string', 'unique:users']
 
-            $role->save();
-            Toastr::success('Congratulation! New role Information Saved Successfully' , 'role' , ["positionClass" => "toast-top-right"]);
+      //    ]);
+      // $jsValidator = JsValidator::validator($val);
+       
+
+         $valid =  $request->validate
+        ([
+        'name' => 'required|unique:roles,name|max:35',
+         ], 
+         [
+            
+        'name.unique' => 'Already Exist!',
+        
+         ]
+         );
+        $role=Role::create(['name' => $request->name]);
+
+            
+            Toastr::success('Congratulation! New role Information Saved Successfully'  ,'role', ["positionClass" => "toast-top-right"]);
             return redirect()->back();
-        }
+       
     }
 
+    
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param \App\role $role
-     *
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit (Request $request)
+    public function edit(Request $request)
     {
-        $id = $request->id;
+       
+
+       $id = $request->id;
         $role = Role::find($id);
+    
         return response()->json($role);
     }
 
     /**
-     * Update the specified resource in storage.
+     * Display the specified resource.
      *
-     * @param \Illuminate\Http\Request $request
-     * @param \App\role $role
-     *
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update (Request $request , $id)
+    public function update(Request $request, $id)
     {
-        $role = new Role;
-        $validation = Validator::make($request->all() , $role->validation());
-        if ($validation->fails()) {
-            return back()->withInput()->withErrors($validation);
-        }
-        $role = Role::find($id);
-        $role->name = $request->name;
-        $role->guard_name = $request->guard_name;
+        
 
-        $role->save();
-        Toastr::success('Congratulation! New role Information Updated Successfully' , 'role' , ["positionClass" => "toast-top-right"]);
-        return redirect()->back();
+        $role=Role::where('id',$id)->update(['name' => $request->name]);
 
+
+            
+            Toastr::success('Update role Successfully'  ,'role', ["positionClass" => "toast-top-right"]);
+            return redirect()->back();
+        
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param \App\role $role
-     *
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy ($id)
+       public function delete($id)
     {
-
-        Role::where('id' , $id)->delete();
+          Role::where('id' , $id)->delete();
         $status = 200;
         $response = [
             'status' => $status ,
             'message' => 'Successfully Deleted' ,
         ];
         return response()->json($response , $status);
-
-
     }
+
 }

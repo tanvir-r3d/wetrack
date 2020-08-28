@@ -1,43 +1,65 @@
 @extends('layouts.app')
-@section('page_name') role @endsection
-@section('section_header') role @endsection
+@section('page_name') Role @endsection
+@section('section_header') Role @endsection
 @section('breadcrumb')
 <div class="breadcrumb-item"><a href="/">Home</a>
 </div>
-<div class="breadcrumb-item active">role</div>
+<div class="breadcrumb-item active">Role</div>
 @endsection
 @section('content')
 <div class="row custom-row">
-    <h2 class="section-title">role List</h2>
-	<button class="btn btn-primary mr-l mr-3" data-toggle="modal" data-target="#addModal">Add role</button>
+    <h2 class="section-title">Role List</h2>
+	<button class="btn btn-primary mr-l mr-3" data-toggle="modal" data-target="#addModal">Add Role</button>
 </div>
 <div class="row">
 	<div class="col-12">
 		<div class="card">
 			<div class="card-header">
-				<h4>role Table</h4>
+				<h4>Role Table</h4>
 			</div>
 			<div class="card-body">
 				<div class="table-responsive">
 					<table id="dataTable" class="display dataTable table table-striped" style="width:100%">
 						<thead>
 							<tr>
-
+                                <th class="text-center">SL</th>
+								<th class="text-center" >Display Name</th>
 								<th class="text-center">Name</th>
-								<th class="text-center">guard_name</th>
 								<th class="text-center">Action</th>
+
 							</tr>
 						</thead>
-						<tbody></tbody>
+						<tbody>
+							
+							@foreach($data as $i=>$role)
+							<tr>
+                                 <td>{{++$i}}</td> 
+								<td style="text-transform:uppercase;">{{$role->name}}</td>
+								<td>{{$role->name}}</td>
+								<td>
+									<button type="button" name="edit" id="edit" data-toggle="modal" data-target="#editModal" data-id={{$role->id}} class="edit btn btn-primary"><i class="fas fa-edit"></i></button>
+									<button type="button" name="delete" id="delete" data-id={{$role->id}} class="delete btn btn-danger"><i class="fas fa-trash"></i></button>
+								</td>
+
+							</tr>
+							@endforeach
+						</tbody>
 						<tfoot>
 							<tr>
+                               <th class="text-center">SL</th>
+								<th class="text-center" >Display Name</th>
+								<th class="text-center">Name</th>
+								<th class="text-center">Action</th>
 
-								<th>Name</th>
-								<th>guard_name</th>
-								<th>Action</th>
+
 							</tr>
 						</tfoot>
+
 					</table>
+					<div style="margin-left: 80%;">
+						{{$data->links()}}
+					</div>
+					
 				</div>
 			</div>
 		</div>
@@ -46,8 +68,8 @@
 </div>
 </div>
 <!-- ADD MODAL -->
-<div class="modal fade" tabindex="-1" role="dialog" id="addModal">
-	<div class="modal-dialog" role="document">
+<div class="modal fade" tabindex="-1" permission="dialog" id="addModal">
+	<div class="modal-dialog" permission="document">
 		<div class="modal-content">
 			<div class="modal-header">
 				<h5 class="modal-title">Add role</h5>
@@ -60,13 +82,9 @@
 
       <div class="form-group">
         <label>role Name:</label>
-        <input type="text" class="form-control" name="name" id="name">
+        <input type="text" class="form-control" name="name" id="name" required="" autofocus="" >
       </div>
 
-      <div class="form-group">
-        <label>role guard_name:</label>
-          <input type="text"class="form-control" name="guard_name" id="location" >
-      </div>
 
 			</div>
 			<div class="modal-footer bg-whitesmoke br">
@@ -77,13 +95,12 @@
 		</div>
 	</div>
 </div>
-
 <!-- Edit MODAL -->
 <div class="modal fade" tabindex="-1" role="dialog" id="editModal">
 	<div class="modal-dialog" role="document">
 		<div class="modal-content">
 			<div class="modal-header">
-				<h5 class="modal-title">Edit role</h5>
+				<h5 class="modal-title">Edit Role </h5>
 				<button type="button" class="close" data-dismiss="modal" aria-label="Close"> <span aria-hidden="true">&times;</span>
 				</button>
 			</div>
@@ -91,17 +108,15 @@
       @csrf
 	<div class="modal-body">
       <div class="form-group">
+				
 
       <div class="form-group">
-        <label>role Name:</label>
+        <label>Role Name:</label>
         <input type="text" class="form-control" name="name" id="e_name">
       </div>
 
-      <div class="form-group">
-        <label>role guard_name:</label>
-          <input type="text"class="form-control" name="guard_name" id="e_guard_name" >
-      </div>
-
+     
+    
 			</div>
 			<input type="hidden" id="edit_id" name="id">
 			<div class="modal-footer bg-whitesmoke br">
@@ -112,30 +127,12 @@
 		</div>
 	</div>
 </div>
+
 @endsection
 @section('script')
-<script>
-	$(document).ready(function() {
-	    $('#dataTable').DataTable({
-	        processing: true,
-	        serverSide: true,
-	        ajax:"{{route('role.index')}}",
-	        "columns":[
-
-	            {
-	              data: 'name',
-	              },
-                {
-  	              data: 'guard_name',
-  	              },
-
-	            {
-	              data: 'action',
-	              name: 'action',
-				  orderable:false,
-	              },
-	        ],
-	    });
+<script type="text/javascript">
+		$(document).ready(function() {
+	
 
 	$(document).on("click","#delete",function(){
 		var id=$(this).attr("data-id");
@@ -145,6 +142,7 @@
 			dataType:"json",
 			success:function(data)
 			{
+				
 				location.reload();
 			}
 		});
@@ -152,7 +150,7 @@
 
 	$(document).on("click","#edit",function(){
 		var id=$(this).attr("data-id");
-		var __this=$(this);
+		
 		$.ajax({
 			url:"{{route('role_edit')}}",
 			data:{'id':id,"_token": "{{ csrf_token() }}"},
@@ -161,8 +159,8 @@
 			success:function(data)
 			{
 				console.log(data);
+				
 				$("#e_name").val(data.name);
-				$("#e_guard_name").val(data.guard_name);
 				$("#editForm").attr("action","/role/update/"+data.id);
 
 			}
@@ -170,9 +168,6 @@
 	});
 
 });
-
-
 </script>
-{!! $validator->selector('#addForm') !!}
-{!! $validator->selector('#editForm') !!}
+
 @endsection

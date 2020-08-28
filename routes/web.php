@@ -75,14 +75,17 @@ Route::middleware('auth')->group(function () {
 
     //Role Route
     Route::resource('/role','RoleController');
-    Route::get('/role/delete/{id}','RoleController@destroy');
+    Route::get('/role/delete/{id}','RoleController@delete');
     Route::get('role_edit','RoleController@edit')->name('role_edit');
     Route::post('role/update/{id}','RoleController@update');
     
     //Permission
     Route::resource('/permission','PermissionController');
     
-
+   //Role Permmission
+    Route::resource('/role_permission','Role_PermissionController');
+    
+    //Route::get('role_permission/{id}', ['as' => 'role_permission.index', 'uses' => 'Role_PermissionController@index']);
 });
 Route::get("/about_us",function (){
     return view("About Us.about_us");

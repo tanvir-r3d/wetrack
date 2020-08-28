@@ -111,7 +111,7 @@ class BranchController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function destroy ($id)
+    public function destroy($id)
     {
 
         Branch::where('branch_id' , $id)->delete();
