@@ -10,7 +10,7 @@ use App\Rules\MatchOldPassword;
 use Auth;
 use Hash;
 use Spatie\Permission\Traits\HasRoles;
-class User extends Authenticatable
+class User extends Authenticatable implements MustVerifyEmail
 {
     use Notifiable,Datatableable,HasRoles;
 

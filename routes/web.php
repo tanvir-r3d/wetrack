@@ -18,7 +18,7 @@ Route::get('/',function (){
 });
 
 Route::get('/search','HomeController@search');
-Auth::routes();
+Auth::routes(['verify' =>true]);
 Route::middleware('auth')->group(function () {
 
 
@@ -84,7 +84,7 @@ Route::middleware('auth')->group(function () {
     
    //Role Permmission
     Route::resource('/role_permission','Role_PermissionController');
-    
+
     //Route::get('role_permission/{id}', ['as' => 'role_permission.index', 'uses' => 'Role_PermissionController@index']);
 });
 Route::get("/about_us",function (){
