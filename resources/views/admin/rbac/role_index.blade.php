@@ -23,17 +23,17 @@
 						<thead>
 							<tr>
                                 <th class="text-center">SL</th>
-								<th class="text-center" >Display Name</th>
+								<th class="text-center">Display Name</th>
 								<th class="text-center">Name</th>
 								<th class="text-center">Action</th>
 
 							</tr>
 						</thead>
 						<tbody>
-							
+
 							@foreach($data as $i=>$role)
 							<tr>
-                                 <td>{{++$i}}</td> 
+                                 <td>{{++$i}}</td>
 								<td style="text-transform:uppercase;">{{$role->name}}</td>
 								<td>{{$role->name}}</td>
 								<td>
@@ -59,7 +59,7 @@
 					<div style="margin-left: 80%;">
 						{{$data->links()}}
 					</div>
-					
+
 				</div>
 			</div>
 		</div>
@@ -68,11 +68,11 @@
 </div>
 </div>
 <!-- ADD MODAL -->
-<div class="modal fade" tabindex="-1" permission="dialog" id="addModal">
-	<div class="modal-dialog" permission="document">
+<div class="modal fade" tabindex="-1" id="addModal">
+	<div class="modal-dialog">
 		<div class="modal-content">
 			<div class="modal-header">
-				<h5 class="modal-title">Add role</h5>
+				<h5 class="modal-title">Add Role</h5>
 				<button type="button" class="close" data-dismiss="modal" aria-label="Close"> <span aria-hidden="true">&times;</span>
 				</button>
 			</div>
@@ -108,15 +108,15 @@
       @csrf
 	<div class="modal-body">
       <div class="form-group">
-				
+
 
       <div class="form-group">
         <label>Role Name:</label>
         <input type="text" class="form-control" name="name" id="e_name">
       </div>
 
-     
-    
+
+
 			</div>
 			<input type="hidden" id="edit_id" name="id">
 			<div class="modal-footer bg-whitesmoke br">
@@ -132,7 +132,7 @@
 @section('script')
 <script type="text/javascript">
 		$(document).ready(function() {
-	
+
 
 	$(document).on("click","#delete",function(){
 		var id=$(this).attr("data-id");
@@ -142,7 +142,7 @@
 			dataType:"json",
 			success:function(data)
 			{
-				
+
 				location.reload();
 			}
 		});
@@ -150,7 +150,7 @@
 
 	$(document).on("click","#edit",function(){
 		var id=$(this).attr("data-id");
-		
+
 		$.ajax({
 			url:"{{route('role_edit')}}",
 			data:{'id':id,"_token": "{{ csrf_token() }}"},
@@ -159,7 +159,7 @@
 			success:function(data)
 			{
 				console.log(data);
-				
+
 				$("#e_name").val(data.name);
 				$("#editForm").attr("action","/role/update/"+data.id);
 

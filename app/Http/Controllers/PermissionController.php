@@ -18,18 +18,17 @@ class PermissionController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {  
+    {
 
-     // $data=JsValidator::make([
-     //       'name' => ['required', 'string', 'unique:users']
-     //     ]);
-     
-     
-        $data = Permission::orderBY('id','asc')->paginate(6);
+        // $data=JsValidator::make([
+        //       'name' => ['required', 'string', 'unique:users']
+        //     ]);
 
-      
-        
-        return view('admin.rbac.permission_index',compact('data'));
+
+        $data = Permission::orderBY('id', 'asc')->paginate(6);
+
+
+        return view('admin.rbac.permission_index', compact('data'));
     }
 
     /**
@@ -45,42 +44,24 @@ class PermissionController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
     {
-      //     $val= $request->validate
-      //   ([
-        
-      //   'name' => ['required', 'string', 'unique:users']
+        $valid = $request->validate(['name' => 'required|unique:permissions,name|max:35',], ['name.unique' => 'Already Exist!',]);
+        $permission = Permission::create(['name' => $request->name]);
 
-      //    ]);
-      // $jsValidator = JsValidator::validator($val);
-       
 
-         $valid =  $request->validate
-        ([
-        'name' => 'required|unique:permissions,name|max:35',
-         ], 
-         [
-            
-        'name.unique' => 'Already Exist!',
-        
-         ]
-         );
-        $permission=Permission::create(['name' => $request->name]);
+        Toastr::success('Congratulation! New Permission Information Saved Successfully', 'permission', ["positionClass" => "toast-top-right"]);
+        return redirect()->back();
 
-            
-            Toastr::success('Congratulation! New Permission Information Saved Successfully'  ,'permission', ["positionClass" => "toast-top-right"]);
-            return redirect()->back();
-       
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function show($id)
@@ -91,21 +72,21 @@ class PermissionController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function edit(Request $request)
     {
-       
+
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
-       public function destroy ($id)
+    public function destroy($id)
     {
 
 
