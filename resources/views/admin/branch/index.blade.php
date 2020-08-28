@@ -17,7 +17,7 @@
 			<div class="card-header">
 				<h4>Branch Table</h4>
 			</div>
-			<div class="card-body">
+			<div class="card-body"> 
 				<div class="table-responsive">
 					<table id="dataTable" class="display dataTable table table-striped" style="width:100%">
 						<thead>
