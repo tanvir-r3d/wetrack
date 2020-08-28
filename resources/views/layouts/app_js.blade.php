@@ -18,7 +18,7 @@
   <script src="/packages/DataTables/DataTables-1.10.20/js/jquery.dataTables.min.js"></script>
   <script src="/packages/DataTables/DataTables-1.10.20/js/jquery.dataTables.min.js"></script>
   <script src="/packages/sweetalert.min.js"></script>
-  <script src="/packages/toastr/toastr.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
 
 <script type="text/javascript" src="{{ url('vendor/jsvalidation/js/jsvalidation.js')}}"></script>
 

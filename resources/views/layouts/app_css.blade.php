@@ -11,7 +11,7 @@
   <!-- General CSS Files -->
   <link rel="stylesheet" href="/css/bootstrap.min.css">
 
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
   <!-- Template CSS -->
   <link rel="stylesheet" href="/css/style.css">
   <link rel="stylesheet" href="/css/components.css">
@@ -24,7 +24,7 @@
   <link rel="stylesheet" href="/packages/DataTables/DataTables-1.10.20/css/dataTables.jqueryui.min.css">
   <link rel="stylesheet" href="/packages/DataTables/DataTables-1.10.20/css/dataTables.semanticui.min.css">
   <link rel="stylesheet" href="/packages/DataTables/DataTables-1.10.20/css/jquery.dataTables.min.css">
-  <link rel="stylesheet" href="/packages/toastr/toastr.css">
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css">
 
 <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
 
@@ -33,7 +33,7 @@
 <body>
 <style>
 
-</style>	
+</style>
 <!-- Preloader CSS & JS are in Custom-->
 <div class="spinner-wrapper">
 <div class="sk-folding-cube">
