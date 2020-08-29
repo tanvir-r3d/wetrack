@@ -1,7 +1,7 @@
       <div class="main-sidebar">
         <aside id="sidebar-wrapper">
           <div class="sidebar-brand">
-             
+
                         <a href="/"><img src="{{ $settings->site_logo ? '/setting/'.$settings->site_logo : '/logo.png'}}" alt="" width="30">&nbsp
                             {{$settings->site_title ? $settings->site_title : 'We Track'}}</a>
                         </div>
@@ -17,13 +17,13 @@
 
               <li class="menu-header">Administrator</li>
                 <li class="{{url()->current() == url('/user') ? 'active' : ''}}"><a class="nav-link" href="/user"><i class="fas fa-user"></i><span>User</span></a></li>
-              <li class="nav-item dropdown">
+              <li class="nav-item dropdown {{url()->current() == url('/permission') || url()->current() == url('/role') || url()->current() == url('/role_permission') || url()->current() == url('/user_roles') ? 'active' : ''}}">
                 <a href="#" class="nav-link has-dropdown"><i class="fas fa-key"></i> <span>RBAC</span></a>
                 <ul class="dropdown-menu">
-                  <li><a class="nav-link" href="/role">Roles</a></li>
-                  <li><a class="nav-link" href="/permission">Permissions</a></li>
-                  <li><a class="nav-link" href="/role_permission">Roles Permission</a></li>
-                  <li><a class="nav-link" href="/user_roles">User Roles</a></li>
+                    <li class="{{url()->current() == url('/permission') ? 'active' : ''}}"><a class="nav-link" href="/permission">Permissions</a></li>
+                    <li class="{{url()->current() == url('/role') ? 'active' : ''}}"><a class="nav-link" href="/role">Roles</a></li>
+                  <li class="{{url()->current() == url('/role_permission') ? 'active' : ''}}"><a class="nav-link" href="/role_permission">Roles Permission</a></li>
+                  <li class="{{url()->current() == url('/user_roles') ? 'active' : ''}}"><a class="nav-link" href="/user_roles">User Roles</a></li>
                 </ul>
               </li>
 

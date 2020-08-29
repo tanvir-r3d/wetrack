@@ -84,6 +84,11 @@ Route::middleware('auth')->group(function () {
     Route::get('/role_permission', 'Role_PermissionController@index');
     Route::get('/role_permission/{id}', 'Role_PermissionController@edit');
     Route::put('/role_permission/{id}/update', 'Role_PermissionController@update');
+
+    //USER ROLE
+    Route::get('/user_roles','UserRoleController@index');
+    Route::get('/user_roles/{id}','UserRoleController@edit');
+    Route::put('/user_roles/update/{id}','UserRoleController@update');
 });
 Route::get("/about_us", function () {
     return view("About Us.about_us");
