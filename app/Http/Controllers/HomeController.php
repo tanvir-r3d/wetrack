@@ -7,6 +7,8 @@ use App\Employee;
 use App\Company;
 use App\Branch;
 use App\Search\Admin;
+use App;
+use Session;
 class HomeController extends Controller
 {
     /**
@@ -38,4 +40,12 @@ class HomeController extends Controller
         $branch=Branch::get();
         return view('admin.dashboard',compact('employee','company','branch'));
     }
+
+  public function local($language)
+   {
+    App::setlocale($language);
+    Session::put('locale',$language);
+    return Session::get('locale');
+   }
+
 }

@@ -77,7 +77,7 @@ font-family: rever
                     <h6 class="ml-5 font">
                         Before proceeding, please check your email for a verification link.
                     </h6>
-                    <a  class="ml-5" href="https://mail.google.com/mail/u/0/#inbox">Check email</a>
+                    <a  class="ml-5" href="https://mail.google.com/mail/u/0/#inbox" target="_blank">Check email</a>
                     <br><br>
 
                      

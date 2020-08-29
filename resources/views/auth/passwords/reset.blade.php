@@ -1,62 +1,93 @@
-<!DOCTYPE html>
-<html class="loading" lang="en" data-textdirection="ltr">
-    <!-- BEGIN: Head-->
 
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui" />
-        <meta name="description" content="Stack admin is super flexible, powerful, clean &amp; modern responsive bootstrap 4 admin template with unlimited possibilities." />
-        <meta name="keywords" content="admin template, stack admin template, dashboard template, flat admin template, responsive admin template, web app" />
-        <meta name="author" content="PIXINVENT" />
-        <title>Login We Track</title>
-        <link rel="apple-touch-icon" href="{{asset('app-assets/images/ico/apple-icon-120.png')}}" />
-          <link rel="shortcut icon" type="image/x-icon" href="{{asset('app-assets/images/ico/favicon.png')}}">
-        <link href="https://fonts.googleapis.com/css?family=Montserrat:300,300i,400,400i,500,500i%7COpen+Sans:300,300i,400,400i,600,600i,700,700i" rel="stylesheet" />
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+   
+    <title>Forget Password</title>
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  
+</head>
+<body>
+<style>
+.mainContent {
+        
+        height: 100vh;
+        background-image: url(/email2.jpg);
+        background-attachment: fixed;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        display: flex;
+        align-items: center;
 
-        <!-- BEGIN: Vendor CSS-->
-        <link rel="stylesheet" type="text/css" href="{{asset('app-assets/vendors/css/vendors.min.css')}}" />
-        <link rel="stylesheet" type="text/css" href="{{asset('app-assets/vendors/css/forms/icheck/icheck.css')}}" />
-        <link rel="stylesheet" type="text/css" href="{{asset('app-assets/vendors/css/forms/icheck/custom.css')}}" />
-        <!-- END: Vendor CSS-->
+    }
+.overlay
+{
+     position: absolute;
+     min-height: 100vh;
+     width: 100%;
+     background: rgba(0,0,0,0.4);
 
-        <!-- BEGIN: Theme CSS-->
-        <link rel="stylesheet" type="text/css" href="{{asset('app-assets/css/bootstrap.css')}}" />
-        <link rel="stylesheet" type="text/css" href="{{asset('app-assets/css/bootstrap-extended.css')}}" />
-        <link rel="stylesheet" type="text/css" href="{{asset('app-assets/css/colors.css')}}" />
-        <link rel="stylesheet" type="text/css" href="{{asset('app-assets/css/components.css')}}" />
-        <!-- END: Theme CSS-->
+}
 
-        <!-- BEGIN: Page CSS-->
-        <link rel="stylesheet" type="text/css" href="{{asset('app-assets/css/core/menu/menu-types/horizontal-menu.css')}}" />
-        <link rel="stylesheet" type="text/css" href="{{asset('app-assets/css/core/colors/palette-gradient.css')}}" />
-        <link rel="stylesheet" type="text/css" href="{{asset('app-assets/css/pages/login-register.css')}}" />
-        <!-- END: Page CSS-->
-
-        <!-- BEGIN: Custom CSS-->
-        <link rel="stylesheet" type="text/css" href="{{asset('assets/css/style.css')}}" />
-
-        <!-- END: Custom CSS-->
-    </head>
-
+.title {
+    font-family: initial;
+    color: #fff;
+    text-align: ;
+    margin-top: 5rem;
+    margin-left: 3rem;
+    font-size: x-large;
+    font-weight: 400;
     
+    margin-bottom: 1rem;
+}
 
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8 mt-5">
-            <div class="card mt-5">
-                <div class="card-header">{{ __('Reset Password') }}</div>
+.pTag{
+    margin-top: 1rem;
+margin-left: 4rem;
+font-size: smaller;
+font-family: rever
+}
+.font{
 
-                <div class="card-body">
+
+
+    font-size: initial;
+    font-family: initial;
+    color: #ffffff;
+
+
+}
+.bodyOverlay{
+     position: relative;
+     min-height: 110px;
+     width: 100%;
+     background: rgba(0,0,0,0.7);
+ }
+
+</style>
+
+<div class="container-fluid mainContent p-0">
+    <div class="overlay p-0">
+        <div class="row justify-content-center ">
+        <div class="col-md-5 mt-5">
+            <div class=" bodyOverlay">
+                <div class="title card-header">{{ __('Reset Password') }}</div>
+
+                <div class="">
                     <form method="POST" action="{{ route('password.update') }}">
                         @csrf
 
                         <input type="hidden" name="token" value="{{ $token }}">
 
-                        <div class="form-group row">
+                        <div class="form-group row font">
                             <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
 
-                            <div class="col-md-6">
+                            <div class="col-md-6 ">
                                 <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ $email ?? old('email') }}" required autocomplete="email" autofocus>
 
                                 @error('email')
@@ -67,7 +98,7 @@
                             </div>
                         </div>
 
-                        <div class="form-group row">
+                        <div class="form-group row font">
                             <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
 
                             <div class="col-md-6">
@@ -81,7 +112,7 @@
                             </div>
                         </div>
 
-                        <div class="form-group row">
+                        <div class="form-group row font">
                             <label for="password-confirm" class="col-md-4 col-form-label text-md-right">{{ __('Confirm Password') }}</label>
 
                             <div class="col-md-6">
@@ -90,7 +121,7 @@
                         </div>
 
                         <div class="form-group row mb-0">
-                            <div class="col-md-6 offset-md-4">
+                            <div class="col-md-6 offset-md-4 mb-3 ">
                                 <button type="submit" class="btn btn-primary">
                                     {{ __('Reset Password') }}
                                 </button>
@@ -101,5 +132,9 @@
             </div>
         </div>
     </div>
+    </div>
+    
 </div>
+</body>
 </html>
+

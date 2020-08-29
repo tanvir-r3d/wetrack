@@ -10,12 +10,12 @@
                         </div>
                         <ul class="sidebar-menu">
 
-                            <li class="menu-header">Dashboard</li>
+                            <li class="menu-header">{{ __('customLanguage.Dashboard')}}</li>
                             <li class="nav-item">
-                              <li class="{{url()->current() == url('/home') ? 'active' : ''}}"><a class="nav-link" href="/home"><i class="fas fa-home"></i><span>Dashboard</span></a></li>
+                              <li class="{{url()->current() == url('/home') ? 'active' : ''}}"><a class="nav-link" href="/home"><i class="fas fa-home"></i><span>{{ __('customLanguage.Dashboard')}}</span></a></li>
               </li>
 
-              <li class="menu-header">Administrator</li>
+              <li class="menu-header">{{__('customLanguage.Administrator')}}</li>
                 <li class="{{url()->current() == url('/user') ? 'active' : ''}}"><a class="nav-link" href="/user"><i class="fas fa-user"></i><span>User</span></a></li>
               <li class="nav-item dropdown {{url()->current() == url('/permission') || url()->current() == url('/role') || url()->current() == url('/role_permission') || url()->current() == url('/user_roles') ? 'active' : ''}}">
                 <a href="#" class="nav-link has-dropdown"><i class="fas fa-key"></i> <span>RBAC</span></a>

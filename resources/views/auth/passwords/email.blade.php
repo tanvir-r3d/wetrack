@@ -73,7 +73,7 @@ font-family: rever
                         <div class="alert alert-success pTag" role="alert">
 
                             {{ session('status') }}
-                            <a href="https://mail.google.com/mail/u/0/#inbox" style="color: red;">Click & Check Mail</a>
+                            <a href="https://mail.google.com/mail/u/0/#inbox"  style="color: red;">Click & Check Mail</a>
 
                         </div>
                     @endif
