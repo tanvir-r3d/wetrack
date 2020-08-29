@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\RoleHasPermission;
+use App\User;
 use Illuminate\Http\Request;
 use Spatie\Permission\Models\Role;
 use Session;
@@ -53,6 +54,8 @@ class Role_PermissionController extends Controller
             }
             RoleHasPermission::insert($data);
         }
+//        $user=Role::find($id);
+//        $user->syncRoles([''])
         Toastr::success('Congratulation! '.$request->name.' Information Saved Successfully', 'Permission', ["positionClass" => "toast-top-right"]);
 
         return redirect()->back();
