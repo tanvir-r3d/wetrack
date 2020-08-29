@@ -19,6 +19,35 @@
             </div>
           </div>
         </form>
+        <select class="lang_choose">
+                
+                <option value="en" {{Session::get("locale") == "en" ? "selected='selected'" : ""}}>English</option>
+                <option value="bn" {{Session::get("locale") == "bn" ? "selected='selected'" : ""}}>Bangla</option>
+
+              </select>
+
+              <script type="text/javascript">
+
+                $(".lang_choose").change(function(){
+                  alert('hi');
+                  var language=$(this).val();
+
+
+                    $.ajax({
+                             type:'get',
+                             url:'/localization/'+language,
+                             
+                             success:function(data) {
+                                console.log(data);
+                                location.reload();
+                             }
+                            });
+
+                });
+
+
+              </script>
+
 
         <ul class="navbar-nav navbar-right">
           <li class="dropdown"><a href="#" data-toggle="dropdown" class="nav-link dropdown-toggle nav-link-lg nav-link-user">

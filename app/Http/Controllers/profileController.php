@@ -14,10 +14,7 @@ use App\Rules\MatchOldPassword;
 class profileController extends Controller
 {
 
-    public function __construct()
-    {
-        $this->middleware(['auth','verified']);
-    }
+   
     
 	function index()
 	{

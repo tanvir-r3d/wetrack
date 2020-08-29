@@ -16,6 +16,8 @@ Route::get('/', function () {
     return redirect('/home');
 });
 
+Route::get('localization/{locale}','HomeController@local');
+
 Route::get('/search', 'HomeController@search');
 Auth::routes(['verify' => true]);
 Route::middleware('auth')->group(function () {
