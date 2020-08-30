@@ -50,7 +50,6 @@ Route::middleware('auth')->group(function () {
 
     // Employee In Field
     Route::get('employee_status/', 'EmployeeStatusController@index');
-    Route::get('employee_status/list', 'EmployeeStatusController@create');
     Route::get('employee_status/change', 'EmployeeStatusController@statusChange')->name('employee_status.change');
 
     //User Profile Route

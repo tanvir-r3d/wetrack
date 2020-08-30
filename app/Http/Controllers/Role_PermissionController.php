@@ -7,7 +7,6 @@ use App\User;
 use Illuminate\Http\Request;
 use Spatie\Permission\Models\Role;
 use Session;
-use Toastr;
 use Spatie\Permission\Models\Permission;
 use Auth;
 
@@ -40,7 +39,7 @@ class Role_PermissionController extends Controller
 
     /**
      * Update the specified resource in storage.
-     *
+     * 
      * @param \Illuminate\Http\Request $request
      * @param int $id
      * @return \Illuminate\Http\Response
@@ -60,8 +59,11 @@ class Role_PermissionController extends Controller
        
        $user->syncRoles([$permission_name->name]);
 
-        Toastr::success('Congratulation! '.$request->name.' Information Saved Successfully', 'Permission', ["positionClass" => "toast-top-right"]);
-
-        return redirect()->back();
+       $notification = array(
+        'title' => 'Role Permission',
+        'message' => 'Congratulation! '.$request->name.' Information Saved Successfully.',
+        'alert-type' => 'success',
+        );
+        return redirect()->back()->with($notification); 
     }
 }

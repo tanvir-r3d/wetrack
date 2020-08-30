@@ -23,12 +23,15 @@
   <link rel="stylesheet" href="/packages/DataTables/DataTables-1.10.20/css/dataTables.foundation.min.css">
   <link rel="stylesheet" href="/packages/DataTables/DataTables-1.10.20/css/dataTables.jqueryui.min.css">
   <link rel="stylesheet" href="/packages/DataTables/DataTables-1.10.20/css/dataTables.semanticui.min.css">
-  <link rel="stylesheet" href="/packages/DataTables/DataTables-1.10.20/css/jquery.dataTables.min.css">
-  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css">
-
 
  <script src="https://kit.fontawesome.com/5a09bb06be.js" crossorigin="anonymous"></script>
-<script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+
+  <link rel="stylesheet" href="/packages/DataTables/DataTables-1.10.20/css/jquery.dataTables.min.css">
+
+  <link rel="stylesheet" type="text/css" href="/packages/izitoast/dist/css/iziToast.min.css">
+  <script src="/packages/izitoast/dist/js/iziToast.min.js" type="text/javascript"></script>
+  
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
 
 </head>
 

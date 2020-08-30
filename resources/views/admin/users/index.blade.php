@@ -231,15 +231,40 @@
 
 	$(document).on("click","#delete",function(){
 		var id=$(this).attr("data-id");
+		iziToast.question({
+        timeout: 20000,
+        close: true,
+        overlay: true,
+        displayMode: 'once',
+        id: 'question',
+        zindex: 999,
+        title: 'Wait!',
+        message: 'Are you sure? Once Deleted Can\'t be undone!', 
+        position: 'center',
+        buttons: [
+            ['<button><b>YES</b></button>', function () {
 		$.ajax({
 			url:"/user/delete/"+id,
 			type:"get",
 			dataType:"json",
 			success:function(data)
 			{
-				location.reload();
+				iziToast.success({
+								title: "User",
+								message: "User Successfully Deleted",
+								position: 'topRight',
+							});
+							location.reload();
 			}
 		});
+	}, true],
+            ['<button>NO</button>', function (instance, toast) {
+
+                instance.hide({ transitionOut: 'fadeOut' }, toast, 'button');
+
+            }],
+        ],
+	});
 	});
 
 	$(document).on("click","#view",function(){

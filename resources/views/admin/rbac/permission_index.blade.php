@@ -1,21 +1,21 @@
 @extends('layouts.app')
-@section('page_name') permission @endsection
-@section('section_header') permission @endsection
+@section('page_name') Permission @endsection
+@section('section_header') Permission @endsection
 @section('breadcrumb')
 <div class="breadcrumb-item"><a href="/">Home</a>
 </div>
-<div class="breadcrumb-item active">permission</div>
+<div class="breadcrumb-item active">Permission</div>
 @endsection
 @section('content')
 <div class="row custom-row">
-    <h2 class="section-title">permission List</h2>
-	<button class="btn btn-primary mr-l mr-3" data-toggle="modal" data-target="#addModal">Add permission</button>
+    <h2 class="section-title">Permission List</h2>
+	<button class="btn btn-primary mr-l mr-3" data-toggle="modal" data-target="#addModal">Add Permission</button>
 </div>
 <div class="row">
 	<div class="col-12">
 		<div class="card">
 			<div class="card-header">
-				<h4>permission Table</h4>
+				<h4>Permission Table</h4>
 			</div>
 			<div class="card-body">
 				<div class="table-responsive">
@@ -50,7 +50,6 @@
 
 					</table>
 					<div style="margin-left: 80%;">
-						{{$data->links()}}
 					</div>
 					
 				</div>
@@ -61,11 +60,11 @@
 </div>
 </div>
 <!-- ADD MODAL -->
-<div class="modal fade" tabindex="-1" permission="dialog" id="addModal">
-	<div class="modal-dialog" permission="document">
+<div class="modal fade" tabindex="-1" id="addModal">
+	<div class="modal-dialog">
 		<div class="modal-content">
 			<div class="modal-header">
-				<h5 class="modal-title">Add permission</h5>
+				<h5 class="modal-title">Add Permission</h5>
 				<button type="button" class="close" data-dismiss="modal" aria-label="Close"> <span aria-hidden="true">&times;</span>
 				</button>
 			</div>
@@ -74,7 +73,7 @@
 			<div class="modal-body">
 
       <div class="form-group">
-        <label>permission Name:</label>
+        <label>Permission Name:</label>
         <input type="text" class="form-control" name="name" id="name" required="" autofocus="" >
       </div>
 
@@ -91,7 +90,4 @@
 
 
 @endsection
-@section('script')
 
-
-@endsection

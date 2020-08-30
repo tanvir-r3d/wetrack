@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\User;
 use Illuminate\Http\Request;
 use Validator;
-use Toastr;
 use Illuminate\Support\Facades\Hash;
 use DB;
 use JsValidator;
@@ -15,7 +14,7 @@ class UserController extends Controller
     public function index()
     {
         $user=Auth::user();
-        if ($user->can('view_user')) {
+        if ($user->can('view user')) {
         $user=new User;
         if(request()->ajax())
         {
@@ -77,8 +76,12 @@ class UserController extends Controller
             }
             $user->save();
             DB::commit();
-        Toastr::success('Congratulation! New User Information Saved Successfully', 'User',["positionClass" => "toast-top-center"]);
-        return redirect()->back();
+            $notification = array(
+                'title' => 'User',
+                'message' => 'Successfully! User Information Added.',
+                'alert-type' => 'success',
+            );
+            return redirect()->back()->with($notification);
     }
 
     public function show(Request $request)

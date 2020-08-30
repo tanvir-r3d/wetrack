@@ -17,17 +17,6 @@
       'Debugbar' => 'Barryvdh\\Debugbar\\Facade',
     ),
   ),
-  'brian2694/laravel-toastr' => 
-  array (
-    'providers' => 
-    array (
-      0 => 'Brian2694\\Toastr\\ToastrServiceProvider',
-    ),
-    'aliases' => 
-    array (
-      'Toastr' => 'Brian2694\\Toastr\\Facades\\Toastr',
-    ),
-  ),
   'facade/ignition' => 
   array (
     'providers' => 

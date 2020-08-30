@@ -5,7 +5,6 @@ use App\Employee;
 use App\EmployeeImage;
 use Illuminate\Http\Request;
 use Validator;
-use Toastr;
 use JsValidator;
 use App\EmployeeCategory;
 use App\Branch;
@@ -24,7 +23,7 @@ class EmployeeController extends Controller
     public function index()
     {
         $user=Auth::user();
-        if ($user->can('view_employee')) {
+        if ($user->can('view employee')) {
               $branchs = Branch::get();
               $categorys = EmployeeCategory::get();
               $companys = Company::get();
@@ -128,8 +127,13 @@ class EmployeeController extends Controller
           $user->emp_id = $employee->emp_id;
           $user->user_type =1;
           $user->save();
-      Toastr::success('Congratulation! New Employee Information Saved Successfully', 'Employee',["positionClass" => "toast-top-right"]);
-      return redirect()->back();
+
+          $notification = array(
+            'title' => 'Employee',
+            'message' => 'Successfully! Employee Information Added.',
+            'alert-type' => 'success',
+        );
+        return redirect()->back()->with($notification);
       }
     }
 
@@ -178,9 +182,12 @@ class EmployeeController extends Controller
                       $employee->emp_img = $name;
               }
           $employee->save();
-
-          Toastr::success('Congratulation! New Employee Information Updated Successfully', 'Employee',["positionClass" => "toast-top-right"]);
-          return redirect()->back();
+          $notification = array(
+            'title' => 'Employee',
+            'message' => 'Successfully! Employee Information Updated.',
+            'alert-type' => 'success',
+        );
+        return redirect()->back()->with($notification);
 
 
     }
