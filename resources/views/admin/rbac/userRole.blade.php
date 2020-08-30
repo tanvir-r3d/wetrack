@@ -102,7 +102,7 @@
                                     @endforeach
                                 </select>
                             </div>
-
+                        <input type="hidden" id="old_role" name="old_role">
 
                         </div>
                         <div class="modal-footer bg-whitesmoke br">
@@ -111,7 +111,7 @@
                 </form>
             </div>
         </div>
-    </div>
+    </div> 
     </div>
 
 @endsection
@@ -129,7 +129,10 @@
                     {
                         const { email, id , roles} = data[0];
                         $("#user_email").val(email);
-                        $("#role").val(roles[0].id);
+                        if(roles[0]){
+                            $("#role").val(roles[0].id);
+                            $("#old_role").val(roles[0].name);
+                        }
                         $("#editForm").attr("action",`/user_roles/update/${id}`);
                     }
                 });

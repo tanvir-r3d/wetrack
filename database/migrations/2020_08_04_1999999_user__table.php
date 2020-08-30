@@ -16,7 +16,7 @@ class UserTable extends Migration
         Schema::create('users', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->integer('user_type')->nullable();
-            $table->unsignedBigInteger('emp_id');
+            $table->unsignedBigInteger('emp_id')->nullable();
             $table->string('user_first_name', 1000)->nullable();
             $table->string('user_last_name' ,1000)->nullable();
             $table->string('user_gender', 1000)->nullable();

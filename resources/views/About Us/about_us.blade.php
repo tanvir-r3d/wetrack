@@ -186,7 +186,7 @@
         <div class="col-12 col-sm-6 col-md-6 col-lg-3">
             <div class="our-team">
                 <div class="picture">
-                    <img class="img-fluid" src="https://picsum.photos/130/130?image=839">
+                    <img class="img-fluid" src="/images/about_us/refat.jpg">
                 </div>
                 <div class="team-content">
                     <h3 class="name">Abdur Rahim Refat</h3>
