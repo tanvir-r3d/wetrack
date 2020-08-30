@@ -9,7 +9,7 @@
 @section('content')
 <div class="row custom-row">
     <h2 class="section-title">Employee List</h2>
-    @can('add_employee')
+    @can('add employee')
     <button class="btn btn-primary mr-l mr-3" data-toggle="modal" data-target="#addModal">Add Employee</button>
     @endcan
 </div>

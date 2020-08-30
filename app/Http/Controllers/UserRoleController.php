@@ -22,6 +22,10 @@ class UserRoleController extends Controller
     public function update(Request $request,$id)
     {
         $user=User::find($id);
+        if($request->old_role)
+        {
+            $user->removeRole($request->old_role);
+        }
         $user->assignRole($request->role);
         $notification = array(
             'title' => 'User Role',
