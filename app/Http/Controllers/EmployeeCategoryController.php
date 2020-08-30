@@ -7,7 +7,7 @@ use App\EmployeeCategory;
 use Validator;
 use JsValidator;
 use Toastr;
-
+use Auth;
 class EmployeeCategoryController extends Controller
 {
     /**
@@ -17,12 +17,18 @@ class EmployeeCategoryController extends Controller
      */
     public function index ()
     {
-        $employeeCategory = new EmployeeCategory;
-        if (request()->ajax()) {
-            return $employeeCategory->datatable(EmployeeCategory::latest()->get());
-        }
-        $validator = JsValidator::make($employeeCategory->validation());
-        return view('admin.employee.employeeCategory.index' , ['validator' => $validator]);
+         $user=Auth::user();
+        if ($user->can('view_emp_cat')) {
+                $employeeCategory = new EmployeeCategory;
+                if (request()->ajax()) {
+                    return $employeeCategory->datatable(EmployeeCategory::latest()->get());
+                }
+                $validator = JsValidator::make($employeeCategory->validation());
+                return view('admin.employee.employeeCategory.index' , ['validator' => $validator]);
+            }
+            else{
+                abort('403');
+            }
     }
 
 

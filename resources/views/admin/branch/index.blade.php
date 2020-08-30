@@ -9,7 +9,9 @@
 @section('content')
 <div class="row custom-row">
     <h2 class="section-title">Branch List</h2>
+    @can('add_branch')
 	<button class="btn btn-primary mr-l mr-3" data-toggle="modal" data-target="#addModal">Add Branch</button>
+	@endcan
 </div>
 <div class="row">
 	<div class="col-12">

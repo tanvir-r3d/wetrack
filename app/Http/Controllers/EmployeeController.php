@@ -13,7 +13,7 @@ use DB;
 use App\Company;
 use App\User;
 use Hash;
-
+use Auth;
 class EmployeeController extends Controller
 {
     /**
@@ -23,52 +23,59 @@ class EmployeeController extends Controller
      */
     public function index()
     {
-        $branchs = Branch::get();
-        $categorys = EmployeeCategory::get();
-        $companys = Company::get();
-        $employee=new Employee;
-        if(request()->ajax())
-        {
-            return datatables()->of(Employee::latest()->get())
-            ->addColumn('action',function($data){
-                $button='<button type="button" name="edit" id="edit" data-toggle="modal" data-target="#editModal" data-id="'.$data->emp_id.'" class="edit btn btn-primary"><i class="fas fa-edit"></i></button>';
-                $button.='&nbsp;&nbsp;';
-                $button.='<button type="button" name="delete" id="delete" data-id="'.$data->emp_id.'" class="delete btn btn-danger"><i class="fas fa-trash"></i></button>';
-                return $button;
-            })
-            ->addColumn('branch_name',function($data) use ($branchs)
-            {
-              $branch=collect($branchs)->where('branch_id',$data->emp_branch_id)->first();
-              return $branch->branch_name;
-            })
-            ->addColumn('company_name',function($data) use ($companys)
-            {
-              $company=collect($companys)->where('com_id',$data->emp_com_id)->first();
-              return $company->com_name;
-            })
-            ->addColumn('category_name',function($data) use ($categorys)
-            {
-              $category=collect($categorys)->where('emp_cat_id',$data->emp_cat_id)->first();
-              return $category->emp_cat_name;
-            })
-            ->addColumn('status',function($data)
-            {
-              if($data->emp_status)
+        $user=Auth::user();
+        if ($user->can('view_employee')) {
+              $branchs = Branch::get();
+              $categorys = EmployeeCategory::get();
+              $companys = Company::get();
+              $employee=new Employee;
+              if(request()->ajax())
               {
-                $button='<button type="button" name="status" id="status" data-id="'.$data->emp_id.'" data-status="active" class="status btn" style="color:green"><i class="fas fa-check"> Active</i></button>';
+                  return datatables()->of(Employee::latest()->get())
+                  ->addColumn('action',function($data){
+                      $button='<button type="button" name="edit" id="edit" data-toggle="modal" data-target="#editModal" data-id="'.$data->emp_id.'" class="edit btn btn-primary"><i class="fas fa-edit"></i></button>';
+                      $button.='&nbsp;&nbsp;';
+                      $button.='<button type="button" name="delete" id="delete" data-id="'.$data->emp_id.'" class="delete btn btn-danger"><i class="fas fa-trash"></i></button>';
+                      return $button;
+                  })
+                  ->addColumn('branch_name',function($data) use ($branchs)
+                  {
+                    $branch=collect($branchs)->where('branch_id',$data->emp_branch_id)->first();
+                    return $branch->branch_name;
+                  })
+                  ->addColumn('company_name',function($data) use ($companys)
+                  {
+                    $company=collect($companys)->where('com_id',$data->emp_com_id)->first();
+                    return $company->com_name;
+                  })
+                  ->addColumn('category_name',function($data) use ($categorys)
+                  {
+                    $category=collect($categorys)->where('emp_cat_id',$data->emp_cat_id)->first();
+                    return $category->emp_cat_name;
+                  })
+                  ->addColumn('status',function($data)
+                  {
+                    if($data->emp_status)
+                    {
+                      $button='<button type="button" name="status" id="status" data-id="'.$data->emp_id.'" data-status="active" class="status btn" style="color:green"><i class="fas fa-check"> Active</i></button>';
+                    }
+                    else
+                    {
+                      $button='<button type="button" name="status" id="status" data-id="'.$data->emp_id.'" data-status="inactive" class="status btn"><i class="fas fa-times"> Inactive</i></button>';
+                    }
+                    return $button;
+                  })
+                  ->rawColumns(['action','status'])
+                  ->make(true);
               }
-              else
-              {
-                $button='<button type="button" name="status" id="status" data-id="'.$data->emp_id.'" data-status="inactive" class="status btn"><i class="fas fa-times"> Inactive</i></button>';
-              }
-              return $button;
-            })
-            ->rawColumns(['action','status'])
-            ->make(true);
-        }
-        $addValidator=JsValidator::make($employee->validation());
-        $editValidator=JsValidator::make($employee->validation());
-        return view('admin.employee.employeeList.index',compact('addValidator','editValidator','categorys','companys','branchs'));
+              $addValidator=JsValidator::make($employee->validation());
+              $editValidator=JsValidator::make($employee->validation());
+              return view('admin.employee.employeeList.index',compact('addValidator','editValidator','categorys','companys','branchs'));
+            }
+
+           else{
+            abort('403');
+           } 
 
 
     }

@@ -8,7 +8,7 @@ use Validator;
 use JsValidator;
 use Toastr;
 use App\Company;
-
+use Auth;
 class BranchController extends Controller
 {
     /**
@@ -18,22 +18,21 @@ class BranchController extends Controller
      */
     public function index ()
     {
-        $branch = new Branch;
-        $data['companys'] = Company::get();
-        if (request()->ajax()) {
-            return $branch->datatable(Branch::latest()->get());
-//            return datatables()->of(Branch::latest()->get())
-//                ->addColumn('action' , function ($data) {
-//                    $button = '<button type="button" name="edit" id="edit" data-toggle="modal" data-target="#editModal" data-id="' . $data->branch_id . '" class="edit btn btn-primary"><i class="fas fa-edit"></i></button>';
-//                    $button .= '&nbsp;&nbsp;';
-//                    $button .= '<button type="button" name="delete" id="delete" data-id="' . $data->branch_id . '" class="delete btn btn-danger"><i class="fas fa-trash"></i></button>';
-//                    return $button;
-//                })
-//                ->rawColumns(['action'])
-//                ->make(true);
-        }
-        $validator = JsValidator::make($branch->validation());
-        return view('admin.branch.index' , ['validator' => $validator] , $data);
+        $user=Auth::user();
+        if ($user->can('view_branch')) {
+
+                $branch = new Branch;
+                $data['companys'] = Company::get();
+                if (request()->ajax()) {
+                    return $branch->datatable(Branch::latest()->get());
+
+                }
+                $validator = JsValidator::make($branch->validation());
+                return view('admin.branch.index' , ['validator' => $validator] , $data);
+      }
+      else{
+        abort('403');
+      }
     }
 
 

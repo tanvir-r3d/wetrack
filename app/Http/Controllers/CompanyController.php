@@ -7,27 +7,32 @@ use Illuminate\Http\Request;
 use Validator;
 use Toastr;
 use JsValidator;
+use Auth;
 class CompanyController extends Controller
 {
 
     public function index()
     {
-        $company=new Company;
-        if(request()->ajax())
-        {
-            return $company->datatable(Company::latest()->get());
-//            return datatables()->of(Company::latest()->get())
-//            ->addColumn('action',function($data){
-//                $button='<button type="button" name="edit" id="edit" data-toggle="modal" data-target="#editModal" data-id="'.$data->com_id.'" class="edit btn btn-primary"><i class="fas fa-edit"></i></button>';
-//                $button.='&nbsp;&nbsp;';
-//                $button.='<button type="button" name="delete" id="delete" data-id="'.$data->com_id.'" class="delete btn btn-danger"><i class="fas fa-trash"></i></button>';
-//                return $button;
-//            })
-//            ->rawColumns(['action'])
-//            ->make(true);
+        $user=Auth::user();
+        if ($user->can('view_company')) {
+
+                 $company=new Company;
+                if(request()->ajax())
+                {
+                    return $company->datatable(Company::latest()->get());
+
+                }
+                $validator=JsValidator::make($company->validation());
+                return view('admin.company.index',['validator'=>$validator]);
+           
         }
-        $validator=JsValidator::make($company->validation());
-        return view('admin.company.index',['validator'=>$validator]);
+        else{
+            abort('403');
+        }
+
+        
+
+      
     }
 
 

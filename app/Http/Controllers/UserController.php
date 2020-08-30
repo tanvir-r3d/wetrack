@@ -9,11 +9,13 @@ use Toastr;
 use Illuminate\Support\Facades\Hash;
 use DB;
 use JsValidator;
-
+use Auth;
 class UserController extends Controller
 {
     public function index()
     {
+        $user=Auth::user();
+        if ($user->can('view_user')) {
         $user=new User;
         if(request()->ajax())
         {
@@ -30,6 +32,10 @@ class UserController extends Controller
         return view('admin.users.index',['user_validator'=>$user_validator]);
 
         }
+        else{
+            abort('403');
+        }
+    }
 
     public function create()
     {
