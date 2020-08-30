@@ -7,7 +7,7 @@ use App\Traits\FileUpload;
 use Illuminate\Support\Facades\Config;
 use Toastr;
 use Illuminate\Http\Request;
-
+use Auth;
 class SettingController extends Controller
 {
     use FileUpload;
@@ -18,7 +18,13 @@ class SettingController extends Controller
      */
     public function index()
     {
+        $user=Auth::user();
+        if ($user->can('view_settings')) {
         return view('admin.setting.index');
+       }
+       else{
+        abort('403');
+       }
     }
     /**
      * Store a newly created resource in storage.
