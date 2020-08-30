@@ -9,7 +9,7 @@
 @section('content')
 <div class="row custom-row">
     <h2 class="section-title">Branch List</h2>
-    @can('add_branch')
+    @can('add branch')
 	<button class="btn btn-primary mr-l mr-3" data-toggle="modal" data-target="#addModal">Add Branch</button>
 	@endcan
 </div>
@@ -163,19 +163,50 @@
 	              },
 	        ],
 	    });
+$(document).on("click","#delete",function(){
+	let id=$(this).attr("data-id");
+	iziToast.question({
+        timeout: 20000,
+        close: true,
+        overlay: true,
+        displayMode: 'once',
+        id: 'question',
+        zindex: 999,
+        title: 'Wait!',
+        message: 'Are you sure? Once Deleted Can\'t be undone!', 
+        position: 'center',
+        buttons: [
+            ['<button><b>YES</b></button>', function () {
+				$.ajax({
+					url:"/branch/delete/"+id,
+					type:"get",
+					dataType:"json",
+					success:function(data)
+					{
+						if(data.status==201)
+						{
+							iziToast.success({
+								title: "Branch",
+								message: "Branch Successfully Deleted",
+								position: 'topRight',
+							});
+							location.reload();
+						}
+					}
+				});		
 
-	$(document).on("click","#delete",function(){
-		var id=$(this).attr("data-id");
-		$.ajax({
-			url:"/branch/delete/"+id,
-			type:"get",
-			dataType:"json",
-			success:function(data)
-			{
-				location.reload();
-			}
-		});
+
+            }, true],
+            ['<button>NO</button>', function (instance, toast) {
+
+                instance.hide({ transitionOut: 'fadeOut' }, toast, 'button');
+
+            }],
+        ],
 	});
+			
+	
+});
 
 	$(document).on("click","#edit",function(){
 		var id=$(this).attr("data-id");

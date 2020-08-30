@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Validator;
 use JsValidator;
-use Toastr;
 use Spatie\Permission\Models\Role;
 
 class RoleController extends Controller
@@ -23,16 +22,17 @@ class RoleController extends Controller
             'name' => 'required|unique:roles,name|max:35',
         ],
             [
-
                 'name.unique' => 'Already Exist!',
-
             ]
         );
         $role = Role::create(['name' => $request->name]);
 
-
-        Toastr::success('Congratulation! New role Information Saved Successfully', 'role', ["positionClass" => "toast-top-right"]);
-        return redirect()->back();
+        $notification = array(
+            'title' => 'Role',
+            'message' => 'Successfully! Role Information Created.',
+            'alert-type' => 'success',
+        );
+        return redirect()->back()->with($notification);
 
     }
 
@@ -49,8 +49,12 @@ class RoleController extends Controller
     public function update(Request $request, $id)
     {
         $role = Role::where('id', $id)->update(['name' => $request->name]);
-        Toastr::success('Update role Successfully', 'role', ["positionClass" => "toast-top-right"]);
-        return redirect()->back();
+        $notification = array(
+            'title' => 'Role',
+            'message' => 'Successfully! Role Information Updated.',
+            'alert-type' => 'success',
+        );
+        return redirect()->back()->with($notification);
 
     }
 

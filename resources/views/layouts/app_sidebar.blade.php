@@ -16,7 +16,7 @@
               </li>
 
               <li class="menu-header">{{__('customLanguage.Administrator')}}</li>
-                @can('view_user')
+                @can('view user')
                 <li class="{{url()->current() == url('/user') ? 'active' : ''}}"><a class="nav-link" href="/user"><i class="fas fa-user"></i><span>{{__('customLanguage.User')}}</span></a></li>
                 @endcan
 
@@ -39,10 +39,10 @@
               <li class="nav-item dropdown {{url()->current() == url('/company') || url()->current() == url('/branch') ? 'active' : ''}}">
                 <a href="#" class="nav-link has-dropdown"><i class="fas fa-industry"></i> <span>{{__('customLanguage.Company')}}</span></a>
                 <ul class="dropdown-menu">
-                  @can('view_company')
+                  @can('view company')
                   <li class="{{url()->current() == url('/company') ? 'active' : ''}}"><a class="nav-link" href="/company">{{__('customLanguage.Company')}}</a></li>
                   @endcan
-                  @can('view_branch')
+                  @can('view branch')
                   <li class="{{url()->current() == url('/branch') ? 'active' : ''}}"><a class="nav-link" href="/branch">{{__('customLanguage.Branch')}}</a></li>
                   @endcan
                 </ul>
@@ -51,10 +51,10 @@
               <li class="nav-item dropdown {{url()->current() == url('/employeeCategorys') || url()->current() == url('/employee') ? 'active' : ''}}">
                 <a href="#" class="nav-link has-dropdown"><i class="fas fa-users-cog"></i> <span>{{__('customLanguage.Employee')}}</span></a>
                 <ul class="dropdown-menu">
-                  @can('view_emp_cat')
+                  @can('view employee category')
                     <li class="{{url()->current() == url('/employeeCategorys') ? 'active' : ''}}"><a class="nav-link" href="/employeeCategorys">{{__('customLanguage.Employee Category')}}</a></li>
                     @endcan
-                    @can('view_employee')
+                    @can('view employee')
                     <li class="{{url()->current() == url('/employee') ? 'active' : ''}}"><a class="nav-link" href="/employee">{{__('customLanguage.Employee')}}</a></li>
                     @endcan
                 </ul>
@@ -63,9 +63,9 @@
               <li class="nav-item dropdown {{url()->current() == url('/employee_status') ? 'active' : ''}}">
                 <a href="#" class="nav-link has-dropdown"><i class="fas fa-map-marked-alt"></i> <span>{{__('customLanguage.Track Employee')}}</span></a>
                 <ul class="dropdown-menu">
-                  @can('view_employee')
+                  @can('track employee')
 
-                  <li class="{{url()->current() == url('/employee_status') ? 'active' : ''}}"><a class="nav-link" href="/employee_status/">{{__('customLanguage.Tracking List')}}</a></li>
+                  <li class="{{url()->current() == url('/employee_status') ? 'active' : ''}}"><a class="nav-link" href="/employee_status/">{{__('customLanguage.Tracking list')}}</a></li>
                  @endcan
                 </ul>
               </li>

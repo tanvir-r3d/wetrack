@@ -17,8 +17,6 @@
   <script src="/packages/DataTables/DataTables-1.10.20/js/dataTables.semanticui.min.js"></script>
   <script src="/packages/DataTables/DataTables-1.10.20/js/jquery.dataTables.min.js"></script>
   <script src="/packages/DataTables/DataTables-1.10.20/js/jquery.dataTables.min.js"></script>
-  <script src="/packages/sweetalert.min.js"></script>
-  <script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
 
 <script type="text/javascript" src="{{ url('vendor/jsvalidation/js/jsvalidation.js')}}"></script>
 
@@ -47,7 +45,73 @@
     })
 </script>
 
+<script type="text/javascript">
+
+$(".lang_choose").change(function(){
+  let language=$(this).val();
+    $.ajax({
+             type:'get',
+             url:`/localization/${language}`,
+             success:function(data) {
+                if(data=="ok"){
+                    location.reload();
+                }  
+             }
+            }); 
+
+});
+
+
+</script>
+
   @yield('script')
+
+<script>
+@foreach ($errors->all() as $error)
+    iziToast.warning({
+        title: "Warning",
+        message: "{{ $error }}",
+        position: 'topRight',
+    });
+    @endforeach
+
+    @if(Session::has('message'))
+      var type = "{{ Session::get('alert-type') }}";
+      switch(type){
+          case 'info':
+          iziToast.info({
+            title: "{{ Session::get('title') }}",
+            message: "{{ Session::get('message') }}",
+            position: 'topRight',
+        });
+              break;
+
+          case 'warning':
+              iziToast.warning({
+                title: "{{ Session::get('title') }}",
+                message: "{{ Session::get('message') }}",
+                position: 'topRight',
+            });
+              break;
+
+          case 'success':
+          iziToast.success({
+                title: "{{ Session::get('title') }}",
+                message: "{{ Session::get('message') }}",
+                position: 'topRight',
+                });
+              break;
+
+          case 'error':
+              iziToast.error({
+                title: "{{ Session::get('message') }}",
+                message: "{{ Session::get('message') }}",
+                position: 'topRight',
+                });
+              break;
+      }
+    @endif
+</script>
 
 @if(Auth::check())
 {
@@ -77,6 +141,5 @@
 }
 @else
 @endif
-{!! Toastr::message() !!}
 </body>
 </html>

@@ -13,12 +13,9 @@ use JsValidator;
 use App\Rules\MatchOldPassword;
 class profileController extends Controller
 {
-
-   
     
 	function index()
 	{
-        $user=new User;
 
 		$generalValidator=JsValidator::make($user->generalValidate());
         $passValidator=JsValidator::make([
@@ -60,8 +57,13 @@ class profileController extends Controller
             }
             $user->save();
             DB::commit();
-        Toastr::success('Congratulation! New Information Saved Successfully', 'Profile',["positionClass" => "toast-top-right"]);
-        return redirect()->back();
+
+            $notification = array(
+                'title' => 'Profile',
+                'message' => 'Congratulation! New Information Saved Successfully.',
+                'alert-type' => 'success',
+            );
+            return redirect()->back()->with($notification);
 	}
 
 
@@ -72,7 +74,11 @@ class profileController extends Controller
 
         User::where('id',Auth::user()->id)->update(['password'=>Hash::make($request->new_pass)]);
             
-        Toastr::success('Congratulation! Password Changed Successfully', 'Password',["positionClass" => "toast-top-right"]);
-        return redirect()->back();
+        $notification = array(
+            'title' => 'Profile',
+            'message' => 'Congratulation! Password Changed Successfully.',
+            'alert-type' => 'success',
+        );
+        return redirect()->back()->with($notification);
     }
 }

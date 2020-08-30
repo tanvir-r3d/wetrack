@@ -6,7 +6,6 @@ use App\Branch;
 use Illuminate\Http\Request;
 use Validator;
 use JsValidator;
-use Toastr;
 use App\Company;
 use Auth;
 class BranchController extends Controller
@@ -19,7 +18,7 @@ class BranchController extends Controller
     public function index ()
     {
         $user=Auth::user();
-        if ($user->can('view_branch')) {
+        if ($user->can('view branch')) {
 
                 $branch = new Branch;
                 $data['companys'] = Company::get();
@@ -45,7 +44,7 @@ class BranchController extends Controller
      */
     public function store (Request $request)
     {
-        {
+        
             $branch = new Branch;
             $validation = Validator::make($request->all() , $branch->validation());
             if ($validation->fails()) {
@@ -57,9 +56,13 @@ class BranchController extends Controller
             $branch->branch_details = $request->details;
 
             $branch->save();
-            Toastr::success('Congratulation! New Branch Information Saved Successfully' , 'Branch' , ["positionClass" => "toast-top-right"]);
-            return redirect()->back();
-        }
+            $notification = array(
+                'title' => 'Branch',
+                'message' => 'Successfully! Branch Information Saved.',
+                'alert-type' => 'success',
+            );
+            return redirect()->back()->with($notification);
+        
     }
 
 
@@ -98,8 +101,12 @@ class BranchController extends Controller
         $branch->branch_details = $request->details;
 
         $branch->save();
-        Toastr::success('Congratulation! New Branch Information Updated Successfully' , 'Branch' , ["positionClass" => "toast-top-right"]);
-        return redirect()->back();
+        $notification = array(
+            'title' => 'Branch',
+            'message' => 'Successfully! Branch Information Updated.',
+            'alert-type' => 'success',
+        );
+        return redirect()->back()->with($notification);
 
     }
 
@@ -112,9 +119,9 @@ class BranchController extends Controller
      */
     public function destroy($id)
     {
-
         Branch::where('branch_id' , $id)->delete();
-        $status = 200;
+        $status = 201;
+    
         $response = [
             'status' => $status ,
             'message' => 'Successfully Deleted' ,

@@ -134,15 +134,44 @@
 
   $(document).on("click","#delete",function(){
     var id=$(this).attr("data-id");
+    iziToast.question({
+        timeout: 20000,
+        close: true,
+        overlay: true,
+        displayMode: 'once',
+        id: 'question',
+        zindex: 999,
+        title: 'Wait!',
+        message: 'Are you sure? You Want to inactive employee tracking!', 
+        position: 'center',
+        buttons: [
+            ['<button><b>YES</b></button>', function () {
     $.ajax({
-      url:"/company/delete/"+id,
+      url:"/employee_status/change",
       type:"get",
+      data:{'status':0,'id':id,"_token": "{{ csrf_token() }}"},
       dataType:"json",
       success:function(data)
       {
-        location.reload();
+        if(data.status==200)
+						{
+							iziToast.success({
+								title: "Employee",
+								message: "Status Changed Successfully",
+								position: 'topRight',
+							});
+							location.reload();
+						}
       }
     });
+  }, true],
+            ['<button>NO</button>', function (instance, toast) {
+
+                instance.hide({ transitionOut: 'fadeOut' }, toast, 'button');
+
+            }],
+        ],
+	});
   });
   });
 

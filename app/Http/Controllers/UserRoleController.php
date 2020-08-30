@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use Toastr;
 use Illuminate\Http\Request;
 use App\User;
 use Spatie\Permission\Models\Role;
@@ -24,7 +23,11 @@ class UserRoleController extends Controller
     {
         $user=User::find($id);
         $user->assignRole($request->role);
-        Toastr::success('Congratulation! Role Assigned To User Successfully', 'permission', ["positionClass" => "toast-top-right"]);
-        return redirect()->back();
+        $notification = array(
+            'title' => 'User Role',
+            'message' => 'Successfully! User Role Assigned.',
+            'alert-type' => 'success',
+        );
+        return redirect()->back()->with($notification);
     }
 }

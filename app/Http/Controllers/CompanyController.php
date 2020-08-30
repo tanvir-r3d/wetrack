@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Company;
 use Illuminate\Http\Request;
 use Validator;
-use Toastr;
 use JsValidator;
 use Auth;
 class CompanyController extends Controller
@@ -14,7 +13,7 @@ class CompanyController extends Controller
     public function index()
     {
         $user=Auth::user();
-        if ($user->can('view_company')) {
+        if ($user->can('view company')) {
 
                  $company=new Company;
                 if(request()->ajax())
@@ -58,8 +57,12 @@ class CompanyController extends Controller
                 $company->com_logo = '';
             }
             $company->save();
-        Toastr::success('Congratulation! New Company Information Saved Successfully', 'Company',["positionClass" => "toast-top-right"]);
-        return redirect()->back();
+            $notification = array(
+                'title' => 'Company',
+                'message' => 'Successfully! Company Information Added.',
+                'alert-type' => 'success',
+            );
+            return redirect()->back()->with($notification);
     }
 
 
@@ -93,8 +96,12 @@ class CompanyController extends Controller
                     $company->com_logo = $name;
             }
         $company->save();
-        Toastr::success('Congratulation! New Company Information Updated Successfully', 'Company',["positionClass" => "toast-top-right"]);
-        return redirect()->back();
+        $notification = array(
+            'title' => 'Company',
+            'message' => 'Congratulation! New Company Information Updated Successfully.',
+            'alert-type' => 'success',
+        );
+        return redirect()->back()->with($notification);
     }
 
     public function destroy($id)

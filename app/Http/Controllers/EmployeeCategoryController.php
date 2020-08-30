@@ -6,7 +6,6 @@ use Illuminate\Http\Request;
 use App\EmployeeCategory;
 use Validator;
 use JsValidator;
-use Toastr;
 use Auth;
 class EmployeeCategoryController extends Controller
 {
@@ -18,7 +17,7 @@ class EmployeeCategoryController extends Controller
     public function index ()
     {
          $user=Auth::user();
-        if ($user->can('view_emp_cat')) {
+        if ($user->can('view employee category')) {
                 $employeeCategory = new EmployeeCategory;
                 if (request()->ajax()) {
                     return $employeeCategory->datatable(EmployeeCategory::latest()->get());
@@ -51,8 +50,12 @@ class EmployeeCategoryController extends Controller
             $employeeCategory->emp_cat_detils = $request->details;
 
             $employeeCategory->save();
-            Toastr::success('Congratulation! New EmployeeCategory Information Saved Successfully' , 'EmployeeCategory' , ["positionClass" => "toast-top-right"]);
-            return redirect()->back();
+            $notification = array(
+                'title' => 'Employee Category',
+                'message' => 'Successfully! Employee Category Information Added.',
+                'alert-type' => 'success',
+            );
+            return redirect()->back()->with($notification);
         }
     }
 
@@ -91,8 +94,12 @@ class EmployeeCategoryController extends Controller
         $employeeCategory->emp_cat_detils = $request->details;
 
         $employeeCategory->save();
-        Toastr::success('Congratulation! New EmployeeCategory Information Updated Successfully' , 'EmployeeCategory' , ["positionClass" => "toast-top-right"]);
-        return redirect()->back();
+        $notification = array(
+            'title' => 'Employee Category',
+            'message' => 'Successfully! Employee Category Information Updated.',
+            'alert-type' => 'success',
+        );
+        return redirect()->back()->with($notification);
 
     }
 

@@ -36,11 +36,15 @@
                                     <td style="text-transform:uppercase;">{{$role->name}}</td>
                                     <td>
                                         @php $roles_permissions=array_column((collect($role)->toArray())['permissions'],'id');@endphp
+                                       
                                         @foreach($permissions as $permission)
+                                            
                                             @php $status=in_array($permission['id'],$roles_permissions); @endphp
                                             <input type="checkbox" disabled {{$status?'checked':''}}>
                                             {{$permission['name']}}
+                                            
                                         @endforeach
+
                                     </td>
                                     <td>
                                         <button type="submit" data-toggle="modal" data-target="#permissionModal"  class="btn btn-primary permission

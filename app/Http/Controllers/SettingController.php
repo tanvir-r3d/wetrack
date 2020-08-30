@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Setting;
 use App\Traits\FileUpload;
 use Illuminate\Support\Facades\Config;
-use Toastr;
 use Illuminate\Http\Request;
 use Auth;
 class SettingController extends Controller
@@ -19,7 +18,7 @@ class SettingController extends Controller
     public function index()
     {
         $user=Auth::user();
-        if ($user->can('view_settings')) {
+        if ($user->can('settings')) {
         return view('admin.setting.index');
        }
        else{
@@ -47,8 +46,12 @@ class SettingController extends Controller
         }
         $setting=Setting::find(1);
         $setting->fill($requestedData)->save();
-        Toastr::success('Congratulation! Settings Updated' , 'App Setting' , ["positionClass" => "toast-top-right"]);
-        return redirect()->back();
+        $notification = array(
+            'title' => 'App Setting',
+            'message' => 'Successfully! Settings Updated.',
+            'alert-type' => 'success',
+        );
+        return redirect()->back()->with($notification);
     }
 
     public function mail(Request $request)
@@ -57,13 +60,12 @@ class SettingController extends Controller
         $setting->site_mail = $request->mail_username;
         $setting->mail_pass=encrypt($request->mail_password);
         $setting->save();
-        Toastr::success('Congratulation! Settings Updated' , 'App Setting' , ["positionClass" => "toast-top-right"]);
-        return redirect()->back();
-//        Config::set('mail.username',$request->mail_username);
-//        Config::set('mail.password',$request->mail_password);
-//        echo(Config::get('mail.username'));
-//        echo "<br>";
-//        echo(Config::get('mail.password'));
+        $notification = array(
+            'title' => 'App Setting',
+            'message' => 'Successfully! Settings Updated.',
+            'alert-type' => 'success',
+        );
+        return redirect()->back()->with($notification);
     }
 
 }

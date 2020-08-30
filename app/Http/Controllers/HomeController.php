@@ -45,7 +45,7 @@ class HomeController extends Controller
    {
     App::setlocale($language);
     Session::put('locale',$language);
-    return Session::get('locale');
+    return response("ok");
    }
 
 }
