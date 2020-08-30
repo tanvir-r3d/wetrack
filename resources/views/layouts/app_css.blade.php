@@ -11,7 +11,7 @@
   <!-- General CSS Files -->
   <link rel="stylesheet" href="/css/bootstrap.min.css">
 
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+ 
   <!-- Template CSS -->
   <link rel="stylesheet" href="/css/style.css">
   <link rel="stylesheet" href="/css/components.css">
@@ -26,6 +26,8 @@
   <link rel="stylesheet" href="/packages/DataTables/DataTables-1.10.20/css/jquery.dataTables.min.css">
   <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css">
 
+
+ <script src="https://kit.fontawesome.com/5a09bb06be.js" crossorigin="anonymous"></script>
 <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
 
 </head>

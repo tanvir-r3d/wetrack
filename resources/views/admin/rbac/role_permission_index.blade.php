@@ -43,9 +43,8 @@
                                         @endforeach
                                     </td>
                                     <td>
-                                        <button type="submit" data-toggle="modal" data-target="#permissionModal"
-                                                data-id={{$role->id}} class="btn btn-primary permission
-                                        ">Update</button>
+                                        <button type="submit" data-toggle="modal" data-target="#permissionModal"  class="btn btn-primary permission
+                                        "data-id={{$role->id}}>Update</button>
                                     </td>
 
                                 </tr>
@@ -54,8 +53,8 @@
                             <tfoot>
                             <tr>
                                 <th class="">SL</th>
-                                <th class="">Display Name</th>
-                                <th class="">Name</th>
+                                <th class="">Role Name</th>
+                                <th class="">Permissions</th>
                                 <th class="">Action</th>
 
 
@@ -120,6 +119,7 @@
                 data: {'_token': '{{ csrf_token() }}'},
                 dataType: 'json',
                 success: function (data) {
+                    
                     let role=data.role_permissions[0];
                     $(".modal-title").text(`${role.name} Permissions`);
                     $("#name").val(role.name);

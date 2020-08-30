@@ -9,7 +9,9 @@
 @section('content')
 <div class="row custom-row">
     <h2 class="section-title">Company List</h2>
+    @can('add_company')
     <button class="btn btn-primary mr-l mr-3" data-toggle="modal" data-target="#addModal">Add Company</button>
+    @endcan
 </div>
 <div class="row">
 	<div class="col-12">

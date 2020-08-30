@@ -9,6 +9,7 @@ use Spatie\Permission\Models\Role;
 use Session;
 use Toastr;
 use Spatie\Permission\Models\Permission;
+use Auth;
 
 class Role_PermissionController extends Controller
 {
@@ -54,8 +55,11 @@ class Role_PermissionController extends Controller
             }
             RoleHasPermission::insert($data);
         }
-//        $user=Role::find($id);
-//        $user->syncRoles([''])
+        $user=User::find(Auth::user()->id);
+       $permission_name=Role::find($id);
+       
+       $user->syncRoles([$permission_name->name]);
+
         Toastr::success('Congratulation! '.$request->name.' Information Saved Successfully', 'Permission', ["positionClass" => "toast-top-right"]);
 
         return redirect()->back();

@@ -16,14 +16,22 @@
               </li>
 
               <li class="menu-header">{{__('customLanguage.Administrator')}}</li>
+                @can('view_user')
                 <li class="{{url()->current() == url('/user') ? 'active' : ''}}"><a class="nav-link" href="/user"><i class="fas fa-user"></i><span>User</span></a></li>
+                @endcan
+
               <li class="nav-item dropdown {{url()->current() == url('/permission') || url()->current() == url('/role') || url()->current() == url('/role_permission') || url()->current() == url('/user_roles') ? 'active' : ''}}">
                 <a href="#" class="nav-link has-dropdown"><i class="fas fa-key"></i> <span>RBAC</span></a>
                 <ul class="dropdown-menu">
+                    
                     <li class="{{url()->current() == url('/permission') ? 'active' : ''}}"><a class="nav-link" href="/permission">Permissions</a></li>
+                   
                     <li class="{{url()->current() == url('/role') ? 'active' : ''}}"><a class="nav-link" href="/role">Roles</a></li>
+                    
                   <li class="{{url()->current() == url('/role_permission') ? 'active' : ''}}"><a class="nav-link" href="/role_permission">Roles Permission</a></li>
+
                   <li class="{{url()->current() == url('/user_roles') ? 'active' : ''}}"><a class="nav-link" href="/user_roles">User Roles</a></li>
+                 
                 </ul>
               </li>
 
@@ -31,23 +39,34 @@
               <li class="nav-item dropdown {{url()->current() == url('/company') || url()->current() == url('/branch') ? 'active' : ''}}">
                 <a href="#" class="nav-link has-dropdown"><i class="fas fa-industry"></i> <span>Company</span></a>
                 <ul class="dropdown-menu">
+                  @can('view_company')
                   <li class="{{url()->current() == url('/company') ? 'active' : ''}}"><a class="nav-link" href="/company">Company</a></li>
+                  @endcan
+                  @can('view_branch')
                   <li class="{{url()->current() == url('/branch') ? 'active' : ''}}"><a class="nav-link" href="/branch">Branch</a></li>
+                  @endcan
                 </ul>
               </li>
 
               <li class="nav-item dropdown {{url()->current() == url('/employeeCategorys') || url()->current() == url('/employee') ? 'active' : ''}}">
                 <a href="#" class="nav-link has-dropdown"><i class="fas fa-users-cog"></i> <span>Employee</span></a>
                 <ul class="dropdown-menu">
+                  @can('view_emp_cat')
                     <li class="{{url()->current() == url('/employeeCategorys') ? 'active' : ''}}"><a class="nav-link" href="/employeeCategorys">Employee Category</a></li>
+                    @endcan
+                    @can('view_employee')
                     <li class="{{url()->current() == url('/employee') ? 'active' : ''}}"><a class="nav-link" href="/employee">Employee</a></li>
+                    @endcan
                 </ul>
               </li>
 
               <li class="nav-item dropdown {{url()->current() == url('/employee_status') ? 'active' : ''}}">
                 <a href="#" class="nav-link has-dropdown"><i class="fas fa-map-marked-alt"></i> <span>Track Employee</span></a>
                 <ul class="dropdown-menu">
+                  @can('view_employee')
+
                   <li class="{{url()->current() == url('/employee_status') ? 'active' : ''}}"><a class="nav-link" href="/employee_status/">Tracking List</a></li>
+                 @endcan
                 </ul>
               </li>
 

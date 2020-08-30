@@ -29,7 +29,7 @@
               <script type="text/javascript">
 
                 $(".lang_choose").change(function(){
-                  alert('hi');
+                  // alert('hi');
                   var language=$(this).val();
 
 
@@ -57,10 +57,11 @@
               <a href="/profile" class="dropdown-item has-icon">
                 <i class="far fa-user"></i> Profile
               </a>
-              
+              @can('view_settings')
               <a href="/settings" class="dropdown-item has-icon">
                 <i class="fas fa-cog"></i> Settings
               </a>
+              @endcan
               <div class="dropdown-divider"></div>
               <a href="{{ route('logout') }}"  class="dropdown-item has-icon text-danger" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                 <i class="fas fa-sign-out-alt"></i> Logout
