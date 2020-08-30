@@ -7,11 +7,11 @@
             <div class="col-lg-3 col-md-6 col-sm-6 col-12">
               <div class="card card-statistic-1">
                 <div class="card-icon bg-primary">
-                  <i class="far fa-user"></i>
+                   <i class="far fa-user"></i>
                 </div>
                 <div class="card-wrap">
                   <div class="card-header">
-                    <h4>Total Company</h4>
+                    <h4>{{ __('customLanguage.Total Company')}}</h4>
                   </div>
                   <div class="card-body">
                     @php $company_count=collect($company)->count(); @endphp
@@ -27,7 +27,7 @@
                 </div>
                 <div class="card-wrap">
                   <div class="card-header">
-                    <h4>Branch</h4>
+                    <h4>{{ __('customLanguage.Branch')}}</h4>
                   </div>
                   <div class="card-body">
                     @php $branch_count=collect($branch)->count(); @endphp
@@ -43,7 +43,7 @@
                 </div>
                 <div class="card-wrap">
                   <div class="card-header">
-                    <h4>Employee</h4>
+                    <h4>{{ __('customLanguage.Employee')}}</h4>
                   </div>
                   <div class="card-body">
                     @php $employee_count=collect($employee)->count(); @endphp
@@ -59,7 +59,7 @@
                 </div>
                 <div class="card-wrap">
                   <div class="card-header">
-                    <h4>Tracking</h4>
+                    <h4>{{ __('customLanguage.Tracking')}}</h4>
                   </div>
                   <div class="card-body">
                     @php $status_count=collect($employee)->whereNotNull('emp_status')->count(); @endphp
@@ -75,19 +75,19 @@
             <div class="col-lg-6 col-md-6 col-12">
               <div class="card">
                 <div class="card-header">
-                  <h4>Infield Employee Updates</h4>
+                  <h4>{{ __('customLanguage.Infield Employee Updates')}}</h4>
                 </div>
                 <div class="card-body">
                     <div class="table-responsive">
                         <table id="dataTable" class="dataTable table table-striped mb-0">
                           <thead>
                             <tr>
-                              <th>Company</th>
-                              <th>Branch</th>
-                              <th>Employee</th>
-                              <th>Phone</th>
-                              <th>Action</th>
-                              <th>Updated</th>
+                              <th>{{ __('customLanguage.Company')}}</th>
+                              <th>{{ __('customLanguage.Branch')}}</th>
+                              <th>{{ __('customLanguage.Employee')}}</th>
+                              <th>{{ __('customLanguage.Phone')}}</th>
+                              <th>{{ __('customLanguage.Action')}}</th>
+                              <th>{{ __('customLanguage.Updated')}}</th>
                             </tr>
                           </thead>
                         </table>
@@ -99,7 +99,7 @@
             <div class="col-lg-6 col-md-6 col-12">
               <div class="card">
                 <div class="card-header">
-                  <h4>Your Location</h4>
+                  <h4>{{ __('customLanguage.Your Location')}}</h4>
                 </div>
                 <div class="card-body">
                     <div id="mapholder" data-height="400"></div>
