@@ -71,7 +71,6 @@ Route::middleware('auth')->group(function () {
     Route::resource('/settings', 'SettingController');
     Route::post('/settings/mail', 'SettingController@mail');
 
-
     //Role Route
     Route::resource('/role', 'RoleController');
     Route::get('/role/delete/{id}', 'RoleController@delete');
@@ -90,6 +89,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/user_roles','UserRoleController@index');
     Route::get('/user_roles/{id}','UserRoleController@edit');
     Route::put('/user_roles/update/{id}','UserRoleController@update');
+
 });
 Route::get("/about_us", function () {
     return view("About Us.about_us");
