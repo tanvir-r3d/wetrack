@@ -90,6 +90,12 @@ Route::middleware('auth')->group(function () {
     Route::get('/user_roles','UserRoleController@index');
     Route::get('/user_roles/{id}','UserRoleController@edit');
     Route::put('/user_roles/update/{id}','UserRoleController@update');
+
+
+    //Send Mail
+    Route::get('/contact','sendMailController@index');
+    Route::post('/contact/send','sendMailController@send');
+
 });
 Route::get("/about_us", function () {
     return view("About Us.about_us");

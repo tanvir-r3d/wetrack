@@ -20,6 +20,9 @@
                 <li class="{{url()->current() == url('/user') ? 'active' : ''}}"><a class="nav-link" href="/user"><i class="fas fa-user"></i><span>{{__('customLanguage.User')}}</span></a></li>
                 @endcan
 
+
+                <li class="{{url()->current() == url('/contact') ? 'active' : ''}}"><a class="nav-link" href="/contact"><i class="fas fa-contact"></i><span>Contact</span></a></li>
+
               <li class="nav-item dropdown {{url()->current() == url('/permission') || url()->current() == url('/role') || url()->current() == url('/role_permission') || url()->current() == url('/user_roles') ? 'active' : ''}}">
                 <a href="#" class="nav-link has-dropdown"><i class="fas fa-key"></i> <span>RBAC</span></a>
                 <ul class="dropdown-menu">
