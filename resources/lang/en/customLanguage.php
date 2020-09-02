@@ -33,7 +33,7 @@ return [
 	 	'Username' => 'Username',
 	 	'Action' => 'Action',
 	 	'Name' => 'Name',
-	 	'updated'=>'updated',
+	 	'Updated'=>'updated',
 
 
 ];
