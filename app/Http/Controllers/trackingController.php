@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Employee;
 use Illuminate\Http\Request;
 use App\tracking_data;
 use Illuminate\Support\Facades\Auth;
