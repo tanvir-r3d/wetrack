@@ -19,7 +19,7 @@ Route::get('/', function () {
 Route::get('localization/{locale}','HomeController@local');
 
 Route::get('/search', 'HomeController@search');
-Auth::routes(['verify' => true]);
+Auth::routes();
 Route::middleware('auth')->group(function () {
 
     Route::get('/home', 'HomeController@index')->name('home');
@@ -93,7 +93,7 @@ Route::middleware('auth')->group(function () {
     //Send Mail
     Route::get('/contact','sendMailController@index');
     Route::post('/contact/send','sendMailController@send');
-  
+
 });
 Route::get("/about_us", function () {
     return view("About Us.about_us");

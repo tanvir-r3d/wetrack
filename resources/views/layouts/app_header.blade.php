@@ -19,10 +19,20 @@
             </div>
           </div>
         </form>
-        <select class="lang_choose">
-                <option value="en" {{Session::get("locale") == "en" ? "selected='selected'" : ""}}>English</option>
-                <option value="bn" {{Session::get("locale") == "bn" ? "selected='selected'" : ""}}>Bangla</option>
-              </select>
+          <ul class="navbar-nav navbar-right">
+              <li class="dropdown"><a href="#" data-toggle="dropdown" class="nav-link dropdown-toggle nav-link-lg nav-link-user">
+                      <img alt="image" height="30" src="{{Session::get("locale") == "bn" ? "/images/bd.png" : "/images/us.png"}}" class="mr-1">
+                      <div class="d-sm-none d-lg-inline-block">{{Session::get("locale") == "bn" ? "Bangla" : "English"}}</div></a>
+                  <div class="dropdown-menu dropdown-menu-right">
+                      <a href="/localization/en" class="dropdown-item has-icon">
+                          <img src="/images/us.png" alt="en" width=30> English
+                      </a>
+                      <a href="/localization/bn" class="dropdown-item has-icon">
+                          <img src="/images/bd.png" alt="en" width=30> Bangla
+                      </a>
+                  </div>
+              </li>
+          </ul>
 
         <ul class="navbar-nav navbar-right">
           <li class="dropdown"><a href="#" data-toggle="dropdown" class="nav-link dropdown-toggle nav-link-lg nav-link-user">

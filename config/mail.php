@@ -29,7 +29,7 @@ return [
     |
     */
 
-    'host' => env('MAIL_HOST', 'smtp.mailgun.org'),
+    'host' => env('MAIL_HOST', 'mail.smartwetrack.xyz'),
 
     /*
     |--------------------------------------------------------------------------
@@ -56,8 +56,8 @@ return [
     */
 
     'from' => [
-        'address' => env('MAIL_FROM_ADDRESS', ''),
-        'name' => env('MAIL_FROM_NAME', 'WE Track'),
+        'address' => env('MAIL_FROM_ADDRESS', 'tanvir@smartwetrack.xyz'),
+        'name' => env('MAIL_FROM_NAME', 'WETrack'),
     ],
 
     /*
@@ -84,9 +84,9 @@ return [
     |
     */
 
-    'username' => env('MAIL_USERNAME'),
+    'username' => env('tanvir@smartwetrack.xyz'),
 
-    'password' => env('MAIL_PASSWORD'),
+    'password' => env('R3dr0k37'),
 
     /*
     |--------------------------------------------------------------------------
