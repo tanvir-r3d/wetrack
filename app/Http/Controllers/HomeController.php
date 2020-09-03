@@ -18,7 +18,7 @@ class HomeController extends Controller
      */
     public function __construct()
     {
-        $this->middleware(['auth','verified']);
+        $this->middleware(['auth']);
     }
 
     public function search(Request $request)
@@ -38,14 +38,14 @@ class HomeController extends Controller
         $employee=Employee::get();
         $company=Company::get();
         $branch=Branch::get();
-        return view('admin.dashboard',compact('employee','company','branch'));
+        return view('admin.Dashboard.dashboard',compact('employee','company','branch'));
     }
 
   public function local($language)
    {
     App::setlocale($language);
     Session::put('locale',$language);
-    return response("ok");
+    return redirect()->back();
    }
 
 }

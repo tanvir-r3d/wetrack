@@ -9,10 +9,12 @@ use Illuminate\Notifications\Notifiable;
 use App\Rules\MatchOldPassword;
 use Auth;
 use Hash;
+use Laravel\Passport\HasApiTokens;
 use Spatie\Permission\Traits\HasRoles;
+
 class User extends Authenticatable implements MustVerifyEmail
 {
-    use Notifiable,Datatableable,HasRoles;
+    use Notifiable,Datatableable,HasRoles,HasApiTokens;
 
     /**
      * The attributes that are mass assignable.

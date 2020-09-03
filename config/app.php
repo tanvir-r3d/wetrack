@@ -162,7 +162,7 @@ return [
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
         Yajra\DataTables\DataTablesServiceProvider::class,
-
+        Laravel\Passport\PassportServiceProvider::class,
         /*
          * Package Service Providers...
          */
