@@ -10,17 +10,19 @@ use Illuminate\Queue\SerializesModels;
 class sendMail extends Mailable
 {
     use Queueable, SerializesModels;
-    public $message;
+    public $messages;
+    public $subjects;
     public $name;
     /**
      * Create a new message instance.
      *
-     * @return void 
+     * @return void
      */
     public function __construct($data)
     {
-        $this->message = $data['message'];
-        $this->name=$data['name'];
+        $this->messages = $data['message'];
+        $this->subjects = $data['subject'];
+        $this->name = $data['name'];
     }
 
     /**
@@ -30,6 +32,6 @@ class sendMail extends Mailable
      */
     public function build()
     {
-        return $this->subject('New Employee ADD')->view('mail.sendMail');
+        return $this->subject($this->subjects)->view('mail.sendMail')->with(['messages' => $this->messages, 'subjects' => $this->subjects, 'name' => $this->name]);
     }
 }

@@ -16,13 +16,15 @@ class sendMailController extends Controller
     public function send(Request $request)
     {
         $this->validate($request, [
-            'name' => 'required',
+            'subject' => 'required',
             'email' => 'required|email',
             'message' => 'required',
+            'name' => 'required'
         ]);
 
         $data = array(
             'name' => $request->name,
+            'subject' => $request->subject,
             'message' => $request->message,
             'email' => $request->email
         );

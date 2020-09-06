@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\View;
 use Illuminate\Support\Facades\Cache;
 use App\Observers\SettingsObserver;
 use App\Setting;
+
 class AppServiceProvider extends ServiceProvider
 {
     /**
@@ -17,7 +18,6 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-
     }
 
     /**
@@ -29,9 +29,9 @@ class AppServiceProvider extends ServiceProvider
     {
         Setting::observe(SettingsObserver::class);
         Admin::bootSearchable();
-        View::composer(["layouts.app_css","layouts.app_sidebar"],function($view){
-            
-            $view->with("settings",Cache::rememberForever("settings",function(){
+        View::composer(["layouts.app_css", "layouts.app_sidebar", "mail.sendMail"], function ($view) {
+
+            $view->with("settings", Cache::rememberForever("settings", function () {
                 return Setting::first();
             }));
         });
